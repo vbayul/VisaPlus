@@ -1,0 +1,14 @@
+D:\Dev\VisaPlus\VisaPlus\bin\Debug\VisaPlus.exe.config
+D:\Dev\VisaPlus\VisaPlus\bin\Debug\VisaPlus.exe
+D:\Dev\VisaPlus\VisaPlus\bin\Debug\VisaPlus.pdb
+D:\Dev\VisaPlus\VisaPlus\bin\Debug\Geckofx-Core.dll
+D:\Dev\VisaPlus\VisaPlus\bin\Debug\Geckofx-Winforms.dll
+D:\Dev\VisaPlus\VisaPlus\bin\Debug\MySql.Data.dll
+D:\Dev\VisaPlus\VisaPlus\obj\Debug\VisaPlus.csprojResolveAssemblyReference.cache
+D:\Dev\VisaPlus\VisaPlus\obj\Debug\VisaPlus.Properties.Resources.resources
+D:\Dev\VisaPlus\VisaPlus\obj\Debug\VisaPlus.csproj.GenerateResource.Cache
+D:\Dev\VisaPlus\VisaPlus\obj\Debug\VisaPlus.exe
+D:\Dev\VisaPlus\VisaPlus\obj\Debug\VisaPlus.pdb
+D:\Dev\VisaPlus\VisaPlus\obj\Debug\VisaPlus.Form_browser.resources
+D:\Dev\VisaPlus\VisaPlus\obj\Debug\VisaPlus.Form_visa.resources
+D:\Dev\VisaPlus\VisaPlus\obj\Debug\VisaPlus.Form_visa_edit.resources
