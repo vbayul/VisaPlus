@@ -12,7 +12,7 @@ namespace VisaPlus
     class VisaDataSet
     {
         private string cmd = "";
-        private MySqlConnection myConnect = new MySqlConnection();
+        private MySqlConnection myConnection = new MySqlConnection();
         private MySqlCommand myCommand = new MySqlCommand();
         private MySqlDataAdapter da;
         private DataSet ds;
@@ -24,8 +24,8 @@ namespace VisaPlus
 
             cmd = "SELECT * FROM pass.client WHERE userid = @userid";
 
-            myConnect.ConnectionString = User.getConnectionString();
-            myCommand.Connection = myConnect;
+            myConnection.ConnectionString = User.getConnectionString();
+            myCommand.Connection = myConnection;
             myCommand.CommandType = CommandType.Text;
             myCommand.CommandText = cmd;
 
@@ -33,10 +33,16 @@ namespace VisaPlus
             myCommand.Parameters.AddWithValue("@userid", User.getUserID());
 
             da.SelectCommand = myCommand;
-
-            myConnect.Open();
-            da.Fill(ds);
-            myConnect.Close();
+            try
+            {
+                myConnection.Open();
+                da.Fill(ds);
+                myConnection.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Произошла ошибка осединения с БД.");
+            }
 
             return ds;
         }
@@ -47,8 +53,8 @@ namespace VisaPlus
 
             da = new MySqlDataAdapter();
             ds = new DataSet();
-            myConnect.ConnectionString = User.getConnectionString();
-            myCommand.Connection = myConnect;
+            myConnection.ConnectionString = User.getConnectionString();
+            myCommand.Connection = myConnection;
             myCommand.CommandType = CommandType.Text;
             myCommand.CommandText = cmd;
 
@@ -57,10 +63,16 @@ namespace VisaPlus
             myCommand.Parameters.AddWithValue("@clientid", id);
 
             da.SelectCommand = myCommand;
-
-            myConnect.Open();
-            da.Fill(ds);
-            myConnect.Close();
+            try
+            {
+                myConnection.Open();
+                da.Fill(ds);
+                myConnection.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Произошла ошибка осединения с БД.");
+            }
 
             return ds;
         }

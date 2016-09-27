@@ -3,108 +3,98 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace VisaPlus
 {
-    class VisaDAOImp : VisaDAO
+    class ProxyDAOImp : ProxyDAO
     {
         private string cmd = "";
-        private MySqlConnection myConnection = new MySqlConnection(User.getConnectionString());
-        private MySqlCommand myCommand = new MySqlCommand();
-        private MySqlDataReader dr;
-        private MySqlDataAdapter da;
-        private DataSet ds;
+        MySqlConnection myConnection = new MySqlConnection();
+        MySqlCommand myCommand = new MySqlCommand();
+        MySqlDataAdapter da;
+        MySqlDataReader dr;
+        DataSet ds;
 
-        public bool addVisa(Visa visa)
+        public void saveProxy(string ip, string port)
         {
-            cmd = "INSERT INTO `pass`.`client` (`clientstatus`,`clientname`,`clientticket`,`userid`) "
-                    + " VALUES (@clientstatus, @clientname, @clientticket, @userid);";
-
-            myCommand.Connection = myConnection;
-            myCommand.CommandType = CommandType.Text;
-            myCommand.CommandText = cmd;
-            myCommand.Parameters.Clear();
-
-            myCommand.Parameters.AddWithValue("@clientstatus", visa.getClientStatus());
-            myCommand.Parameters.AddWithValue("@clientname", visa.getClientName());
-            myCommand.Parameters.AddWithValue("@clientticket", visa.getClientTicket());
-            myCommand.Parameters.AddWithValue("@userid", User.getUserID());
-
-            bool saccess = false;
-            try
-            {
-                myConnection.Open();
-                myCommand.ExecuteNonQuery();
-                myConnection.Close();
-                saccess = true;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Произошла ошибка осединения с БД.");
-            }
-
-            return saccess;
-        }
-        public bool saveVisa(Visa visa)
-        {
-            cmd = "UPDATE `pass`.`client` SET "
-                + " `clientname` = @clientname, "
-                + " `clientticket` = @clientticket "
-                + " WHERE `idclient` = @idclient;";
+            cmd = "INSERT INTO proxy (idproxy,proxyip,proxyport,proxyuser,proxystatus) "
+                + " VALUES (@proxyip,@proxyport,@proxyuser,@proxystatus);";
 
             myConnection.ConnectionString = User.getConnectionString();
             myCommand.Connection = myConnection;
             myCommand.CommandType = CommandType.Text;
             myCommand.CommandText = cmd;
+
             myCommand.Parameters.Clear();
 
-            myCommand.Parameters.AddWithValue("@clientname", visa.getClientName());
-            myCommand.Parameters.AddWithValue("@clientticket", visa.getClientTicket());
-            myCommand.Parameters.AddWithValue("@idclient", visa.getClientId());
+            myCommand.Parameters.AddWithValue("@proxyip", ip);
+            myCommand.Parameters.AddWithValue("@proxyport", port);
+            myCommand.Parameters.AddWithValue("@proxyuser", User.getUserID());
+            myCommand.Parameters.AddWithValue("@proxystatus", "0");
 
-            bool saccess = false;
             try
             {
                 myConnection.Open();
                 myCommand.ExecuteNonQuery();
                 myConnection.Close();
-                saccess = true;
             }
             catch (Exception)
             {
                 MessageBox.Show("Произошла ошибка осединения с БД.");
             }
-
-            return saccess;
         }
+        public void setProxy(string id)
+        {
+            cmd = "UPDATE proxy SET proxystatus = 0; UPDATE proxy SET proxystatus = 1 WHERE idproxy = @idproxy";
 
-        public Visa getVisa(string id)
+            myConnection.ConnectionString = User.getConnectionString();
+            myCommand.Connection = myConnection;
+            myCommand.CommandType = CommandType.Text;
+            myCommand.CommandText = cmd;
+
+            myCommand.Parameters.Clear();
+
+            myCommand.Parameters.AddWithValue("@idproxy", id);
+
+            try
+            {
+                myConnection.Open();
+                myCommand.ExecuteNonQuery();
+                myConnection.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Произошла ошибка осединения с БД.");
+            }
+        }
+        public string getCurrProxy()
         {
             cmd = "SELECT idclient, clientstatus,clientname, clientticket "
             + " FROM pass.client WHERE idclient = @idclient";
 
             da = new MySqlDataAdapter();
             ds = new DataSet();
+
             myConnection.ConnectionString = User.getConnectionString();
             myCommand.Connection = myConnection;
             myCommand.CommandType = CommandType.Text;
             myCommand.CommandText = cmd;
 
             myCommand.Parameters.Clear();
-            myCommand.Parameters.AddWithValue("@idclient", id);
 
             da.SelectCommand = myCommand;
 
-            Visa visa = new Visa();
+ 
             try
             {
                 myConnection.Open();
                 dr = myCommand.ExecuteReader();
                 while (dr.Read())
                 {
-                    visa = new Visa(dr.GetInt32(0).ToString(), dr.GetString(2), dr.GetString(3), dr.GetInt32(1).ToString());
+                    dr.GetString(2);
+                    dr.GetString(2);
                 }
                 myConnection.Close();
             }
@@ -113,7 +103,7 @@ namespace VisaPlus
                 MessageBox.Show("Произошла ошибка осединения с БД.");
             }
 
-            return visa;
+            return "";
         }
     }
 }

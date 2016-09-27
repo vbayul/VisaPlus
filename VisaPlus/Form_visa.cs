@@ -57,5 +57,12 @@ namespace VisaPlus
             newVisa.Owner = this;
             newVisa.ShowDialog();
         }
+
+        private void проксиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_proxy proxy = new Form_proxy();
+            proxy.Owner = this;
+            proxy.ShowDialog();
+        }
     }
 }

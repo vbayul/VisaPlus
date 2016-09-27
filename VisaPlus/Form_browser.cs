@@ -21,12 +21,27 @@ namespace VisaPlus
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // загнать ссылку в базу
+            geckoWebBrowser1.Navigate(@"ya.ru");
         }
 
         private void Form_browser_Load(object sender, EventArgs e)
         {
             // загнать ссылку в базу
             geckoWebBrowser1.Navigate(@"https://polandonline.vfsglobal.com/poland-ukraine-appointment/(S(lzjdbcyqofk4of45flew25ve))/AppScheduling/AppWelcome.aspx?P=s2x6znRcBRv7WQQK7h4MTjZiPRbOsXKqJzddYBh3qCA=");
+        }
+
+        private void geckoWebBrowser1_ProgressChanged(object sender, Gecko.GeckoProgressEventArgs e)
+        {
+            
+            progressBar1.Maximum = (int)e.MaximumProgress;
+            try
+            {
+                progressBar1.Value = (int)e.CurrentProgress;
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }
