@@ -49,6 +49,8 @@ namespace VisaPlus
         }
         private void buttonSet_Click(object sender, EventArgs e)
         {
+            setProxy(dataGridViewProxy[0, dataGridViewProxy.CurrentCell.RowIndex].Value.ToString());
+            /*
             if (dataGridViewProxy.RowCount > 0)
             {
                 proxyDAO.setProxy(dataGridViewProxy[0, dataGridViewProxy.CurrentCell.RowIndex].Value.ToString());
@@ -56,9 +58,26 @@ namespace VisaPlus
             }
             else
             {
-                MessageBox.Show("Настройки прокси ещё не внесены");
+                MessageBox.Show("Настройки прокси ещё не внесены.");
+            }*/
+        }
+
+        private void setProxy(string id)
+        {
+            if (dataGridViewProxy.RowCount > 0)
+            {
+                proxyDAO.setProxy(id);
+                dataGridViewProxy.DataSource = proxy.proxyDS().Tables[0];
+            }
+            else
+            {
+                MessageBox.Show("Настройки прокси ещё не внесены.");
             }
         }
 
+        private void buttonCln_Click(object sender, EventArgs e)
+        {
+            setProxy("");
+        }
     }
 }

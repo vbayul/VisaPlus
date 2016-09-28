@@ -13,6 +13,14 @@ namespace VisaPlus
         private string type;
         private string email;
 
+        public void setId(string id)
+        {
+            this.id = id;
+        }
+        public string getId()
+        {
+            return id;
+        }
         public void  setUser(string user)
         {
             this.user = user;

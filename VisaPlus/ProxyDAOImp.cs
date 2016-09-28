@@ -47,16 +47,24 @@ namespace VisaPlus
         }
         public void setProxy(string id)
         {
-            cmd = "UPDATE proxy SET proxystatus = 0; UPDATE proxy SET proxystatus = 1 WHERE idproxy = @idproxy";
-
             myConnection.ConnectionString = Param.getConnectionString();
             myCommand.Connection = myConnection;
             myCommand.CommandType = CommandType.Text;
-            myCommand.CommandText = cmd;
-
             myCommand.Parameters.Clear();
 
-            myCommand.Parameters.AddWithValue("@idproxy", id);
+            if (id != "0")
+            {
+                cmd = "UPDATE proxy SET proxystatus = 0 WHERE proxyuser = @proxyuser; UPDATE proxy SET proxystatus = 1 WHERE idproxy = @idproxy";
+                myCommand.Parameters.AddWithValue("@idproxy", id);
+            }
+            else
+            {
+                cmd = "UPDATE proxy SET proxystatus = 0 WHERE proxyuser = @proxyuser;";
+            }
+
+            myCommand.CommandText = cmd;
+
+            myCommand.Parameters.AddWithValue("@proxyuser", Param.getUserID());
 
             try
             {

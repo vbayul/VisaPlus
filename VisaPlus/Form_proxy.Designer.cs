@@ -36,6 +36,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonSet = new System.Windows.Forms.Button();
+            this.idproxy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.proxystatus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.proxyip = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.proxyport = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonCln = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProxy)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,11 +69,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewProxy.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewProxy.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idproxy,
+            this.proxystatus,
+            this.proxyip,
+            this.proxyport});
             this.dataGridViewProxy.Location = new System.Drawing.Point(12, 80);
             this.dataGridViewProxy.MultiSelect = false;
             this.dataGridViewProxy.Name = "dataGridViewProxy";
             this.dataGridViewProxy.ReadOnly = true;
-            this.dataGridViewProxy.Size = new System.Drawing.Size(476, 261);
+            this.dataGridViewProxy.RowHeadersVisible = false;
+            this.dataGridViewProxy.Size = new System.Drawing.Size(387, 180);
             this.dataGridViewProxy.TabIndex = 2;
             // 
             // buttonSave
@@ -115,15 +126,60 @@
             this.buttonSet.Name = "buttonSet";
             this.buttonSet.Size = new System.Drawing.Size(75, 23);
             this.buttonSet.TabIndex = 7;
-            this.buttonSet.Text = "Установить";
+            this.buttonSet.Text = "Выбрать";
             this.buttonSet.UseVisualStyleBackColor = true;
             this.buttonSet.Click += new System.EventHandler(this.buttonSet_Click);
+            // 
+            // idproxy
+            // 
+            this.idproxy.DataPropertyName = "idproxy";
+            this.idproxy.HeaderText = "";
+            this.idproxy.Name = "idproxy";
+            this.idproxy.ReadOnly = true;
+            this.idproxy.Width = 50;
+            // 
+            // proxystatus
+            // 
+            this.proxystatus.DataPropertyName = "proxystatus";
+            this.proxystatus.FalseValue = "0";
+            this.proxystatus.HeaderText = "Статус";
+            this.proxystatus.Name = "proxystatus";
+            this.proxystatus.ReadOnly = true;
+            this.proxystatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.proxystatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.proxystatus.TrueValue = "1";
+            this.proxystatus.Width = 50;
+            // 
+            // proxyip
+            // 
+            this.proxyip.DataPropertyName = "proxyip";
+            this.proxyip.HeaderText = "IP";
+            this.proxyip.Name = "proxyip";
+            this.proxyip.ReadOnly = true;
+            // 
+            // proxyport
+            // 
+            this.proxyport.DataPropertyName = "proxyport";
+            this.proxyport.HeaderText = "Port";
+            this.proxyport.Name = "proxyport";
+            this.proxyport.ReadOnly = true;
+            // 
+            // buttonCln
+            // 
+            this.buttonCln.Location = new System.Drawing.Point(96, 51);
+            this.buttonCln.Name = "buttonCln";
+            this.buttonCln.Size = new System.Drawing.Size(75, 23);
+            this.buttonCln.TabIndex = 8;
+            this.buttonCln.Text = "Очистить";
+            this.buttonCln.UseVisualStyleBackColor = true;
+            this.buttonCln.Click += new System.EventHandler(this.buttonCln_Click);
             // 
             // Form_proxy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(500, 353);
+            this.ClientSize = new System.Drawing.Size(411, 272);
+            this.Controls.Add(this.buttonCln);
             this.Controls.Add(this.buttonSet);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -133,7 +189,7 @@
             this.Controls.Add(this.textBoxPort);
             this.Controls.Add(this.textBoxIP);
             this.Name = "Form_proxy";
-            this.Text = "Form_proxy";
+            this.Text = "Proxy";
             this.Load += new System.EventHandler(this.Form_proxy_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProxy)).EndInit();
             this.ResumeLayout(false);
@@ -151,5 +207,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonSet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idproxy;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn proxystatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn proxyip;
+        private System.Windows.Forms.DataGridViewTextBoxColumn proxyport;
+        private System.Windows.Forms.Button buttonCln;
     }
 }

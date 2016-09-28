@@ -23,7 +23,9 @@ namespace VisaPlus
             ds = new DataSet();
 
             // дописать иф для админа и простого манагера
-            cmd = "SELECT * FROM pass.client WHERE userid = @userid";
+            cmd = "SELECT idclient,clientstatus,clientname,clientticket,users.username "
+                   + " FROM pass.client INNER JOIN pass.users "
+                   + " ON userid = idusers WHERE userid = @userid";
 
             myConnection.ConnectionString = Param.getConnectionString();
             myCommand.Connection = myConnection;
@@ -50,7 +52,9 @@ namespace VisaPlus
 
         public DataSet searchDSVisa(string search)
         {
-            cmd = @"SELECT * FROM pass.client WHERE userid = @userid and clientname like @search;";
+            cmd = "SELECT idclient,clientstatus,clientname,clientticket,users.username "
+                   + " FROM pass.client INNER JOIN pass.users "
+                   + " ON userid = idusers WHERE userid = @userid and clientname like @search;";
 
             da = new MySqlDataAdapter();
             ds = new DataSet();

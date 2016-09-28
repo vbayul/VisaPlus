@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Gecko.DOM;
 
 namespace VisaPlus
 {
@@ -96,10 +97,6 @@ namespace VisaPlus
             }
         }
 
-        private void buttonProxy_Click(object sender, EventArgs e)
-        {
-        }
-
         private void geckoWebBrowser1_ProgressChanged(object sender, Gecko.GeckoProgressEventArgs e)
         {
             progressBar1.Maximum = (int)e.MaximumProgress;
@@ -114,7 +111,6 @@ namespace VisaPlus
 
         private void geckoWebBrowser1_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
-
             if (geckoWebBrowser1.Document.Body.TextContent.ToString() == "The service is unavailable.")
             {
                 timer1.Enabled = true;
@@ -151,6 +147,7 @@ namespace VisaPlus
                 Gecko.GeckoPreferences.User["network.proxy.ssl"] = proxy.getProxyIP();
                 Gecko.GeckoPreferences.User["network.proxy.ssl_port"] = Convert.ToInt32(proxy.getProxyPort());
                 geckoWebBrowser1.Navigate(@"https://polandonline.vfsglobal.com/poland-ukraine-appointment/(S(lzjdbcyqofk4of45flew25ve))/AppScheduling/AppWelcome.aspx?P=s2x6znRcBRv7WQQK7h4MTjZiPRbOsXKqJzddYBh3qCA=");
+                //geckoWebBrowser1.Navigate(@"2ip.ru");
             }
             else
             {
@@ -158,6 +155,42 @@ namespace VisaPlus
                 geckoWebBrowser1.Navigate(@"https://polandonline.vfsglobal.com/poland-ukraine-appointment/(S(lzjdbcyqofk4of45flew25ve))/AppScheduling/AppWelcome.aspx?P=s2x6znRcBRv7WQQK7h4MTjZiPRbOsXKqJzddYBh3qCA=");
                 //geckoWebBrowser1.Navigate(@"2ip.ru");
             }
+        }
+
+        private void buttonSearchClean_Click(object sender, EventArgs e)
+        {
+            textBoxSearch.Clear();
+            dataGridViewVisa.DataSource = visaDS.getDSVisa().Tables[0];
+        }
+
+        private void buttonReload_Click(object sender, EventArgs e)
+        {
+            geckoWebBrowser1.Reload();
+        }
+
+        private void geckoWebBrowser1_Navigating(object sender, Gecko.Events.GeckoNavigatingEventArgs e)
+        {
+
+        }
+
+        private void geckoWebBrowser1_Navigating_1(object sender, Gecko.Events.GeckoNavigatingEventArgs e)
+        {
+            label2.Text = "Загрузка";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // ctl00_plhMain_cboPurpose причина обращения
+            // ctl00_plhMain_cboVAC количество 
+
+            // ctl00_plhMain_repAppReceiptDetails_ctl01_txtReceiptNumber id номера квитанции
+
+            // ctl00_plhMain_txtEmailID почта 
+            // ctl00_plhMain_txtPassword пароль от почты
+
+            var document = geckoWebBrowser1.Document;
+            var selectElement = (GeckoSelectElement)document.GetElementById("ctl00_plhMain_cboPurpose");
+            selectElement.SelectedIndex = 2;
         }
     }
 }
