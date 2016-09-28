@@ -5,26 +5,45 @@ using System.Text;
 
 namespace VisaPlus
 {
-    static class User
+    class User
     {
-        private static string userID;
-        private static string connectionString;
+        private string id;
+        private string user;
+        private string pass;
+        private string type;
+        private string email;
 
-        public static string getUserID()
+        public void  setUser(string user)
         {
-            return userID;
+            this.user = user;
         }
-        public static void setUserID(string user)
+        public string getUser()
         {
-            userID = user;
+            return user;
         }
-        public static string getConnectionString()
+        public void setPass(string pass)
         {
-            return connectionString;
+            this.pass = pass;
         }
-        public static void setConnectionString(string con)
+        public string getPass()
         {
-            connectionString = con;
+            return pass;
+        }
+        public void setType(string type)
+        {
+            this.type = type;
+        }
+        public string getType()
+        {
+            return type;
+        }
+        public void setEmail(string email)
+        {
+            this.email = email;
+        }
+        public string getEmail()
+        {
+            return email;
         }
     }
 }

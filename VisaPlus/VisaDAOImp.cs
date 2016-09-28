@@ -11,7 +11,7 @@ namespace VisaPlus
     class VisaDAOImp : VisaDAO
     {
         private string cmd = "";
-        private MySqlConnection myConnection = new MySqlConnection(User.getConnectionString());
+        private MySqlConnection myConnection = new MySqlConnection(Param.getConnectionString());
         private MySqlCommand myCommand = new MySqlCommand();
         private MySqlDataReader dr;
         private MySqlDataAdapter da;
@@ -30,7 +30,7 @@ namespace VisaPlus
             myCommand.Parameters.AddWithValue("@clientstatus", visa.getClientStatus());
             myCommand.Parameters.AddWithValue("@clientname", visa.getClientName());
             myCommand.Parameters.AddWithValue("@clientticket", visa.getClientTicket());
-            myCommand.Parameters.AddWithValue("@userid", User.getUserID());
+            myCommand.Parameters.AddWithValue("@userid", Param.getUserID());
 
             bool saccess = false;
             try
@@ -54,7 +54,7 @@ namespace VisaPlus
                 + " `clientticket` = @clientticket "
                 + " WHERE `idclient` = @idclient;";
 
-            myConnection.ConnectionString = User.getConnectionString();
+            myConnection.ConnectionString = Param.getConnectionString();
             myCommand.Connection = myConnection;
             myCommand.CommandType = CommandType.Text;
             myCommand.CommandText = cmd;
@@ -87,7 +87,7 @@ namespace VisaPlus
 
             da = new MySqlDataAdapter();
             ds = new DataSet();
-            myConnection.ConnectionString = User.getConnectionString();
+            myConnection.ConnectionString = Param.getConnectionString();
             myCommand.Connection = myConnection;
             myCommand.CommandType = CommandType.Text;
             myCommand.CommandText = cmd;

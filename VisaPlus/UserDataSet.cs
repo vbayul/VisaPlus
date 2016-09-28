@@ -3,28 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
 namespace VisaPlus
 {
-    class ProxyDataSet
+    class UserDataSet
     {
         private string cmd = "";
-        private MySqlConnection myConnect = new MySqlConnection();
+        private MySqlConnection myConnection = new MySqlConnection();
         private MySqlCommand myCommand = new MySqlCommand();
         private MySqlDataAdapter da;
         private DataSet ds;
 
-        public DataSet proxyDS()
+        public DataSet getDSVisa()
         {
-            cmd = "SELECT idproxy, proxystatus, proxyip, proxyport, proxyuser FROM pass.proxy "
-                + " WHERE proxyuser = @userid";
-
             da = new MySqlDataAdapter();
             ds = new DataSet();
-            myConnect.ConnectionString = Param.getConnectionString();
-            myCommand.Connection = myConnect;
+
+            // дописать иф для админа и простого манагера
+            cmd = "SELECT idusers, username,password,idtype,status,email "
+                + " FROM pass.users;";
+
+            myConnection.ConnectionString = Param.getConnectionString();
+            myCommand.Connection = myConnection;
             myCommand.CommandType = CommandType.Text;
             myCommand.CommandText = cmd;
 
@@ -32,14 +34,13 @@ namespace VisaPlus
             myCommand.Parameters.AddWithValue("@userid", Param.getUserID());
 
             da.SelectCommand = myCommand;
-
             try
             {
-                myConnect.Open();
+                myConnection.Open();
                 da.Fill(ds);
-                myConnect.Close();
+                myConnection.Close();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("Произошла ошибка осединения с БД.");
             }

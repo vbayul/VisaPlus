@@ -13,7 +13,7 @@ namespace VisaPlus
     {
         ProxyDAO proxyDAO = new ProxyDAOImp();
         private ProxyDataSet proxy = new ProxyDataSet();
-        private string id;
+
         public Form_proxy()
         {
             InitializeComponent();
@@ -29,28 +29,30 @@ namespace VisaPlus
             textBoxIP.Clear();
             textBoxPort.Clear();
         }
-
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            try
+            if (textBoxIP.Text != "" || textBoxPort.Text != "")
             {
+                try
+                {
+                    proxyDAO.saveProxy(textBoxIP.Text, textBoxPort.Text);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Произошла ошибка при сохранении данных.");
+                }
 
-                
+                dataGridViewProxy.DataSource = proxy.proxyDS().Tables[0];
+                textBoxIP.Clear();
+                textBoxPort.Clear();
             }
-            catch(Exception)
-            {
-                MessageBox.Show("Произошла ощибка при сохранении данных.");
-            }
-            proxy.proxyDS();
-            // процедура сохарнения настроек прокси
-            textBoxIP.Clear();
-            textBoxPort.Clear();
         }
         private void buttonSet_Click(object sender, EventArgs e)
         {
             if (dataGridViewProxy.RowCount > 0)
             {
-
+                proxyDAO.setProxy(dataGridViewProxy[0, dataGridViewProxy.CurrentCell.RowIndex].Value.ToString());
+                dataGridViewProxy.DataSource = proxy.proxyDS().Tables[0];
             }
             else
             {

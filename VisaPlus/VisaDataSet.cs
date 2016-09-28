@@ -22,15 +22,16 @@ namespace VisaPlus
             da = new MySqlDataAdapter();
             ds = new DataSet();
 
+            // дописать иф для админа и простого манагера
             cmd = "SELECT * FROM pass.client WHERE userid = @userid";
 
-            myConnection.ConnectionString = User.getConnectionString();
+            myConnection.ConnectionString = Param.getConnectionString();
             myCommand.Connection = myConnection;
             myCommand.CommandType = CommandType.Text;
             myCommand.CommandText = cmd;
 
             myCommand.Parameters.Clear();
-            myCommand.Parameters.AddWithValue("@userid", User.getUserID());
+            myCommand.Parameters.AddWithValue("@userid", Param.getUserID());
 
             da.SelectCommand = myCommand;
             try
@@ -47,21 +48,21 @@ namespace VisaPlus
             return ds;
         }
 
-        public DataSet searchDSVisa(string id)
+        public DataSet searchDSVisa(string search)
         {
-            cmd = "SELECT * FROM pass.client WHERE userid = @userid and clientid = @clientid";
+            cmd = @"SELECT * FROM pass.client WHERE userid = @userid and clientname like @search;";
 
             da = new MySqlDataAdapter();
             ds = new DataSet();
-            myConnection.ConnectionString = User.getConnectionString();
+            myConnection.ConnectionString = Param.getConnectionString();
             myCommand.Connection = myConnection;
             myCommand.CommandType = CommandType.Text;
             myCommand.CommandText = cmd;
 
             myCommand.Parameters.Clear();
-            myCommand.Parameters.AddWithValue("@userid", User.getUserID());
-            myCommand.Parameters.AddWithValue("@clientid", id);
-
+            myCommand.Parameters.AddWithValue("@userid", Param.getUserID());
+            myCommand.Parameters.AddWithValue("@search", "%" + search + "%");
+            
             da.SelectCommand = myCommand;
             try
             {

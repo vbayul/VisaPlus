@@ -62,10 +62,21 @@
     <Compile Include="Form_proxy.Designer.cs">
       <DependentUpon>Form_proxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_user.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_user.Designer.cs">
+      <DependentUpon>Form_user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserDAO.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="Proxy.cs" />
     <Compile Include="ProxyDAO.cs" />
     <Compile Include="ProxyDAOImp.cs" />
     <Compile Include="ProxyDataSet.cs" />
-    <Compile Include="User.cs" />
+    <Compile Include="Param.cs" />
+    <Compile Include="UserDAOImp.cs" />
+    <Compile Include="UserDataSet.cs" />
     <Compile Include="Visa.cs" />
     <Compile Include="VisaDAOImp.cs" />
     <Compile Include="Form_browser.cs">
@@ -95,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_proxy.resx">
       <DependentUpon>Form_proxy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_user.resx">
+      <DependentUpon>Form_user.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_visa.resx">
       <DependentUpon>Form_visa.cs</DependentUpon>

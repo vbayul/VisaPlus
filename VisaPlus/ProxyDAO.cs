@@ -9,6 +9,6 @@ namespace VisaPlus
     {
         void saveProxy(string ip, string port);
         void setProxy(string id);
-        string getCurrProxy();
+        Proxy getProxy();
     }
 }

@@ -13,3 +13,4 @@ D:\Dev\VisaPlus\VisaPlus\obj\Debug\VisaPlus.Form_browser.resources
 D:\Dev\VisaPlus\VisaPlus\obj\Debug\VisaPlus.Form_visa.resources
 D:\Dev\VisaPlus\VisaPlus\obj\Debug\VisaPlus.Form_visa_edit.resources
 D:\Dev\VisaPlus\VisaPlus\obj\Debug\VisaPlus.Form_proxy.resources
+D:\Dev\VisaPlus\VisaPlus\obj\Debug\VisaPlus.Form_user.resources

@@ -9,7 +9,7 @@ namespace VisaPlus
 {
     interface VisaDAO
     {
-        bool addVisa(Visa visa);
+        bool  addVisa(Visa visa);
         bool saveVisa(Visa visa);
         Visa getVisa(string id);
     }

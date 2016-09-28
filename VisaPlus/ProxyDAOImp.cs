@@ -19,10 +19,10 @@ namespace VisaPlus
 
         public void saveProxy(string ip, string port)
         {
-            cmd = "INSERT INTO proxy (idproxy,proxyip,proxyport,proxyuser,proxystatus) "
+            cmd = "INSERT INTO proxy (proxyip,proxyport,proxyuser,proxystatus) "
                 + " VALUES (@proxyip,@proxyport,@proxyuser,@proxystatus);";
 
-            myConnection.ConnectionString = User.getConnectionString();
+            myConnection.ConnectionString = Param.getConnectionString();
             myCommand.Connection = myConnection;
             myCommand.CommandType = CommandType.Text;
             myCommand.CommandText = cmd;
@@ -31,7 +31,7 @@ namespace VisaPlus
 
             myCommand.Parameters.AddWithValue("@proxyip", ip);
             myCommand.Parameters.AddWithValue("@proxyport", port);
-            myCommand.Parameters.AddWithValue("@proxyuser", User.getUserID());
+            myCommand.Parameters.AddWithValue("@proxyuser", Param.getUserID());
             myCommand.Parameters.AddWithValue("@proxystatus", "0");
 
             try
@@ -49,7 +49,7 @@ namespace VisaPlus
         {
             cmd = "UPDATE proxy SET proxystatus = 0; UPDATE proxy SET proxystatus = 1 WHERE idproxy = @idproxy";
 
-            myConnection.ConnectionString = User.getConnectionString();
+            myConnection.ConnectionString = Param.getConnectionString();
             myCommand.Connection = myConnection;
             myCommand.CommandType = CommandType.Text;
             myCommand.CommandText = cmd;
@@ -69,32 +69,34 @@ namespace VisaPlus
                 MessageBox.Show("Произошла ошибка осединения с БД.");
             }
         }
-        public string getCurrProxy()
+        public Proxy getProxy()
         {
-            cmd = "SELECT idclient, clientstatus,clientname, clientticket "
-            + " FROM pass.client WHERE idclient = @idclient";
+            cmd = "SELECT idproxy,proxyip,proxyport, proxyuser, proxystatus "
+                + " FROM pass.proxy "
+                + " WHERE proxystatus = 1 and proxyuser = @proxyuser";
 
             da = new MySqlDataAdapter();
             ds = new DataSet();
 
-            myConnection.ConnectionString = User.getConnectionString();
+            myConnection.ConnectionString = Param.getConnectionString();
             myCommand.Connection = myConnection;
             myCommand.CommandType = CommandType.Text;
             myCommand.CommandText = cmd;
 
             myCommand.Parameters.Clear();
+            myCommand.Parameters.AddWithValue("@proxyuser", Param.getUserID());
 
             da.SelectCommand = myCommand;
 
- 
+            Proxy proxy = new Proxy();
             try
             {
                 myConnection.Open();
                 dr = myCommand.ExecuteReader();
                 while (dr.Read())
                 {
-                    dr.GetString(2);
-                    dr.GetString(2);
+                    proxy.setProxyIP(dr.GetString(1));
+                    proxy.setProxyPort(dr.GetString(2));
                 }
                 myConnection.Close();
             }
@@ -102,8 +104,7 @@ namespace VisaPlus
             {
                 MessageBox.Show("Произошла ошибка осединения с БД.");
             }
-
-            return "";
+            return proxy;
         }
     }
 }
