@@ -41,11 +41,16 @@
             this.buttonEdit = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.общиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проксиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonSearchClean = new System.Windows.Forms.Button();
+            this.buttonStop = new System.Windows.Forms.Button();
+            this.buttonClient = new System.Windows.Forms.Button();
+            this.buttonEmail = new System.Windows.Forms.Button();
+            this.buttonTicket = new System.Windows.Forms.Button();
             this.buttonReload = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonWeb = new System.Windows.Forms.Button();
@@ -54,9 +59,6 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.geckoWebBrowser1 = new Gecko.GeckoWebBrowser();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.buttonTicket = new System.Windows.Forms.Button();
-            this.buttonEmail = new System.Windows.Forms.Button();
-            this.buttonClient = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVisa)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -183,11 +185,19 @@
             // настройкиToolStripMenuItem
             // 
             this.настройкиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.общиеToolStripMenuItem,
             this.проксиToolStripMenuItem,
             this.пользователиToolStripMenuItem});
             this.настройкиToolStripMenuItem.Name = "настройкиToolStripMenuItem";
             this.настройкиToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.настройкиToolStripMenuItem.Text = "Настройки";
+            // 
+            // общиеToolStripMenuItem
+            // 
+            this.общиеToolStripMenuItem.Name = "общиеToolStripMenuItem";
+            this.общиеToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.общиеToolStripMenuItem.Text = "Общие";
+            this.общиеToolStripMenuItem.Click += new System.EventHandler(this.общиеToolStripMenuItem_Click);
             // 
             // проксиToolStripMenuItem
             // 
@@ -225,6 +235,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.buttonStop);
             this.splitContainer1.Panel2.Controls.Add(this.buttonClient);
             this.splitContainer1.Panel2.Controls.Add(this.buttonEmail);
             this.splitContainer1.Panel2.Controls.Add(this.buttonTicket);
@@ -258,6 +269,43 @@
             this.buttonSearchClean.UseVisualStyleBackColor = true;
             this.buttonSearchClean.Click += new System.EventHandler(this.buttonSearchClean_Click);
             // 
+            // buttonStop
+            // 
+            this.buttonStop.Location = new System.Drawing.Point(170, 5);
+            this.buttonStop.Name = "buttonStop";
+            this.buttonStop.Size = new System.Drawing.Size(75, 23);
+            this.buttonStop.TabIndex = 13;
+            this.buttonStop.Text = "Стоп";
+            this.buttonStop.UseVisualStyleBackColor = true;
+            this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
+            // 
+            // buttonClient
+            // 
+            this.buttonClient.Location = new System.Drawing.Point(436, 5);
+            this.buttonClient.Name = "buttonClient";
+            this.buttonClient.Size = new System.Drawing.Size(75, 23);
+            this.buttonClient.TabIndex = 12;
+            this.buttonClient.Text = "Клиент";
+            this.buttonClient.UseVisualStyleBackColor = true;
+            // 
+            // buttonEmail
+            // 
+            this.buttonEmail.Location = new System.Drawing.Point(355, 5);
+            this.buttonEmail.Name = "buttonEmail";
+            this.buttonEmail.Size = new System.Drawing.Size(75, 23);
+            this.buttonEmail.TabIndex = 11;
+            this.buttonEmail.Text = "Email";
+            this.buttonEmail.UseVisualStyleBackColor = true;
+            // 
+            // buttonTicket
+            // 
+            this.buttonTicket.Location = new System.Drawing.Point(274, 5);
+            this.buttonTicket.Name = "buttonTicket";
+            this.buttonTicket.Size = new System.Drawing.Size(75, 23);
+            this.buttonTicket.TabIndex = 10;
+            this.buttonTicket.Text = "Квитанции";
+            this.buttonTicket.UseVisualStyleBackColor = true;
+            // 
             // buttonReload
             // 
             this.buttonReload.Location = new System.Drawing.Point(89, 5);
@@ -270,7 +318,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(484, 5);
+            this.button1.Location = new System.Drawing.Point(505, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
@@ -335,35 +383,8 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 3000;
+            this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // buttonTicket
-            // 
-            this.buttonTicket.Location = new System.Drawing.Point(198, 5);
-            this.buttonTicket.Name = "buttonTicket";
-            this.buttonTicket.Size = new System.Drawing.Size(75, 23);
-            this.buttonTicket.TabIndex = 10;
-            this.buttonTicket.Text = "Квитанции";
-            this.buttonTicket.UseVisualStyleBackColor = true;
-            // 
-            // buttonEmail
-            // 
-            this.buttonEmail.Location = new System.Drawing.Point(279, 5);
-            this.buttonEmail.Name = "buttonEmail";
-            this.buttonEmail.Size = new System.Drawing.Size(75, 23);
-            this.buttonEmail.TabIndex = 11;
-            this.buttonEmail.Text = "Email";
-            this.buttonEmail.UseVisualStyleBackColor = true;
-            // 
-            // buttonClient
-            // 
-            this.buttonClient.Location = new System.Drawing.Point(360, 5);
-            this.buttonClient.Name = "buttonClient";
-            this.buttonClient.Size = new System.Drawing.Size(75, 23);
-            this.buttonClient.TabIndex = 12;
-            this.buttonClient.Text = "Клиент";
-            this.buttonClient.UseVisualStyleBackColor = true;
             // 
             // Form_visa
             // 
@@ -377,6 +398,7 @@
             this.Name = "Form_visa";
             this.Text = "VisaPlus";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_visa_FormClosed);
             this.Load += new System.EventHandler(this.Form_visa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVisa)).EndInit();
             this.menuStrip1.ResumeLayout(false);
@@ -422,5 +444,7 @@
         private System.Windows.Forms.Button buttonEmail;
         private System.Windows.Forms.Button buttonTicket;
         private System.Windows.Forms.Button buttonClient;
+        private System.Windows.Forms.ToolStripMenuItem общиеToolStripMenuItem;
+        private System.Windows.Forms.Button buttonStop;
     }
 }

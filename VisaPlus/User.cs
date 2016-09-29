@@ -12,6 +12,8 @@ namespace VisaPlus
         private string pass;
         private string type;
         private string email;
+        private string epass;
+        private string status;
 
         public void setId(string id)
         {
@@ -52,6 +54,22 @@ namespace VisaPlus
         public string getEmail()
         {
             return email;
+        }
+        public void setEPass(string epass)
+        {
+            this.epass = epass;
+        }
+        public string getEPass()
+        {
+            return epass;
+        }
+        public void setStatus(string status)
+        {
+            this.status = status;
+        }
+        public string getStatus()
+        {
+            return status;
         }
     }
 }

@@ -17,6 +17,8 @@ namespace VisaPlus
         private VisaDataSet visaDS = new VisaDataSet();
         private ProxyDAO proxyDAO = new ProxyDAOImp();
         private Proxy proxy = new Proxy();
+        private Setting setting = new Setting();
+        private string URL;
 
         public Form_visa()
         {
@@ -37,9 +39,11 @@ namespace VisaPlus
 
         private void Form_visa_Load(object sender, EventArgs e)
         {
+
             Param.setUserID("1");
             Param.setConnectionString("database=pass;server=localhost;uid=root;password=njgjkm");
             dataGridViewVisa.DataSource = visaDS.getDSVisa().Tables[0];
+            URL = setting.getValue("url");
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -136,6 +140,7 @@ namespace VisaPlus
 
         private void buttonWeb_Click(object sender, EventArgs e)
         {
+            timer1.Enabled = false;
             proxy = proxyDAO.getProxy();
             label2.Text = "Загрузка";
             if (proxy.getProxyIP() != null)
@@ -146,13 +151,13 @@ namespace VisaPlus
                 Gecko.GeckoPreferences.User["network.proxy.http_port"] = Convert.ToInt32(proxy.getProxyPort());
                 Gecko.GeckoPreferences.User["network.proxy.ssl"] = proxy.getProxyIP();
                 Gecko.GeckoPreferences.User["network.proxy.ssl_port"] = Convert.ToInt32(proxy.getProxyPort());
-                geckoWebBrowser1.Navigate(@"https://polandonline.vfsglobal.com/poland-ukraine-appointment/(S(lzjdbcyqofk4of45flew25ve))/AppScheduling/AppWelcome.aspx?P=s2x6znRcBRv7WQQK7h4MTjZiPRbOsXKqJzddYBh3qCA=");
+                geckoWebBrowser1.Navigate(URL);
                 //geckoWebBrowser1.Navigate(@"2ip.ru");
             }
             else
             {
                 label1.Text = "Прокси - нет";
-                geckoWebBrowser1.Navigate(@"https://polandonline.vfsglobal.com/poland-ukraine-appointment/(S(lzjdbcyqofk4of45flew25ve))/AppScheduling/AppWelcome.aspx?P=s2x6znRcBRv7WQQK7h4MTjZiPRbOsXKqJzddYBh3qCA=");
+                geckoWebBrowser1.Navigate(URL);
                 //geckoWebBrowser1.Navigate(@"2ip.ru");
             }
         }
@@ -165,6 +170,7 @@ namespace VisaPlus
 
         private void buttonReload_Click(object sender, EventArgs e)
         {
+            timer1.Enabled = false;
             geckoWebBrowser1.Reload();
         }
 
@@ -191,6 +197,25 @@ namespace VisaPlus
             var document = geckoWebBrowser1.Document;
             var selectElement = (GeckoSelectElement)document.GetElementById("ctl00_plhMain_cboPurpose");
             selectElement.SelectedIndex = 2;
+        }
+
+        private void общиеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form_setting setting = new Form_setting();
+            setting.Owner = this;
+            setting.ShowDialog();
+        }
+
+        private void buttonStop_Click(object sender, EventArgs e)
+        {
+            label2.Text = "Стоп";
+            timer1.Enabled = false;
+            geckoWebBrowser1.Stop();
+        }
+
+        private void Form_visa_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

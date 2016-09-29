@@ -56,11 +56,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form_login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_login.Designer.cs">
+      <DependentUpon>Form_login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_proxy.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_proxy.Designer.cs">
       <DependentUpon>Form_proxy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_setting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_setting.Designer.cs">
+      <DependentUpon>Form_setting.cs</DependentUpon>
     </Compile>
     <Compile Include="Form_user.cs">
       <SubType>Form</SubType>
@@ -68,6 +80,13 @@
     <Compile Include="Form_user.Designer.cs">
       <DependentUpon>Form_user.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_user_edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_user_edit.Designer.cs">
+      <DependentUpon>Form_user_edit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Setting.cs" />
     <Compile Include="UserDAO.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Proxy.cs" />
@@ -104,11 +123,20 @@
     <EmbeddedResource Include="Form_browser.resx">
       <DependentUpon>Form_browser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_login.resx">
+      <DependentUpon>Form_login.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_proxy.resx">
       <DependentUpon>Form_proxy.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form_setting.resx">
+      <DependentUpon>Form_setting.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form_user.resx">
       <DependentUpon>Form_user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_user_edit.resx">
+      <DependentUpon>Form_user_edit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_visa.resx">
       <DependentUpon>Form_visa.cs</DependentUpon>

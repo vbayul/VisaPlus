@@ -11,8 +11,8 @@ namespace VisaPlus
 
         void saveUser(User user);
 
-        User getUser();
+        User getUser(string id);
 
-        void setUser();
+        void setUser(string id);
     }
 }
