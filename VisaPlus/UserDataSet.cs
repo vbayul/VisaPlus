@@ -16,7 +16,7 @@ namespace VisaPlus
         private MySqlDataAdapter da;
         private DataSet ds;
 
-        public DataSet getDSVisa()
+        public DataSet getDSUser()
         {
             da = new MySqlDataAdapter();
             ds = new DataSet();

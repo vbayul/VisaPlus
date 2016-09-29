@@ -14,10 +14,8 @@ namespace VisaPlus
         private MySqlConnection myConnection = new MySqlConnection(Param.getConnectionString());
         private MySqlCommand myCommand = new MySqlCommand();
         private MySqlDataReader dr;
-        private MySqlDataAdapter da;
-        private DataSet ds;
 
-        public void addUser(User user)
+        public bool addUser(User user)
         {
             cmd = "INSERT INTO `pass`.`users` (`username`,`password`,`idtype`,`status`,`email`,`emailpass`) " 
                 + " VALUES(@username,@password,@idtype,@status,@email,@emailpass);";
@@ -33,23 +31,26 @@ namespace VisaPlus
             myCommand.Parameters.AddWithValue("@status", 0);
             myCommand.Parameters.AddWithValue("@email", user.getEmail());
             myCommand.Parameters.AddWithValue("@emailpass", user.getEPass());
-            
+
+            bool saccess = false;
             try{
                 myConnection.Open();
                 myCommand.ExecuteNonQuery();
                 myConnection.Close();
+                saccess = true;
             }
             catch (Exception)
             {
-                MessageBox.Show("Произошла ошибка cоединения с БД.");
+                MessageBox.Show("Произошла ошибка, не всё поля заполнены.");
             }
+            return saccess;
         }
 
-        public void saveUser(User user)
+        public bool saveUser(User user)
         {
             cmd = "UPDATE `pass`.`users` "
-                 +" SET `username` = username,`idtype` = idtype, password = @password,"
-                 + " `status` = status, `email` = email,`emailpass` = emailpass "
+                 +" SET `username` = @username,`idtype` = @idtype, password = @password,"
+                 + " `status` = @status, `email` = @email,`emailpass` = @emailpass "
                  + " WHERE `idusers` = @iduser;";
 
             myConnection.ConnectionString = Param.getConnectionString();
@@ -58,29 +59,67 @@ namespace VisaPlus
             myCommand.CommandText = cmd;
             myCommand.Parameters.Clear();
 
+            //MessageBox.Show(user.ToString());
             myCommand.Parameters.AddWithValue("@username", user.getUser());
             myCommand.Parameters.AddWithValue("@password", user.getPass());
             myCommand.Parameters.AddWithValue("@idtype", user.getType());
             myCommand.Parameters.AddWithValue("@status", user.getStatus());
             myCommand.Parameters.AddWithValue("@email", user.getEmail());
             myCommand.Parameters.AddWithValue("@emailpass", user.getEPass());
+            myCommand.Parameters.AddWithValue("@iduser", user.getId());
+            
+            bool saccess = false;
             try
             {
                 myConnection.Open();
                 myCommand.ExecuteNonQuery();
                 myConnection.Close();
+                saccess = true;
             }
             catch (Exception)
             {
-                MessageBox.Show("Произошла ошибка cоединения с БД.");
+                MessageBox.Show("Произошла ошибка, не всё поля заполнены.");
             }
+            return saccess;
         }
 
         public User getUser(string id)
         {
+            cmd = "SELECT idusers,username, password,idtype,status,email,emailpass "
+                + " FROM pass.users WHERE idusers = @idusers;";
+
+            myConnection.ConnectionString = Param.getConnectionString();
+            myCommand.Connection = myConnection;
+            myCommand.CommandType = CommandType.Text;
+            myCommand.CommandText = cmd;
+
+            myCommand.Parameters.Clear();
+            myCommand.Parameters.AddWithValue("@idusers", id);
+
             User user = new User();
+            try
+            {
+                myConnection.Open();
+                dr = myCommand.ExecuteReader();
+                while (dr.Read())
+                {
+                    user.setId(dr.GetInt32(0).ToString());
+                    user.setUser(dr.GetString(1));
+                    user.setPass(dr.GetString(2));
+                    user.setType(dr.GetInt32(3).ToString());
+                    user.setStatus(dr.GetInt32(4).ToString());
+                    user.setEmail(dr.GetString(5));
+                    user.setEPass(dr.GetString(6));
+                }
+                myConnection.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Произошла ошибка осединения с БД.");
+            }
             return user;
         }
+
         public void setPass(string id, string pass)
         {
             cmd = "UPDATE `pass`.`users` SET "
@@ -106,6 +145,7 @@ namespace VisaPlus
             {
                 MessageBox.Show("Произошла ошибка cоединения с БД.");
             }
+
         }
     }
 }

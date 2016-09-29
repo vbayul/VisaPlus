@@ -24,7 +24,7 @@ namespace VisaPlus
 
         private void Form_user_Load(object sender, EventArgs e)
         {
-            dataGridViewUser.DataSource =  userDS.getDSVisa().Tables[0];
+            dataGridViewUser.DataSource =  userDS.getDSUser().Tables[0];
         }
 
         private void buttonNew_Click(object sender, EventArgs e)

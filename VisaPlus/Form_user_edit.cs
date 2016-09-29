@@ -12,8 +12,8 @@ namespace VisaPlus
     public partial class Form_user_edit : Form
     {
         private string id;
+        private User userSave = new User();
         private UserDAO userDAO = new UserDAOImp();
-        private User user = new User();
         public Form_user_edit(string id)
         {
             InitializeComponent();
@@ -24,7 +24,8 @@ namespace VisaPlus
         {
             if (id != "0")
             {
-                user = userDAO.getUser(id);
+                User user = userDAO.getUser(id);
+
                 textBoxUser.Text = user.getUser();
                 textBoxPass.Text = user.getPass();
                 textBoxEmail.Text = user.getEmail();
@@ -39,8 +40,20 @@ namespace VisaPlus
             if (textBoxUser.Text != "" || textBoxPass.Text != ""
                 || textBoxEmail.Text != "" || textBoxEpass.Text != "")
             {
-                userDAO.saveUser(user);
-                Close();
+                if (id != "0")
+                {
+                    if (userDAO.saveUser(userSave))
+                    {
+                        Close();
+                    }
+                }
+                else
+                {
+                    if (userDAO.addUser(userSave))
+                    {
+                        Close();
+                    }
+                }
             }
         }
 
@@ -51,12 +64,13 @@ namespace VisaPlus
 
         private void textBoxEdit_TextChanged(object sender, EventArgs e)
         {
-            user.setUser(textBoxUser.Text);
-            user.setPass(textBoxPass.Text);
-            user.setEmail(textBoxEmail.Text);
-            user.setEPass(textBoxEpass.Text);
-            user.setStatus(Convert.ToInt32(checkBoxBlock.Checked).ToString());
-            user.setType(Convert.ToInt32(checkBoxAdmin.Checked).ToString());
+            userSave.setId(id);
+            userSave.setUser(textBoxUser.Text);
+            userSave.setPass(textBoxPass.Text);
+            userSave.setEmail(textBoxEmail.Text);
+            userSave.setEPass(textBoxEpass.Text);
+            userSave.setStatus(Convert.ToInt32(checkBoxBlock.Checked).ToString());
+            userSave.setType(Convert.ToInt32(checkBoxAdmin.Checked).ToString());
         }
     }
 }

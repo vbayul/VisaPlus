@@ -16,9 +16,15 @@ namespace VisaPlus
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Form_login_FormClosed(object sender, FormClosedEventArgs e)
         {
+            //Application.Exit();
+        }
 
+        private void buttonEnter_Click(object sender, EventArgs e)
+        {
+            // установить всякие параметры аля уровень доступа проверка пароля и т.д.
+            this.DialogResult = DialogResult.OK;
         }
     }
 }

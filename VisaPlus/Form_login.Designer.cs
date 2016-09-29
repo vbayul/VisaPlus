@@ -30,7 +30,7 @@
         {
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonEnter = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -49,22 +49,22 @@
             this.textBox1.Size = new System.Drawing.Size(321, 20);
             this.textBox1.TabIndex = 1;
             // 
-            // button1
+            // buttonEnter
             // 
-            this.button1.Location = new System.Drawing.Point(12, 116);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(321, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonEnter.Location = new System.Drawing.Point(12, 116);
+            this.buttonEnter.Name = "buttonEnter";
+            this.buttonEnter.Size = new System.Drawing.Size(321, 23);
+            this.buttonEnter.TabIndex = 2;
+            this.buttonEnter.Text = "Войти";
+            this.buttonEnter.UseVisualStyleBackColor = true;
+            this.buttonEnter.Click += new System.EventHandler(this.buttonEnter_Click);
             // 
             // Form_login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(352, 151);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonEnter);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.comboBox1);
             this.MaximizeBox = false;
@@ -72,6 +72,7 @@
             this.Name = "Form_login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_login_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -81,6 +82,6 @@
 
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonEnter;
     }
 }

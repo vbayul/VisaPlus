@@ -7,12 +7,12 @@ namespace VisaPlus
 {
     interface UserDAO
     {
-        void addUser(User user);
+        bool addUser(User user);
 
-        void saveUser(User user);
+        bool saveUser(User user);
 
         User getUser(string id);
 
-        void setUser(string id);
+        void setPass(string id, string pass);
     }
 }

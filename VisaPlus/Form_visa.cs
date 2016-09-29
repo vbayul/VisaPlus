@@ -19,6 +19,7 @@ namespace VisaPlus
         private Proxy proxy = new Proxy();
         private Setting setting = new Setting();
         private string URL;
+        private string idManager = "0";
 
         public Form_visa()
         {
@@ -34,16 +35,36 @@ namespace VisaPlus
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            dataGridViewVisa.DataSource = visaDS.searchDSVisa(textBoxSearch.Text).Tables[0];
+            if (textBoxSearch.Text == "")
+            {
+                dataGridViewVisa.DataSource = visaDS.getDSVisa(idManager).Tables[0];
+            }
+            else
+            {
+                dataGridViewVisa.DataSource = visaDS.searchDSVisa(textBoxSearch.Text, idManager).Tables[0];
+            }
+            //dataGridViewVisa.DataSource = visaDS.searchDSVisa(textBoxSearch.Text, "0").Tables[0];
         }
 
         private void Form_visa_Load(object sender, EventArgs e)
         {
-
-            Param.setUserID("1");
-            Param.setConnectionString("database=pass;server=localhost;uid=root;password=njgjkm");
-            dataGridViewVisa.DataSource = visaDS.getDSVisa().Tables[0];
-            URL = setting.getValue("url");
+            Form_login login = new Form_login();
+            login.Owner = this;
+            login.ShowDialog(this);
+            if (login.DialogResult == DialogResult.OK)
+            {
+                Param.setUserID("1");
+                Param.setAccess("1");
+                if (Param.getAccess() == "0")
+                {
+                    общиеToolStripMenuItem.Visible = false;
+                    пользователиToolStripMenuItem.Visible = false;
+                    // дописать фильтр по менеджерам
+                }
+                Param.setConnectionString("database=pass;server=localhost;uid=root;password=njgjkm");
+                dataGridViewVisa.DataSource = visaDS.getDSVisa("0").Tables[0];
+                URL = setting.getValue("url");
+            }
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -97,7 +118,7 @@ namespace VisaPlus
         {
             if (e.KeyChar == (char)13)
             {
-                dataGridViewVisa.DataSource = visaDS.searchDSVisa(textBoxSearch.Text).Tables[0];
+                dataGridViewVisa.DataSource = visaDS.searchDSVisa(textBoxSearch.Text, "0").Tables[0];
             }
         }
 
@@ -165,7 +186,15 @@ namespace VisaPlus
         private void buttonSearchClean_Click(object sender, EventArgs e)
         {
             textBoxSearch.Clear();
-            dataGridViewVisa.DataSource = visaDS.getDSVisa().Tables[0];
+            if (textBoxSearch.Text == "")
+            {
+                dataGridViewVisa.DataSource = visaDS.getDSVisa(idManager).Tables[0];
+            }
+            else
+            {
+                dataGridViewVisa.DataSource = visaDS.searchDSVisa(textBoxSearch.Text, idManager).Tables[0];
+            }
+            //dataGridViewVisa.DataSource = visaDS.getDSVisa("0").Tables[0];
         }
 
         private void buttonReload_Click(object sender, EventArgs e)
@@ -215,7 +244,40 @@ namespace VisaPlus
 
         private void Form_visa_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Application.Exit();
+
+        }
+
+        private void buttonManagerClean_Click(object sender, EventArgs e)
+        {
+            idManager = "0";
+            textBoxManager.Text = "";
+
+            if (textBoxSearch.Text == "")
+            {
+                dataGridViewVisa.DataSource = visaDS.getDSVisa(idManager).Tables[0];
+            }
+            else
+            {
+                dataGridViewVisa.DataSource = visaDS.searchDSVisa(textBoxSearch.Text, idManager).Tables[0];
+            }
+        }
+
+        private void buttonManager_Click(object sender, EventArgs e)
+        {
+            Form_filtr filtr = new Form_filtr();
+            filtr.Owner = this;
+            filtr.ShowDialog();
+            idManager = filtr.id;
+            textBoxManager.Text = filtr.name;
+
+            if (textBoxSearch.Text == "")
+            {
+                dataGridViewVisa.DataSource = visaDS.getDSVisa(idManager).Tables[0];
+            }
+            else
+            {
+                dataGridViewVisa.DataSource = visaDS.searchDSVisa(textBoxSearch.Text,idManager).Tables[0];
+            }
         }
     }
 }

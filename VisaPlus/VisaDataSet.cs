@@ -17,23 +17,40 @@ namespace VisaPlus
         private MySqlDataAdapter da;
         private DataSet ds;
 
-        public DataSet getDSVisa()
+        public DataSet getDSVisa(string manager)
         {
             da = new MySqlDataAdapter();
             ds = new DataSet();
+            myCommand.Parameters.Clear();
 
-            // дописать иф для админа и простого манагера
-            cmd = "SELECT idclient,clientstatus,clientname,clientticket,users.username "
-                   + " FROM pass.client INNER JOIN pass.users "
-                   + " ON userid = idusers WHERE userid = @userid";
-
+            if (Param.getAccess() == "0")
+            {
+                // дописать иф для админа и простого манагера
+                cmd = "SELECT idclient,clientstatus,clientname,clientticket,users.username "
+                       + " FROM pass.client INNER JOIN pass.users "
+                       + " ON userid = idusers WHERE userid = @userid";
+                myCommand.Parameters.AddWithValue("@userid", Param.getUserID());
+            }
+            else
+            {
+                if (manager == "0")
+                {
+                    cmd = "SELECT idclient,clientstatus,clientname,clientticket,users.username "
+                        + " FROM pass.client INNER JOIN pass.users "
+                        + " ON userid = idusers";
+                }
+                else
+                {
+                    cmd = "SELECT idclient,clientstatus,clientname,clientticket,users.username "
+                        + " FROM pass.client INNER JOIN pass.users "
+                        + " ON userid = idusers WHERE userid = @userid";
+                    myCommand.Parameters.AddWithValue("@userid", manager);
+                }
+            }
             myConnection.ConnectionString = Param.getConnectionString();
             myCommand.Connection = myConnection;
             myCommand.CommandType = CommandType.Text;
             myCommand.CommandText = cmd;
-
-            myCommand.Parameters.Clear();
-            myCommand.Parameters.AddWithValue("@userid", Param.getUserID());
 
             da.SelectCommand = myCommand;
             try
@@ -50,11 +67,40 @@ namespace VisaPlus
             return ds;
         }
 
-        public DataSet searchDSVisa(string search)
+        public DataSet searchDSVisa(string search, string manager)
         {
+            /*
             cmd = "SELECT idclient,clientstatus,clientname,clientticket,users.username "
                    + " FROM pass.client INNER JOIN pass.users "
                    + " ON userid = idusers WHERE userid = @userid and clientname like @search;";
+            */
+
+            myCommand.Parameters.Clear();
+
+            if (Param.getAccess() == "0")
+            {
+                // дописать иф для админа и простого манагера
+                cmd = "SELECT idclient,clientstatus,clientname,clientticket,users.username "
+                       + " FROM pass.client INNER JOIN pass.users "
+                       + " ON userid = idusers WHERE userid = @userid and clientname like @search;";
+                myCommand.Parameters.AddWithValue("@userid", Param.getUserID());
+            }
+            else
+            {
+                if (manager == "0")
+                {
+                    cmd = "SELECT idclient,clientstatus,clientname,clientticket,users.username "
+                        + " FROM pass.client INNER JOIN pass.users "
+                        + " ON userid = idusers and clientname like @search;";
+                }
+                else
+                {
+                    cmd = "SELECT idclient,clientstatus,clientname,clientticket,users.username "
+                        + " FROM pass.client INNER JOIN pass.users "
+                        + " ON userid = idusers WHERE userid = @userid and clientname like @search;";
+                    myCommand.Parameters.AddWithValue("@userid", manager);
+                }
+            }
 
             da = new MySqlDataAdapter();
             ds = new DataSet();
@@ -63,8 +109,6 @@ namespace VisaPlus
             myCommand.CommandType = CommandType.Text;
             myCommand.CommandText = cmd;
 
-            myCommand.Parameters.Clear();
-            myCommand.Parameters.AddWithValue("@userid", Param.getUserID());
             myCommand.Parameters.AddWithValue("@search", "%" + search + "%");
             
             da.SelectCommand = myCommand;

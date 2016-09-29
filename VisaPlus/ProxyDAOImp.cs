@@ -42,7 +42,7 @@ namespace VisaPlus
             }
             catch (Exception)
             {
-                MessageBox.Show("Произошла ошибка осединения с БД.");
+                MessageBox.Show("Произошла ошибка, не всё поля заполнены.");
             }
         }
         public void setProxy(string id)

@@ -21,7 +21,7 @@ namespace VisaPlus
         }
         public string getId()
         {
-            return id;
+            return this.id;
         }
         public void  setUser(string user)
         {
@@ -29,7 +29,7 @@ namespace VisaPlus
         }
         public string getUser()
         {
-            return user;
+            return this.user;
         }
         public void setPass(string pass)
         {
@@ -37,7 +37,7 @@ namespace VisaPlus
         }
         public string getPass()
         {
-            return pass;
+            return this.pass;
         }
         public void setType(string type)
         {
@@ -45,7 +45,7 @@ namespace VisaPlus
         }
         public string getType()
         {
-            return type;
+            return this.type;
         }
         public void setEmail(string email)
         {
@@ -53,7 +53,7 @@ namespace VisaPlus
         }
         public string getEmail()
         {
-            return email;
+            return this.email;
         }
         public void setEPass(string epass)
         {
@@ -61,7 +61,7 @@ namespace VisaPlus
         }
         public string getEPass()
         {
-            return epass;
+            return this.epass;
         }
         public void setStatus(string status)
         {
@@ -69,7 +69,12 @@ namespace VisaPlus
         }
         public string getStatus()
         {
-            return status;
+            return this.status;
+        }
+
+        public string ToString()
+        {
+            return id+" " +user+ " "+pass+" " +type+" "+status+ " " +email+ " " +epass;
         }
     }
 }

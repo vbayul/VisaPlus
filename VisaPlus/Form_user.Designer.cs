@@ -31,7 +31,6 @@
             this.dataGridViewUser = new System.Windows.Forms.DataGridView();
             this.buttonNew = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
-            this.buttonDel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUser)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,21 +69,11 @@
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
-            // buttonDel
-            // 
-            this.buttonDel.Location = new System.Drawing.Point(174, 12);
-            this.buttonDel.Name = "buttonDel";
-            this.buttonDel.Size = new System.Drawing.Size(75, 23);
-            this.buttonDel.TabIndex = 3;
-            this.buttonDel.Text = "Удалить";
-            this.buttonDel.UseVisualStyleBackColor = true;
-            // 
             // Form_user
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(555, 493);
-            this.Controls.Add(this.buttonDel);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonNew);
             this.Controls.Add(this.dataGridViewUser);
@@ -101,6 +90,5 @@
         private System.Windows.Forms.DataGridView dataGridViewUser;
         private System.Windows.Forms.Button buttonNew;
         private System.Windows.Forms.Button buttonEdit;
-        private System.Windows.Forms.Button buttonDel;
     }
 }

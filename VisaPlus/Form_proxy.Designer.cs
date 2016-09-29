@@ -36,11 +36,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonSet = new System.Windows.Forms.Button();
+            this.buttonCln = new System.Windows.Forms.Button();
             this.idproxy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.proxystatus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.proxyip = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.proxyport = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonCln = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProxy)).BeginInit();
             this.SuspendLayout();
             // 
@@ -130,6 +130,16 @@
             this.buttonSet.UseVisualStyleBackColor = true;
             this.buttonSet.Click += new System.EventHandler(this.buttonSet_Click);
             // 
+            // buttonCln
+            // 
+            this.buttonCln.Location = new System.Drawing.Point(96, 51);
+            this.buttonCln.Name = "buttonCln";
+            this.buttonCln.Size = new System.Drawing.Size(75, 23);
+            this.buttonCln.TabIndex = 8;
+            this.buttonCln.Text = "Очистить";
+            this.buttonCln.UseVisualStyleBackColor = true;
+            this.buttonCln.Click += new System.EventHandler(this.buttonCln_Click);
+            // 
             // idproxy
             // 
             this.idproxy.DataPropertyName = "idproxy";
@@ -156,6 +166,7 @@
             this.proxyip.HeaderText = "IP";
             this.proxyip.Name = "proxyip";
             this.proxyip.ReadOnly = true;
+            this.proxyip.Width = 150;
             // 
             // proxyport
             // 
@@ -163,16 +174,6 @@
             this.proxyport.HeaderText = "Port";
             this.proxyport.Name = "proxyport";
             this.proxyport.ReadOnly = true;
-            // 
-            // buttonCln
-            // 
-            this.buttonCln.Location = new System.Drawing.Point(96, 51);
-            this.buttonCln.Name = "buttonCln";
-            this.buttonCln.Size = new System.Drawing.Size(75, 23);
-            this.buttonCln.TabIndex = 8;
-            this.buttonCln.Text = "Очистить";
-            this.buttonCln.UseVisualStyleBackColor = true;
-            this.buttonCln.Click += new System.EventHandler(this.buttonCln_Click);
             // 
             // Form_proxy
             // 
@@ -207,10 +208,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonSet;
+        private System.Windows.Forms.Button buttonCln;
         private System.Windows.Forms.DataGridViewTextBoxColumn idproxy;
         private System.Windows.Forms.DataGridViewCheckBoxColumn proxystatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn proxyip;
         private System.Windows.Forms.DataGridViewTextBoxColumn proxyport;
-        private System.Windows.Forms.Button buttonCln;
     }
 }

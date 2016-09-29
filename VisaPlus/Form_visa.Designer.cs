@@ -45,6 +45,9 @@
             this.проксиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.buttonManagerClean = new System.Windows.Forms.Button();
+            this.buttonManager = new System.Windows.Forms.Button();
+            this.textBoxManager = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonSearchClean = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
@@ -87,7 +90,7 @@
             this.dataGridViewVisa.Name = "dataGridViewVisa";
             this.dataGridViewVisa.ReadOnly = true;
             this.dataGridViewVisa.RowHeadersVisible = false;
-            this.dataGridViewVisa.Size = new System.Drawing.Size(592, 82);
+            this.dataGridViewVisa.Size = new System.Drawing.Size(822, 82);
             this.dataGridViewVisa.TabIndex = 0;
             this.dataGridViewVisa.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVisa_CellDoubleClick);
             // 
@@ -136,7 +139,7 @@
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(342, 6);
+            this.buttonSearch.Location = new System.Drawing.Point(330, 6);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(75, 23);
             this.buttonSearch.TabIndex = 1;
@@ -146,7 +149,7 @@
             // 
             // textBoxSearch
             // 
-            this.textBoxSearch.Location = new System.Drawing.Point(236, 8);
+            this.textBoxSearch.Location = new System.Drawing.Point(224, 8);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(100, 20);
             this.textBoxSearch.TabIndex = 2;
@@ -178,7 +181,7 @@
             this.настройкиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(624, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(854, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -225,6 +228,9 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.buttonManagerClean);
+            this.splitContainer1.Panel1.Controls.Add(this.buttonManager);
+            this.splitContainer1.Panel1.Controls.Add(this.textBoxManager);
             this.splitContainer1.Panel1.Controls.Add(this.label3);
             this.splitContainer1.Panel1.Controls.Add(this.buttonSearchClean);
             this.splitContainer1.Panel1.Controls.Add(this.dataGridViewVisa);
@@ -246,14 +252,42 @@
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.progressBar1);
             this.splitContainer1.Panel2.Controls.Add(this.geckoWebBrowser1);
-            this.splitContainer1.Size = new System.Drawing.Size(600, 403);
+            this.splitContainer1.Size = new System.Drawing.Size(830, 403);
             this.splitContainer1.SplitterDistance = 119;
             this.splitContainer1.TabIndex = 6;
+            // 
+            // buttonManagerClean
+            // 
+            this.buttonManagerClean.Location = new System.Drawing.Point(750, 6);
+            this.buttonManagerClean.Name = "buttonManagerClean";
+            this.buttonManagerClean.Size = new System.Drawing.Size(75, 23);
+            this.buttonManagerClean.TabIndex = 7;
+            this.buttonManagerClean.Text = "Очистить";
+            this.buttonManagerClean.UseVisualStyleBackColor = true;
+            this.buttonManagerClean.Click += new System.EventHandler(this.buttonManagerClean_Click);
+            // 
+            // buttonManager
+            // 
+            this.buttonManager.Location = new System.Drawing.Point(669, 6);
+            this.buttonManager.Name = "buttonManager";
+            this.buttonManager.Size = new System.Drawing.Size(75, 23);
+            this.buttonManager.TabIndex = 8;
+            this.buttonManager.Text = "Выбор";
+            this.buttonManager.UseVisualStyleBackColor = true;
+            this.buttonManager.Click += new System.EventHandler(this.buttonManager_Click);
+            // 
+            // textBoxManager
+            // 
+            this.textBoxManager.Location = new System.Drawing.Point(537, 8);
+            this.textBoxManager.Name = "textBoxManager";
+            this.textBoxManager.ReadOnly = true;
+            this.textBoxManager.Size = new System.Drawing.Size(126, 20);
+            this.textBoxManager.TabIndex = 7;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(195, 11);
+            this.label3.Location = new System.Drawing.Point(183, 11);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 6;
@@ -261,7 +295,7 @@
             // 
             // buttonSearchClean
             // 
-            this.buttonSearchClean.Location = new System.Drawing.Point(423, 6);
+            this.buttonSearchClean.Location = new System.Drawing.Point(411, 6);
             this.buttonSearchClean.Name = "buttonSearchClean";
             this.buttonSearchClean.Size = new System.Drawing.Size(75, 23);
             this.buttonSearchClean.TabIndex = 5;
@@ -318,12 +352,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(505, 5);
+            this.button1.Location = new System.Drawing.Point(517, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
             this.button1.Text = "Тест";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // buttonWeb
@@ -341,7 +376,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(526, 255);
+            this.label2.Location = new System.Drawing.Point(756, 255);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 16);
             this.label2.TabIndex = 4;
@@ -364,7 +399,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar1.Location = new System.Drawing.Point(223, 252);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(297, 23);
+            this.progressBar1.Size = new System.Drawing.Size(527, 23);
             this.progressBar1.TabIndex = 1;
             // 
             // geckoWebBrowser1
@@ -374,7 +409,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.geckoWebBrowser1.Location = new System.Drawing.Point(8, 34);
             this.geckoWebBrowser1.Name = "geckoWebBrowser1";
-            this.geckoWebBrowser1.Size = new System.Drawing.Size(587, 212);
+            this.geckoWebBrowser1.Size = new System.Drawing.Size(817, 212);
             this.geckoWebBrowser1.TabIndex = 0;
             this.geckoWebBrowser1.UseHttpActivityObserver = false;
             this.geckoWebBrowser1.Navigating += new System.EventHandler<Gecko.Events.GeckoNavigatingEventArgs>(this.geckoWebBrowser1_Navigating_1);
@@ -390,7 +425,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(624, 442);
+            this.ClientSize = new System.Drawing.Size(854, 442);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -446,5 +481,8 @@
         private System.Windows.Forms.Button buttonClient;
         private System.Windows.Forms.ToolStripMenuItem общиеToolStripMenuItem;
         private System.Windows.Forms.Button buttonStop;
+        private System.Windows.Forms.TextBox textBoxManager;
+        private System.Windows.Forms.Button buttonManagerClean;
+        private System.Windows.Forms.Button buttonManager;
     }
 }
