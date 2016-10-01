@@ -34,12 +34,10 @@
             this.textBoxUser = new System.Windows.Forms.TextBox();
             this.textBoxPass = new System.Windows.Forms.TextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.textBoxEpass = new System.Windows.Forms.TextBox();
             this.checkBoxAdmin = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // checkBoxBlock
@@ -97,14 +95,6 @@
             this.textBoxEmail.TabIndex = 5;
             this.textBoxEmail.TextChanged += new System.EventHandler(this.textBoxEdit_TextChanged);
             // 
-            // textBoxEpass
-            // 
-            this.textBoxEpass.Location = new System.Drawing.Point(110, 138);
-            this.textBoxEpass.Name = "textBoxEpass";
-            this.textBoxEpass.Size = new System.Drawing.Size(142, 20);
-            this.textBoxEpass.TabIndex = 6;
-            this.textBoxEpass.TextChanged += new System.EventHandler(this.textBoxEdit_TextChanged);
-            // 
             // checkBoxAdmin
             // 
             this.checkBoxAdmin.AutoSize = true;
@@ -143,26 +133,15 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Email";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 141);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(45, 13);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Пароль";
-            // 
             // Form_user_edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(437, 227);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.checkBoxAdmin);
-            this.Controls.Add(this.textBoxEpass);
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.textBoxPass);
             this.Controls.Add(this.textBoxUser);
@@ -185,11 +164,9 @@
         private System.Windows.Forms.TextBox textBoxUser;
         private System.Windows.Forms.TextBox textBoxPass;
         private System.Windows.Forms.TextBox textBoxEmail;
-        private System.Windows.Forms.TextBox textBoxEpass;
         private System.Windows.Forms.CheckBox checkBoxAdmin;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
     }
 }

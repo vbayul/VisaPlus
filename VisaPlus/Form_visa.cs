@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using Gecko;
 using Gecko.DOM;
 
 namespace VisaPlus
 {
     public partial class Form_visa : Form
     {
+        Form_select_number selectNumber;
         private VisaDAO visaDAO = new VisaDAOImp();
         private VisaDataSet visaDS = new VisaDataSet();
         private ProxyDAO proxyDAO = new ProxyDAOImp();
@@ -48,6 +50,10 @@ namespace VisaPlus
 
         private void Form_visa_Load(object sender, EventArgs e)
         {
+            // запрет кеширования страницы.
+            Gecko.GeckoPreferences.User["browser.cache.disk.enable"] = false;
+            Gecko.GeckoPreferences.User["browser.cache.memory.enable"] = false; 
+            
             Form_login login = new Form_login();
             login.Owner = this;
             login.ShowDialog(this);
@@ -61,8 +67,8 @@ namespace VisaPlus
                     пользователиToolStripMenuItem.Visible = false;
                     // дописать фильтр по менеджерам
                 }
-                Param.setConnectionString("database=pass;server=localhost;uid=root;password=njgjkm");
-                dataGridViewVisa.DataSource = visaDS.getDSVisa("0").Tables[0];
+                Param.setConnectionString("database="+Properties.Settings.Default.DBURL+";server=localhost;uid=root;password=njgjkm");
+                //dataGridViewVisa.DataSource = visaDS.getDSVisa("0").Tables[0];
                 URL = setting.getValue("url");
             }
         }
@@ -85,26 +91,6 @@ namespace VisaPlus
                 editVisa.Owner = this;
                 editVisa.ShowDialog();
             }
-            /*
-            proxy = proxyDAO.getProxy();
-            label2.Text = "Загрузка";
-            if (proxy.getProxyIP() != null)
-            {
-                label1.Text = "Прокси - http://" + proxy.getProxyIP() + ":" + proxy.getProxyPort();
-                Gecko.GeckoPreferences.User["network.proxy.type"] = 1;
-                Gecko.GeckoPreferences.User["network.proxy.http"] = proxy.getProxyIP();
-                Gecko.GeckoPreferences.User["network.proxy.http_port"] = Convert.ToInt32(proxy.getProxyPort());
-                Gecko.GeckoPreferences.User["network.proxy.ssl"] = proxy.getProxyIP();
-                Gecko.GeckoPreferences.User["network.proxy.ssl_port"] = Convert.ToInt32(proxy.getProxyPort());
-                geckoWebBrowser1.Navigate(@"https://polandonline.vfsglobal.com/poland-ukraine-appointment/(S(lzjdbcyqofk4of45flew25ve))/AppScheduling/AppWelcome.aspx?P=s2x6znRcBRv7WQQK7h4MTjZiPRbOsXKqJzddYBh3qCA=");
-            }
-            else
-            {
-                label1.Text = "Прокси - ";
-                geckoWebBrowser1.Navigate(@"https://polandonline.vfsglobal.com/poland-ukraine-appointment/(S(lzjdbcyqofk4of45flew25ve))/AppScheduling/AppWelcome.aspx?P=s2x6znRcBRv7WQQK7h4MTjZiPRbOsXKqJzddYBh3qCA=");
-                //geckoWebBrowser1.Navigate(@"2ip.ru");
-            }
-             */
         }
 
         private void проксиToolStripMenuItem_Click(object sender, EventArgs e)
@@ -203,29 +189,9 @@ namespace VisaPlus
             geckoWebBrowser1.Reload();
         }
 
-        private void geckoWebBrowser1_Navigating(object sender, Gecko.Events.GeckoNavigatingEventArgs e)
-        {
-
-        }
-
         private void geckoWebBrowser1_Navigating_1(object sender, Gecko.Events.GeckoNavigatingEventArgs e)
         {
             label2.Text = "Загрузка";
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // ctl00_plhMain_cboPurpose причина обращения
-            // ctl00_plhMain_cboVAC количество 
-
-            // ctl00_plhMain_repAppReceiptDetails_ctl01_txtReceiptNumber id номера квитанции
-
-            // ctl00_plhMain_txtEmailID почта 
-            // ctl00_plhMain_txtPassword пароль от почты
-
-            var document = geckoWebBrowser1.Document;
-            var selectElement = (GeckoSelectElement)document.GetElementById("ctl00_plhMain_cboPurpose");
-            selectElement.SelectedIndex = 2;
         }
 
         private void общиеToolStripMenuItem_Click(object sender, EventArgs e)
@@ -240,11 +206,6 @@ namespace VisaPlus
             label2.Text = "Стоп";
             timer1.Enabled = false;
             geckoWebBrowser1.Stop();
-        }
-
-        private void Form_visa_FormClosed(object sender, FormClosedEventArgs e)
-        {
-
         }
 
         private void buttonManagerClean_Click(object sender, EventArgs e)
@@ -279,5 +240,159 @@ namespace VisaPlus
                 dataGridViewVisa.DataSource = visaDS.searchDSVisa(textBoxSearch.Text,idManager).Tables[0];
             }
         }
+
+        private void buttonTicket_Click(object sender, EventArgs e)
+        {
+            string number = getSelectNumber();
+            if (number != "0")
+            {
+                try
+                {
+                    var document = geckoWebBrowser1.Document;
+  
+                    //ctl00_plhMain_repAppReceiptDetails_ctl01_txtReceiptNumber - input - номер квитации
+                    var purpose = (GeckoInputElement)document.GetElementById(
+                        "ctl00_plhMain_repAppReceiptDetails_ctl0" + number + "_txtReceiptNumber");
+                    purpose.Value = "6742/0190/8477";
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("Возникла ошибка при заполнении полей.");
+                }
+            }
+        }
+
+        private string getSelectNumber()
+        {
+            selectNumber = new Form_select_number();
+            selectNumber.Owner = this;
+            selectNumber.ShowDialog();
+            return selectNumber.id;
+        }
+
+        private void buttonEmail_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // дописать цикл для пробега по массиву значений и вставке нужного
+                var document = geckoWebBrowser1.Document;
+
+                //ctl00_plhMain_txtEmailID - input - email
+                var inputValue = (GeckoInputElement)document.GetElementById("ctl00_plhMain_txtEmailID");
+                inputValue.Value = "vbayul@gmail.com";
+
+                //ctl00_plhMain_txtPassword - input - pass
+                inputValue = (GeckoInputElement)document.GetElementById("ctl00_plhMain_txtPassword");
+                inputValue.Value = "VOLODIA";
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Возникла ошибка при заполнении полей.");
+            }
+        }
+
+        private void buttonClient_Click(object sender, EventArgs e)
+        {
+            //написать цикл для получения нужных данных в виде стрингового массива
+            string number = getSelectNumber();
+            if (number != "0")
+            {
+                try
+                {
+                    // дописать цикл для пробега по массиву значений и вставке нужного
+                    var document = geckoWebBrowser1.Document;
+
+                    //ctl00_plhMain_repAppVisaDetails_ctl01_tbxPPTEXPDT - input - Дата закінчення терміну дії паспорту
+                    string idValue = "ctl00_plhMain_repAppVisaDetails_ctl0" + number + "_tbxPPTEXPDT";
+                    var inputValue = (GeckoInputElement)document.GetElementById(idValue);
+                    inputValue.Value = "30/08/2026";
+                    
+                    //ctl00_plhMain_repAppVisaDetails_ctl01_tbxFName - input - имя
+                    idValue = "ctl00_plhMain_repAppVisaDetails_ctl0" + number + "_tbxFName";
+                    inputValue = (GeckoInputElement)document.GetElementById(idValue);
+                    inputValue.Value = "VOLODIA";
+                    
+                    //ctl00_plhMain_repAppVisaDetails_ctl01_tbxLName - input- фамилия                  
+                    idValue = "ctl00_plhMain_repAppReceiptDetails_ctl0" + number + "_tbxLName";
+                    inputValue = (GeckoInputElement)document.GetElementById(idValue);
+                    inputValue.Value = "KOLOMOIETS";
+
+                    //ctl00_plhMain_repAppVisaDetails_ctl01_tbxDOB - input - дата рождения
+                    idValue = "ctl00_plhMain_repAppReceiptDetails_ctl0" + number + "_tbxDOB ";
+                    inputValue = (GeckoInputElement)document.GetElementById(idValue);
+                    inputValue.Value = "13/08/1986";
+
+                    //ctl00_plhMain_repAppVisaDetails_ctl01_tbxReturn - input - дата возврата
+                    idValue = "ctl00_plhMain_repAppReceiptDetails_ctl0" + number + "_txtReceiptNumber";
+                    inputValue = (GeckoInputElement)document.GetElementById(idValue);
+                    inputValue.Value = "13/08/1986";
+                    
+                    //ctl00_plhMain_repAppVisaDetails_ctl01_tbxContactNumber - input - контактный телефон
+                    idValue = "ctl00_plhMain_repAppReceiptDetails_ctl0" + number + "_tbxContactNumber";
+                    inputValue = (GeckoInputElement)document.GetElementById(idValue);
+                    inputValue.Value = "+380953317170";
+                    
+                    //ctl00_plhMain_repAppVisaDetails_ctl01_cboNationality - select - национальность
+                    idValue = "ctl00_plhMain_repAppReceiptDetails_ctl0" + number + "_cboNationality";
+                    var selectValue = (GeckoSelectElement)document.GetElementById(idValue);
+                    selectValue.Value = "219";
+                    
+                    //ctl00_plhMain_repAppVisaDetails_ctl01_cboTitle - select - cтатус Mr. etc.
+                    idValue = "ctl00_plhMain_repAppReceiptDetails_ctl0" + number + "_cboTitle";
+                    selectValue = (GeckoSelectElement)document.GetElementById(idValue);
+                    inputValue.Value = "Mrs.";
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Возникла ошибка при заполнении полей.");
+                }
+            }
+        }
+
+        private void buttonDepType_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var document = geckoWebBrowser1.Document;
+                // ctl00_plhMain_cboVAC - select - место визита, город подачи документов
+                var place = (GeckoSelectElement)document.GetElementById("ctl00_plhMain_cboVAC");
+                place.Value = "11";
+                //ctl00_plhMain_cboPurpose - select - цель визита
+                var purpose = (GeckoSelectElement)document.GetElementById("ctl00_plhMain_cboPurpose");
+                purpose.Value = "1";
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Возникла ошибка при заполнении полей.");
+            }
+        }
+
+        private void buttonPeople_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var document = geckoWebBrowser1.Document;
+
+                //ctl00_plhMain_tbxNumOfApplicants - количество взрослых
+                var place = (GeckoInputElement)document.GetElementById("ctl00_plhMain_tbxNumOfApplicants");
+                place.Value = "2";
+                //ctl00_plhMain_txtChildren - количество детей
+                var kids = (GeckoInputElement)document.GetElementById("ctl00_plhMain_txtChildren");
+                kids.Value = "0";
+                //ctl00_plhMain_cboVisaCategory -категория визы
+                GeckoSelectElement type = (GeckoSelectElement)document.GetElementById("ctl00_plhMain_cboVisaCategory");
+                type.Value = "229";
+                //geckoWebBrowser1.Navigate("javascript:setTimeout('__doPostBack(\'ctl00$plhMain$cboVisaCategory\',\'\')', 0)");
+                //geckoWebBrowser1.Document.GetElementById('ctl00_plhMain_lnkSchApp').InvokeMember("onchange");
+                //geckoWebBrowser1.Navigate("__doPostBack(\'ctl00$plhMain$cboVisaCategory\',\'\')', 0));
+                //javascript:setTimeout('__doPostBack(\'ctl00$plhMain$cboVisaCategory\',\'\')', 0)
+                //type.SetAttribute("onchange","javascript:setTimeout('__doPostBack(\'ctl00$plhMain$cboVisaCategory\',\'\')', 0)");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Возникла ошибка при заполнении полей.");
+            }
+        }
     }
 }
+  

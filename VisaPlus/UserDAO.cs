@@ -13,6 +13,6 @@ namespace VisaPlus
 
         User getUser(string id);
 
-        void setPass(string id, string pass);
+        //void setPass(string id, string pass);
     }
 }

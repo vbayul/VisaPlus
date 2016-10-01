@@ -74,6 +74,12 @@
     <Compile Include="Form_proxy.Designer.cs">
       <DependentUpon>Form_proxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_select_number.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_select_number.Designer.cs">
+      <DependentUpon>Form_select_number.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_setting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_proxy.resx">
       <DependentUpon>Form_proxy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_select_number.resx">
+      <DependentUpon>Form_select_number.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_setting.resx">
       <DependentUpon>Form_setting.cs</DependentUpon>

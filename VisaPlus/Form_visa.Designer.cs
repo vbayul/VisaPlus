@@ -50,12 +50,13 @@
             this.textBoxManager = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonSearchClean = new System.Windows.Forms.Button();
+            this.buttonPeople = new System.Windows.Forms.Button();
+            this.buttonDepType = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
             this.buttonClient = new System.Windows.Forms.Button();
             this.buttonEmail = new System.Windows.Forms.Button();
             this.buttonTicket = new System.Windows.Forms.Button();
             this.buttonReload = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.buttonWeb = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -241,12 +242,13 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.buttonPeople);
+            this.splitContainer1.Panel2.Controls.Add(this.buttonDepType);
             this.splitContainer1.Panel2.Controls.Add(this.buttonStop);
             this.splitContainer1.Panel2.Controls.Add(this.buttonClient);
             this.splitContainer1.Panel2.Controls.Add(this.buttonEmail);
             this.splitContainer1.Panel2.Controls.Add(this.buttonTicket);
             this.splitContainer1.Panel2.Controls.Add(this.buttonReload);
-            this.splitContainer1.Panel2.Controls.Add(this.button1);
             this.splitContainer1.Panel2.Controls.Add(this.buttonWeb);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
@@ -303,9 +305,30 @@
             this.buttonSearchClean.UseVisualStyleBackColor = true;
             this.buttonSearchClean.Click += new System.EventHandler(this.buttonSearchClean_Click);
             // 
+            // buttonPeople
+            // 
+            this.buttonPeople.Location = new System.Drawing.Point(411, 6);
+            this.buttonPeople.Name = "buttonPeople";
+            this.buttonPeople.Size = new System.Drawing.Size(75, 23);
+            this.buttonPeople.TabIndex = 15;
+            this.buttonPeople.Text = "Люди Катег";
+            this.buttonPeople.UseVisualStyleBackColor = true;
+            this.buttonPeople.Click += new System.EventHandler(this.buttonPeople_Click);
+            // 
+            // buttonDepType
+            // 
+            this.buttonDepType.Location = new System.Drawing.Point(330, 6);
+            this.buttonDepType.Name = "buttonDepType";
+            this.buttonDepType.Size = new System.Drawing.Size(75, 23);
+            this.buttonDepType.TabIndex = 14;
+            this.buttonDepType.Text = "Пункт Цель";
+            this.buttonDepType.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.buttonDepType.UseVisualStyleBackColor = true;
+            this.buttonDepType.Click += new System.EventHandler(this.buttonDepType_Click);
+            // 
             // buttonStop
             // 
-            this.buttonStop.Location = new System.Drawing.Point(170, 5);
+            this.buttonStop.Location = new System.Drawing.Point(170, 6);
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(75, 23);
             this.buttonStop.TabIndex = 13;
@@ -315,34 +338,37 @@
             // 
             // buttonClient
             // 
-            this.buttonClient.Location = new System.Drawing.Point(436, 5);
+            this.buttonClient.Location = new System.Drawing.Point(654, 6);
             this.buttonClient.Name = "buttonClient";
             this.buttonClient.Size = new System.Drawing.Size(75, 23);
             this.buttonClient.TabIndex = 12;
             this.buttonClient.Text = "Клиент";
             this.buttonClient.UseVisualStyleBackColor = true;
+            this.buttonClient.Click += new System.EventHandler(this.buttonClient_Click);
             // 
             // buttonEmail
             // 
-            this.buttonEmail.Location = new System.Drawing.Point(355, 5);
+            this.buttonEmail.Location = new System.Drawing.Point(573, 6);
             this.buttonEmail.Name = "buttonEmail";
             this.buttonEmail.Size = new System.Drawing.Size(75, 23);
             this.buttonEmail.TabIndex = 11;
             this.buttonEmail.Text = "Email";
             this.buttonEmail.UseVisualStyleBackColor = true;
+            this.buttonEmail.Click += new System.EventHandler(this.buttonEmail_Click);
             // 
             // buttonTicket
             // 
-            this.buttonTicket.Location = new System.Drawing.Point(274, 5);
+            this.buttonTicket.Location = new System.Drawing.Point(492, 6);
             this.buttonTicket.Name = "buttonTicket";
             this.buttonTicket.Size = new System.Drawing.Size(75, 23);
             this.buttonTicket.TabIndex = 10;
             this.buttonTicket.Text = "Квитанции";
             this.buttonTicket.UseVisualStyleBackColor = true;
+            this.buttonTicket.Click += new System.EventHandler(this.buttonTicket_Click);
             // 
             // buttonReload
             // 
-            this.buttonReload.Location = new System.Drawing.Point(89, 5);
+            this.buttonReload.Location = new System.Drawing.Point(89, 6);
             this.buttonReload.Name = "buttonReload";
             this.buttonReload.Size = new System.Drawing.Size(75, 23);
             this.buttonReload.TabIndex = 9;
@@ -350,20 +376,9 @@
             this.buttonReload.UseVisualStyleBackColor = true;
             this.buttonReload.Click += new System.EventHandler(this.buttonReload_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(517, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Тест";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // buttonWeb
             // 
-            this.buttonWeb.Location = new System.Drawing.Point(8, 5);
+            this.buttonWeb.Location = new System.Drawing.Point(8, 6);
             this.buttonWeb.Name = "buttonWeb";
             this.buttonWeb.Size = new System.Drawing.Size(75, 23);
             this.buttonWeb.TabIndex = 7;
@@ -433,7 +448,6 @@
             this.Name = "Form_visa";
             this.Text = "VisaPlus";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_visa_FormClosed);
             this.Load += new System.EventHandler(this.Form_visa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVisa)).EndInit();
             this.menuStrip1.ResumeLayout(false);
@@ -475,7 +489,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clientticket;
         private System.Windows.Forms.DataGridViewTextBoxColumn userid;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button buttonEmail;
         private System.Windows.Forms.Button buttonTicket;
         private System.Windows.Forms.Button buttonClient;
@@ -484,5 +497,7 @@
         private System.Windows.Forms.TextBox textBoxManager;
         private System.Windows.Forms.Button buttonManagerClean;
         private System.Windows.Forms.Button buttonManager;
+        private System.Windows.Forms.Button buttonDepType;
+        private System.Windows.Forms.Button buttonPeople;
     }
 }

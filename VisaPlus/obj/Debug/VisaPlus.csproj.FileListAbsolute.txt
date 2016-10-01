@@ -18,3 +18,4 @@ D:\Dev\VisaPlus\VisaPlus\obj\Debug\VisaPlus.Form_setting.resources
 D:\Dev\VisaPlus\VisaPlus\obj\Debug\VisaPlus.Form_login.resources
 D:\Dev\VisaPlus\VisaPlus\obj\Debug\VisaPlus.Form_user_edit.resources
 D:\Dev\VisaPlus\VisaPlus\obj\Debug\VisaPlus.Form_filtr.resources
+D:\Dev\VisaPlus\VisaPlus\obj\Debug\VisaPlus.Form_select_number.resources

@@ -17,8 +17,8 @@ namespace VisaPlus
 
         public bool addUser(User user)
         {
-            cmd = "INSERT INTO `pass`.`users` (`username`,`password`,`idtype`,`status`,`email`,`emailpass`) " 
-                + " VALUES(@username,@password,@idtype,@status,@email,@emailpass);";
+            cmd = "INSERT INTO `pass`.`users` (`username`,`password`,`idtype`,`status`,`email`) " 
+                + " VALUES(@username,@password,@idtype,@status,@email);";
 
             myCommand.Connection = myConnection;
             myCommand.CommandType = CommandType.Text;
@@ -30,7 +30,6 @@ namespace VisaPlus
             myCommand.Parameters.AddWithValue("@idtype", user.getType());
             myCommand.Parameters.AddWithValue("@status", 0);
             myCommand.Parameters.AddWithValue("@email", user.getEmail());
-            myCommand.Parameters.AddWithValue("@emailpass", user.getEPass());
 
             bool saccess = false;
             try{
@@ -50,7 +49,7 @@ namespace VisaPlus
         {
             cmd = "UPDATE `pass`.`users` "
                  +" SET `username` = @username,`idtype` = @idtype, password = @password,"
-                 + " `status` = @status, `email` = @email,`emailpass` = @emailpass "
+                 + " `status` = @status, `email` = @email "
                  + " WHERE `idusers` = @iduser;";
 
             myConnection.ConnectionString = Param.getConnectionString();
@@ -65,7 +64,6 @@ namespace VisaPlus
             myCommand.Parameters.AddWithValue("@idtype", user.getType());
             myCommand.Parameters.AddWithValue("@status", user.getStatus());
             myCommand.Parameters.AddWithValue("@email", user.getEmail());
-            myCommand.Parameters.AddWithValue("@emailpass", user.getEPass());
             myCommand.Parameters.AddWithValue("@iduser", user.getId());
             
             bool saccess = false;
@@ -85,7 +83,7 @@ namespace VisaPlus
 
         public User getUser(string id)
         {
-            cmd = "SELECT idusers,username, password,idtype,status,email,emailpass "
+            cmd = "SELECT idusers,username, password,idtype,status,email "
                 + " FROM pass.users WHERE idusers = @idusers;";
 
             myConnection.ConnectionString = Param.getConnectionString();
@@ -109,7 +107,6 @@ namespace VisaPlus
                     user.setType(dr.GetInt32(3).ToString());
                     user.setStatus(dr.GetInt32(4).ToString());
                     user.setEmail(dr.GetString(5));
-                    user.setEPass(dr.GetString(6));
                 }
                 myConnection.Close();
             }
@@ -119,7 +116,7 @@ namespace VisaPlus
             }
             return user;
         }
-
+        /*
         public void setPass(string id, string pass)
         {
             cmd = "UPDATE `pass`.`users` SET "
@@ -145,7 +142,7 @@ namespace VisaPlus
             {
                 MessageBox.Show("Произошла ошибка cоединения с БД.");
             }
-
         }
+         * */
     }
 }

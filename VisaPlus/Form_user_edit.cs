@@ -29,7 +29,6 @@ namespace VisaPlus
                 textBoxUser.Text = user.getUser();
                 textBoxPass.Text = user.getPass();
                 textBoxEmail.Text = user.getEmail();
-                textBoxEpass.Text = user.getEPass();
                 checkBoxAdmin.Checked = Convert.ToBoolean(Convert.ToInt32(user.getType()));
                 checkBoxBlock.Checked = Convert.ToBoolean(Convert.ToInt32(user.getStatus()));
             }
@@ -38,7 +37,7 @@ namespace VisaPlus
         private void buttonSave_Click(object sender, EventArgs e)
         {
             if (textBoxUser.Text != "" || textBoxPass.Text != ""
-                || textBoxEmail.Text != "" || textBoxEpass.Text != "")
+                || textBoxEmail.Text != "")
             {
                 if (id != "0")
                 {
@@ -68,7 +67,6 @@ namespace VisaPlus
             userSave.setUser(textBoxUser.Text);
             userSave.setPass(textBoxPass.Text);
             userSave.setEmail(textBoxEmail.Text);
-            userSave.setEPass(textBoxEpass.Text);
             userSave.setStatus(Convert.ToInt32(checkBoxBlock.Checked).ToString());
             userSave.setType(Convert.ToInt32(checkBoxAdmin.Checked).ToString());
         }
