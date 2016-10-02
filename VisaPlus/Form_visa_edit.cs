@@ -66,5 +66,29 @@ namespace VisaPlus
         {
             Close();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            /*
+            MessageBox.Show(maskedTextBox1.Text.Replace('.','/'));
+            string bc = maskedTextBox1.Text.Replace('.', '/');
+            maskedTextBox1.Text = bc;
+            */
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void maskedTextBox2_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

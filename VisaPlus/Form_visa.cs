@@ -279,11 +279,11 @@ namespace VisaPlus
 
                 //ctl00_plhMain_txtEmailID - input - email
                 var inputValue = (GeckoInputElement)document.GetElementById("ctl00_plhMain_txtEmailID");
-                inputValue.Value = "vbayul@gmail.com";
+                inputValue.Value = "dnpl112@yandex.ru";
 
                 //ctl00_plhMain_txtPassword - input - pass
                 inputValue = (GeckoInputElement)document.GetElementById("ctl00_plhMain_txtPassword");
-                inputValue.Value = "VOLODIA";
+                inputValue.Value = "Qwerty11";
             }
             catch (Exception)
             {
@@ -306,41 +306,41 @@ namespace VisaPlus
                     string idValue = "ctl00_plhMain_repAppVisaDetails_ctl0" + number + "_tbxPPTEXPDT";
                     var inputValue = (GeckoInputElement)document.GetElementById(idValue);
                     inputValue.Value = "30/08/2026";
-                    
+                    //w
                     //ctl00_plhMain_repAppVisaDetails_ctl01_tbxFName - input - имя
                     idValue = "ctl00_plhMain_repAppVisaDetails_ctl0" + number + "_tbxFName";
                     inputValue = (GeckoInputElement)document.GetElementById(idValue);
                     inputValue.Value = "VOLODIA";
-                    
+                    //w
                     //ctl00_plhMain_repAppVisaDetails_ctl01_tbxLName - input- фамилия                  
-                    idValue = "ctl00_plhMain_repAppReceiptDetails_ctl0" + number + "_tbxLName";
+                    idValue = "ctl00_plhMain_repAppVisaDetails_ctl0" + number + "_tbxLName";
                     inputValue = (GeckoInputElement)document.GetElementById(idValue);
                     inputValue.Value = "KOLOMOIETS";
 
                     //ctl00_plhMain_repAppVisaDetails_ctl01_tbxDOB - input - дата рождения
-                    idValue = "ctl00_plhMain_repAppReceiptDetails_ctl0" + number + "_tbxDOB ";
+                    idValue = "ctl00_plhMain_repAppVisaDetails_ctl0" + number + "_tbxDOB";
                     inputValue = (GeckoInputElement)document.GetElementById(idValue);
                     inputValue.Value = "13/08/1986";
 
                     //ctl00_plhMain_repAppVisaDetails_ctl01_tbxReturn - input - дата возврата
-                    idValue = "ctl00_plhMain_repAppReceiptDetails_ctl0" + number + "_txtReceiptNumber";
+                    idValue = "ctl00_plhMain_repAppVisaDetails_ctl0" + number + "_tbxReturn";
                     inputValue = (GeckoInputElement)document.GetElementById(idValue);
-                    inputValue.Value = "13/08/1986";
-                    
+                    inputValue.Value = "13/10/2016";
+                    /*
                     //ctl00_plhMain_repAppVisaDetails_ctl01_tbxContactNumber - input - контактный телефон
-                    idValue = "ctl00_plhMain_repAppReceiptDetails_ctl0" + number + "_tbxContactNumber";
+                    idValue = "ctl00_plhMain_repAppVisaDetails_ctl0" + number + "_tbxContactNumber";
                     inputValue = (GeckoInputElement)document.GetElementById(idValue);
-                    inputValue.Value = "+380953317170";
-                    
+                    inputValue.Value = "0953317170";
+                    */
                     //ctl00_plhMain_repAppVisaDetails_ctl01_cboNationality - select - национальность
-                    idValue = "ctl00_plhMain_repAppReceiptDetails_ctl0" + number + "_cboNationality";
+                    idValue = "ctl00_plhMain_repAppVisaDetails_ctl0" + number + "_cboNationality";
                     var selectValue = (GeckoSelectElement)document.GetElementById(idValue);
                     selectValue.Value = "219";
-                    
+
                     //ctl00_plhMain_repAppVisaDetails_ctl01_cboTitle - select - cтатус Mr. etc.
-                    idValue = "ctl00_plhMain_repAppReceiptDetails_ctl0" + number + "_cboTitle";
+                    idValue = "ctl00_plhMain_repAppVisaDetails_ctl0" + number + "_cboTitle";
                     selectValue = (GeckoSelectElement)document.GetElementById(idValue);
-                    inputValue.Value = "Mrs.";
+                    selectValue.Value = "Mrs.";
                 }
                 catch (Exception)
                 {
@@ -375,7 +375,7 @@ namespace VisaPlus
 
                 //ctl00_plhMain_tbxNumOfApplicants - количество взрослых
                 var place = (GeckoInputElement)document.GetElementById("ctl00_plhMain_tbxNumOfApplicants");
-                place.Value = "2";
+                place.Value = "1";
                 //ctl00_plhMain_txtChildren - количество детей
                 var kids = (GeckoInputElement)document.GetElementById("ctl00_plhMain_txtChildren");
                 kids.Value = "0";

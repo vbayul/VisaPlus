@@ -19,8 +19,14 @@ namespace VisaPlus
 
         public bool addVisa(Visa visa)
         {
-            cmd = "INSERT INTO `pass`.`client` (`clientstatus`,`clientname`,`clientticket`,`userid`) "
-                    + " VALUES (@clientstatus, @clientname, @clientticket, @userid);";
+            cmd = "INSERT INTO `pass`.`client` "
+                +"(`visitdate`,`status`,`region`,`title`,`firstname`,`lastname`,"
+                +"`dob`,`email`,`password`,`passport`,`passportexpire`,`clientticket`,`visatype`,"
+                +"`nationality`,`purpose`,`persons`,`kids`,`payed`,`travellength`,`nearestdate`,`userid`)"
+                // значения которые необходимо внести
+                +" VALUES(visitdate,status,region,title,firstname,lastname,dob,email,password,"
+                +"passport,passportexpire,clientticket,visatype,nationality,purpose,"
+                +"persons,kids,payed,travellength,nearestdate,userid);";
 
             myCommand.Connection = myConnection;
             myCommand.CommandType = CommandType.Text;
