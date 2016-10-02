@@ -29,187 +29,180 @@ namespace VisaPlus
         private string travellength;
         private string nearestdate;
         private string userid;
-        /*
-visitdate,status,region,title,firstname,lastname,dob,email,password,"
-                +"passport,passportexpire,clientticket,visatype,nationality,purpose,"
-                +"persons,kids,payed,travellength,nearestdate,userid
-         * */
-        public Visa(){}
 
-        private string getId()
+        public string getId()
         {
             return id;
         }
-        private void setId(string id)
+        public void setId(string id)
         {
-            this.id =id;
+            this.id = id;
         }
-        private string getId()
-        {
-            return id;
-        }
-        private void setvisitdate(string visitdate)
+        public void setvisitdate(string visitdate)
         {
             this.visitdate = visitdate;
         }
-        private string getvisitdate()
+        public string getvisitdate()
         {
             return visitdate;
         }
-        private void setstatus(string status)
+        public void setstatus(string status)
         {
             this.status = status;
         }
-
-        private string getregion()
+        public string getstatus()
+        {
+            return status;
+        }
+        public string getregion()
         {
             return region;
         }
-        private void setregion(string region)
+        public void setregion(string region)
         {
             this.region = region;
         }
-        private string gettitle()
+        public string gettitle()
         {
             return title;
         }
-        private void settitle(string title)
+        public void settitle(string title)
         {
             this.title = title;
         }
-        private string getfirstname()
+        public string getfirstname()
         {
             return firstname;
         }
-        private void setfirstname(string firstname)
+        public void setfirstname(string firstname)
         {
             this.firstname = firstname;
         }
-        private string getlastname()
+        public string getlastname()
         {
             return lastname;
         }
-        private void setlastname(string lastname)
+        public void setlastname(string lastname)
         {
             this.lastname = lastname;
         }
-        private string getdob()
+        public string getdob()
         {
             return dob;
         }
-        private void setdob(string dob )
+        public void setdob(string dob )
         {
             this.dob = dob;
         }
-        private string getemail()
+        public string getemail()
         {
             return email;
         }
-        private void setemail(string email)
+        public void setemail(string email)
         {
             this.email = email;
         }
-        private string getpassword()
+        public string getpassword()
         {
             return password;
         }
-        private void setpassword(string password)
+        public void setpassword(string password)
         {
             this.password = password;
         }
-        private string getpassport()
+        public string getpassport()
         {
             return passport;
         }
-        private void setpassport(string passport)
+        public void setpassport(string passport)
         {
             this.passport = passport;
         }
-        private string getpassportexpire()
+        public string getpassportexpire()
         {
             return passportexpire;
         }
-        private void setpassportexpire(string passportexpire)
+        public void setpassportexpire(string passportexpire)
         {
             this.passportexpire = passportexpire;
         }
-        private string getclientticket()
+        public string getclientticket()
         {
             return clientticket;
         }
-        private void setclientticket(string clientticket)
+        public void setclientticket(string clientticket)
         {
             this.clientticket = clientticket;
         }
-        private string getvisatype()
+        public string getvisatype()
         {
             return visatype;
         }
-        private void setvisatype(string visatype)
+        public void setvisatype(string visatype)
         {
             this.visatype = visatype;
         }
-        private string getnationality()
+        public string getnationality()
         {
             return nationality;
         }
-        private void setnationality(string nationality)
+        public void setnationality(string nationality)
         {
             this.nationality = nationality;
         }
-        private string getpurpose()
+        public string getpurpose()
         {
             return purpose;
         }
-        private void setpurpose(string purpose)
+        public void setpurpose(string purpose)
         {
             this.purpose = purpose;
         }
-        private string getpersons()
+        public string getpersons()
         {
             return persons;
         }
-        private void setpersons(string persons)
+        public void setpersons(string persons)
         {
             this.persons = persons;
         }
-        private string getkids()
+        public string getkids()
         {
             return kids;
         }
-        private void setkids(string kids)
+        public void setkids(string kids)
         {
             this.kids = kids;
         }
-        private string getpayed()
+        public string getpayed()
         {
             return payed;
         }
-        private void setpayed(string payed)
+        public void setpayed(string payed)
         {
             this.payed = payed;
         }
-        private string get()
+        public string gettravellength()
         {
             return travellength;
         }
-        private void settravellength(string travellength)
+        public void settravellength(string travellength)
         {
             this.travellength = travellength;
         }
-        private string getnearestdate()
+        public string getnearestdate()
         {
             return nearestdate;
         }
-        private void setnearestdate(string nearestdate)
+        public void setnearestdate(string nearestdate)
         {
             this.nearestdate = nearestdate;
         }
-        private string getuserid()
+        public string getuserid()
         {
             return userid;
         }
-        private void setuserid(string userid)
+        public void setuserid(string userid)
         {
             this.userid = userid;
         }

@@ -28,26 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBoxLogin = new System.Windows.Forms.ComboBox();
+            this.textBoxPass = new System.Windows.Forms.TextBox();
             this.buttonEnter = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // comboBoxLogin
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 25);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(321, 21);
-            this.comboBox1.TabIndex = 0;
+            this.comboBoxLogin.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxLogin.FormattingEnabled = true;
+            this.comboBoxLogin.Location = new System.Drawing.Point(12, 25);
+            this.comboBoxLogin.Name = "comboBoxLogin";
+            this.comboBoxLogin.Size = new System.Drawing.Size(321, 21);
+            this.comboBoxLogin.TabIndex = 0;
             // 
-            // textBox1
+            // textBoxPass
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 73);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(321, 20);
-            this.textBox1.TabIndex = 1;
+            this.textBoxPass.Location = new System.Drawing.Point(12, 73);
+            this.textBoxPass.Name = "textBoxPass";
+            this.textBoxPass.PasswordChar = '*';
+            this.textBoxPass.Size = new System.Drawing.Size(321, 20);
+            this.textBoxPass.TabIndex = 1;
             // 
             // buttonEnter
             // 
@@ -65,14 +66,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(352, 151);
             this.Controls.Add(this.buttonEnter);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.textBoxPass);
+            this.Controls.Add(this.comboBoxLogin);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form_login_FormClosed);
+            this.Load += new System.EventHandler(this.Form_login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -80,8 +82,8 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBoxLogin;
+        private System.Windows.Forms.TextBox textBoxPass;
         private System.Windows.Forms.Button buttonEnter;
     }
 }

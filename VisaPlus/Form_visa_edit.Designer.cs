@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBoxClientName = new System.Windows.Forms.TextBox();
-            this.textBoxClientTicket = new System.Windows.Forms.TextBox();
-            this.checkBoxPass = new System.Windows.Forms.CheckBox();
+            this.textBoxLastName = new System.Windows.Forms.TextBox();
+            this.textBoxFirstName = new System.Windows.Forms.TextBox();
+            this.checkBoxSatus = new System.Windows.Forms.CheckBox();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBoxVisitDate = new System.Windows.Forms.MaskedTextBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown3 = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown4 = new System.Windows.Forms.NumericUpDown();
+            this.comboBoxRegion = new System.Windows.Forms.ComboBox();
+            this.comboBoxPurpose = new System.Windows.Forms.ComboBox();
+            this.comboBoxVisaType = new System.Windows.Forms.ComboBox();
+            this.comboBoxTitle = new System.Windows.Forms.ComboBox();
+            this.comboBoxNationality = new System.Windows.Forms.ComboBox();
+            this.maskedTextBoxDOB = new System.Windows.Forms.MaskedTextBox();
+            this.textBoxPassport = new System.Windows.Forms.TextBox();
+            this.maskedTextBoxPassportExpire = new System.Windows.Forms.MaskedTextBox();
+            this.textBoxClientTicket = new System.Windows.Forms.TextBox();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.numericUpDownTravelLength = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownPayed = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownPersons = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDownKids = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -68,40 +68,41 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).BeginInit();
+            this.radioButtonNearestDate1 = new System.Windows.Forms.RadioButton();
+            this.radioButtonNearestDate2 = new System.Windows.Forms.RadioButton();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTravelLength)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPayed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPersons)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownKids)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBoxClientName
+            // textBoxLastName
             // 
-            this.textBoxClientName.Location = new System.Drawing.Point(12, 120);
-            this.textBoxClientName.Name = "textBoxClientName";
-            this.textBoxClientName.Size = new System.Drawing.Size(171, 20);
-            this.textBoxClientName.TabIndex = 0;
+            this.textBoxLastName.Location = new System.Drawing.Point(12, 103);
+            this.textBoxLastName.Name = "textBoxLastName";
+            this.textBoxLastName.Size = new System.Drawing.Size(171, 20);
+            this.textBoxLastName.TabIndex = 0;
             // 
-            // textBoxClientTicket
+            // textBoxFirstName
             // 
-            this.textBoxClientTicket.Location = new System.Drawing.Point(221, 120);
-            this.textBoxClientTicket.Name = "textBoxClientTicket";
-            this.textBoxClientTicket.Size = new System.Drawing.Size(171, 20);
-            this.textBoxClientTicket.TabIndex = 1;
+            this.textBoxFirstName.Location = new System.Drawing.Point(221, 103);
+            this.textBoxFirstName.Name = "textBoxFirstName";
+            this.textBoxFirstName.Size = new System.Drawing.Size(171, 20);
+            this.textBoxFirstName.TabIndex = 1;
             // 
-            // checkBoxPass
+            // checkBoxSatus
             // 
-            this.checkBoxPass.AutoSize = true;
-            this.checkBoxPass.Enabled = false;
-            this.checkBoxPass.Location = new System.Drawing.Point(12, 12);
-            this.checkBoxPass.Name = "checkBoxPass";
-            this.checkBoxPass.Size = new System.Drawing.Size(102, 17);
-            this.checkBoxPass.TabIndex = 2;
-            this.checkBoxPass.Text = "Заявка подана";
-            this.checkBoxPass.UseVisualStyleBackColor = true;
+            this.checkBoxSatus.AutoSize = true;
+            this.checkBoxSatus.Location = new System.Drawing.Point(12, 21);
+            this.checkBoxSatus.Name = "checkBoxSatus";
+            this.checkBoxSatus.Size = new System.Drawing.Size(102, 17);
+            this.checkBoxSatus.TabIndex = 2;
+            this.checkBoxSatus.Text = "Заявка подана";
+            this.checkBoxSatus.UseVisualStyleBackColor = true;
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(235, 429);
+            this.buttonSave.Location = new System.Drawing.Point(235, 412);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 3;
@@ -111,7 +112,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(316, 429);
+            this.buttonCancel.Location = new System.Drawing.Point(316, 412);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 4;
@@ -119,17 +120,17 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
-            // maskedTextBox1
+            // maskedTextBoxVisitDate
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(275, 9);
-            this.maskedTextBox1.Mask = "00/00/0000";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox1.TabIndex = 5;
+            this.maskedTextBoxVisitDate.Location = new System.Drawing.Point(275, 18);
+            this.maskedTextBoxVisitDate.Mask = "00/00/0000";
+            this.maskedTextBoxVisitDate.Name = "maskedTextBoxVisitDate";
+            this.maskedTextBoxVisitDate.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBoxVisitDate.TabIndex = 5;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 425);
+            this.button1.Location = new System.Drawing.Point(139, 412);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 6;
@@ -137,136 +138,144 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // comboBox1
+            // comboBoxRegion
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(12, 83);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(171, 21);
-            this.comboBox1.TabIndex = 7;
+            this.comboBoxRegion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxRegion.FormattingEnabled = true;
+            this.comboBoxRegion.Location = new System.Drawing.Point(12, 66);
+            this.comboBoxRegion.Name = "comboBoxRegion";
+            this.comboBoxRegion.Size = new System.Drawing.Size(171, 21);
+            this.comboBoxRegion.TabIndex = 7;
             // 
-            // comboBox2
+            // comboBoxPurpose
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(221, 158);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(171, 21);
-            this.comboBox2.TabIndex = 8;
+            this.comboBoxPurpose.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPurpose.FormattingEnabled = true;
+            this.comboBoxPurpose.Location = new System.Drawing.Point(221, 141);
+            this.comboBoxPurpose.Name = "comboBoxPurpose";
+            this.comboBoxPurpose.Size = new System.Drawing.Size(171, 21);
+            this.comboBoxPurpose.TabIndex = 8;
             // 
-            // comboBox3
+            // comboBoxVisaType
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(221, 83);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(171, 21);
-            this.comboBox3.TabIndex = 9;
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            this.comboBoxVisaType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxVisaType.FormattingEnabled = true;
+            this.comboBoxVisaType.Location = new System.Drawing.Point(221, 66);
+            this.comboBoxVisaType.Name = "comboBoxVisaType";
+            this.comboBoxVisaType.Size = new System.Drawing.Size(171, 21);
+            this.comboBoxVisaType.TabIndex = 9;
             // 
-            // comboBox4
+            // comboBoxTitle
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(12, 387);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(171, 21);
-            this.comboBox4.TabIndex = 10;
+            this.comboBoxTitle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxTitle.FormattingEnabled = true;
+            this.comboBoxTitle.Location = new System.Drawing.Point(12, 370);
+            this.comboBoxTitle.Name = "comboBoxTitle";
+            this.comboBoxTitle.Size = new System.Drawing.Size(171, 21);
+            this.comboBoxTitle.TabIndex = 10;
             // 
-            // comboBox5
+            // comboBoxNationality
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(221, 387);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(171, 21);
-            this.comboBox5.TabIndex = 11;
+            this.comboBoxNationality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxNationality.FormattingEnabled = true;
+            this.comboBoxNationality.Location = new System.Drawing.Point(221, 370);
+            this.comboBoxNationality.Name = "comboBoxNationality";
+            this.comboBoxNationality.Size = new System.Drawing.Size(171, 21);
+            this.comboBoxNationality.TabIndex = 11;
             // 
-            // maskedTextBox2
+            // maskedTextBoxDOB
             // 
-            this.maskedTextBox2.Location = new System.Drawing.Point(12, 158);
-            this.maskedTextBox2.Mask = "00/00/0000";
-            this.maskedTextBox2.Name = "maskedTextBox2";
-            this.maskedTextBox2.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox2.TabIndex = 12;
-            this.maskedTextBox2.ValidatingType = typeof(System.DateTime);
-            this.maskedTextBox2.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox2_MaskInputRejected);
+            this.maskedTextBoxDOB.Location = new System.Drawing.Point(12, 141);
+            this.maskedTextBoxDOB.Mask = "00/00/0000";
+            this.maskedTextBoxDOB.Name = "maskedTextBoxDOB";
+            this.maskedTextBoxDOB.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBoxDOB.TabIndex = 12;
+            this.maskedTextBoxDOB.ValidatingType = typeof(System.DateTime);
             // 
-            // textBox1
+            // textBoxPassport
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 195);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 13;
+            this.textBoxPassport.Location = new System.Drawing.Point(12, 178);
+            this.textBoxPassport.Name = "textBoxPassport";
+            this.textBoxPassport.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPassport.TabIndex = 13;
             // 
-            // maskedTextBox3
+            // maskedTextBoxPassportExpire
             // 
-            this.maskedTextBox3.Location = new System.Drawing.Point(221, 195);
-            this.maskedTextBox3.Mask = "00/00/0000";
-            this.maskedTextBox3.Name = "maskedTextBox3";
-            this.maskedTextBox3.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox3.TabIndex = 14;
-            this.maskedTextBox3.ValidatingType = typeof(System.DateTime);
+            this.maskedTextBoxPassportExpire.Location = new System.Drawing.Point(221, 178);
+            this.maskedTextBoxPassportExpire.Mask = "00/00/0000";
+            this.maskedTextBoxPassportExpire.Name = "maskedTextBoxPassportExpire";
+            this.maskedTextBoxPassportExpire.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBoxPassportExpire.TabIndex = 14;
+            this.maskedTextBoxPassportExpire.ValidatingType = typeof(System.DateTime);
             // 
-            // textBox2
+            // textBoxClientTicket
             // 
-            this.textBox2.Location = new System.Drawing.Point(12, 231);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 15;
+            this.textBoxClientTicket.Location = new System.Drawing.Point(12, 214);
+            this.textBoxClientTicket.Name = "textBoxClientTicket";
+            this.textBoxClientTicket.Size = new System.Drawing.Size(100, 20);
+            this.textBoxClientTicket.TabIndex = 15;
             // 
-            // textBox3
+            // textBoxEmail
             // 
-            this.textBox3.Location = new System.Drawing.Point(12, 270);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 16;
+            this.textBoxEmail.Location = new System.Drawing.Point(12, 253);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(100, 20);
+            this.textBoxEmail.TabIndex = 16;
             // 
-            // textBox4
+            // textBoxPassword
             // 
-            this.textBox4.Location = new System.Drawing.Point(221, 269);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 17;
+            this.textBoxPassword.Location = new System.Drawing.Point(221, 252);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPassword.TabIndex = 17;
             // 
-            // numericUpDown1
+            // numericUpDownTravelLength
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(12, 309);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
+            this.numericUpDownTravelLength.Location = new System.Drawing.Point(12, 292);
+            this.numericUpDownTravelLength.Maximum = new decimal(new int[] {
             365,
             0,
             0,
             0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 18;
-            this.numericUpDown1.Value = new decimal(new int[] {
+            this.numericUpDownTravelLength.Name = "numericUpDownTravelLength";
+            this.numericUpDownTravelLength.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDownTravelLength.TabIndex = 18;
+            this.numericUpDownTravelLength.Value = new decimal(new int[] {
             180,
             0,
             0,
             0});
             // 
-            // numericUpDown2
+            // numericUpDownPayed
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(221, 308);
-            this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown2.TabIndex = 19;
+            this.numericUpDownPayed.Location = new System.Drawing.Point(221, 291);
+            this.numericUpDownPayed.Name = "numericUpDownPayed";
+            this.numericUpDownPayed.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDownPayed.TabIndex = 19;
             // 
-            // numericUpDown3
+            // numericUpDownPersons
             // 
-            this.numericUpDown3.Location = new System.Drawing.Point(12, 348);
-            this.numericUpDown3.Name = "numericUpDown3";
-            this.numericUpDown3.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown3.TabIndex = 20;
+            this.numericUpDownPersons.Location = new System.Drawing.Point(12, 331);
+            this.numericUpDownPersons.Name = "numericUpDownPersons";
+            this.numericUpDownPersons.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDownPersons.TabIndex = 20;
+            this.numericUpDownPersons.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
-            // numericUpDown4
+            // numericUpDownKids
             // 
-            this.numericUpDown4.Location = new System.Drawing.Point(221, 348);
-            this.numericUpDown4.Name = "numericUpDown4";
-            this.numericUpDown4.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown4.TabIndex = 21;
+            this.numericUpDownKids.Location = new System.Drawing.Point(221, 331);
+            this.numericUpDownKids.Name = "numericUpDownKids";
+            this.numericUpDownKids.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDownKids.TabIndex = 21;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(167, 12);
+            this.label1.Location = new System.Drawing.Point(167, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 13);
             this.label1.TabIndex = 22;
@@ -275,7 +284,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 67);
+            this.label2.Location = new System.Drawing.Point(9, 50);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 23;
@@ -284,7 +293,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(218, 67);
+            this.label3.Location = new System.Drawing.Point(218, 50);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 13);
             this.label3.TabIndex = 24;
@@ -293,7 +302,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 107);
+            this.label4.Location = new System.Drawing.Point(9, 90);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 13);
             this.label4.TabIndex = 25;
@@ -302,7 +311,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(218, 107);
+            this.label5.Location = new System.Drawing.Point(218, 90);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 13);
             this.label5.TabIndex = 26;
@@ -311,7 +320,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 143);
+            this.label6.Location = new System.Drawing.Point(9, 126);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(86, 13);
             this.label6.TabIndex = 27;
@@ -320,17 +329,16 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(218, 143);
+            this.label7.Location = new System.Drawing.Point(218, 126);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(93, 13);
             this.label7.TabIndex = 28;
             this.label7.Text = "Цель обращения";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(9, 181);
+            this.label8.Location = new System.Drawing.Point(9, 164);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(50, 13);
             this.label8.TabIndex = 29;
@@ -339,7 +347,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(218, 181);
+            this.label9.Location = new System.Drawing.Point(218, 164);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 13);
             this.label9.TabIndex = 30;
@@ -348,7 +356,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 218);
+            this.label10.Location = new System.Drawing.Point(9, 201);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(61, 13);
             this.label10.TabIndex = 31;
@@ -357,7 +365,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 254);
+            this.label11.Location = new System.Drawing.Point(9, 237);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(32, 13);
             this.label11.TabIndex = 32;
@@ -366,7 +374,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(218, 254);
+            this.label12.Location = new System.Drawing.Point(218, 237);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(45, 13);
             this.label12.TabIndex = 33;
@@ -375,7 +383,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(9, 293);
+            this.label13.Location = new System.Drawing.Point(9, 276);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(125, 13);
             this.label13.TabIndex = 34;
@@ -384,7 +392,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(218, 292);
+            this.label14.Location = new System.Drawing.Point(218, 275);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(56, 13);
             this.label14.TabIndex = 35;
@@ -393,7 +401,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(9, 332);
+            this.label15.Location = new System.Drawing.Point(9, 315);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(118, 13);
             this.label15.TabIndex = 36;
@@ -402,7 +410,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(218, 332);
+            this.label16.Location = new System.Drawing.Point(218, 315);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(98, 13);
             this.label16.TabIndex = 37;
@@ -411,7 +419,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(218, 371);
+            this.label17.Location = new System.Drawing.Point(218, 354);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(92, 13);
             this.label17.TabIndex = 38;
@@ -420,17 +428,42 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(9, 371);
+            this.label18.Location = new System.Drawing.Point(9, 354);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(36, 13);
             this.label18.TabIndex = 39;
             this.label18.Text = "Титул";
             // 
+            // radioButtonNearestDate1
+            // 
+            this.radioButtonNearestDate1.AutoSize = true;
+            this.radioButtonNearestDate1.Checked = true;
+            this.radioButtonNearestDate1.Location = new System.Drawing.Point(217, 217);
+            this.radioButtonNearestDate1.Name = "radioButtonNearestDate1";
+            this.radioButtonNearestDate1.Size = new System.Drawing.Size(84, 17);
+            this.radioButtonNearestDate1.TabIndex = 40;
+            this.radioButtonNearestDate1.TabStop = true;
+            this.radioButtonNearestDate1.Text = "Ближайшая";
+            this.radioButtonNearestDate1.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonNearestDate2
+            // 
+            this.radioButtonNearestDate2.AutoSize = true;
+            this.radioButtonNearestDate2.Location = new System.Drawing.Point(308, 217);
+            this.radioButtonNearestDate2.Name = "radioButtonNearestDate2";
+            this.radioButtonNearestDate2.Size = new System.Drawing.Size(81, 17);
+            this.radioButtonNearestDate2.TabIndex = 41;
+            this.radioButtonNearestDate2.TabStop = true;
+            this.radioButtonNearestDate2.Text = "Последняя";
+            this.radioButtonNearestDate2.UseVisualStyleBackColor = true;
+            // 
             // Form_visa_edit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(405, 460);
+            this.ClientSize = new System.Drawing.Size(405, 442);
+            this.Controls.Add(this.radioButtonNearestDate2);
+            this.Controls.Add(this.radioButtonNearestDate1);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
@@ -449,35 +482,35 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericUpDown4);
-            this.Controls.Add(this.numericUpDown3);
-            this.Controls.Add(this.numericUpDown2);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.maskedTextBox3);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.maskedTextBox2);
-            this.Controls.Add(this.comboBox5);
-            this.Controls.Add(this.comboBox4);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.numericUpDownKids);
+            this.Controls.Add(this.numericUpDownPersons);
+            this.Controls.Add(this.numericUpDownPayed);
+            this.Controls.Add(this.numericUpDownTravelLength);
+            this.Controls.Add(this.textBoxPassword);
+            this.Controls.Add(this.textBoxEmail);
+            this.Controls.Add(this.textBoxClientTicket);
+            this.Controls.Add(this.maskedTextBoxPassportExpire);
+            this.Controls.Add(this.textBoxPassport);
+            this.Controls.Add(this.maskedTextBoxDOB);
+            this.Controls.Add(this.comboBoxNationality);
+            this.Controls.Add(this.comboBoxTitle);
+            this.Controls.Add(this.comboBoxVisaType);
+            this.Controls.Add(this.comboBoxPurpose);
+            this.Controls.Add(this.comboBoxRegion);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.maskedTextBox1);
+            this.Controls.Add(this.maskedTextBoxVisitDate);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
-            this.Controls.Add(this.checkBoxPass);
-            this.Controls.Add(this.textBoxClientTicket);
-            this.Controls.Add(this.textBoxClientName);
+            this.Controls.Add(this.checkBoxSatus);
+            this.Controls.Add(this.textBoxFirstName);
+            this.Controls.Add(this.textBoxLastName);
             this.Name = "Form_visa_edit";
-            this.Text = "Form_visa_edit";
+            this.Text = "Заявка";
             this.Load += new System.EventHandler(this.Form_visa_edit_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownTravelLength)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPayed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPersons)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownKids)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -485,28 +518,28 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBoxClientName;
-        private System.Windows.Forms.TextBox textBoxClientTicket;
-        private System.Windows.Forms.CheckBox checkBoxPass;
+        private System.Windows.Forms.TextBox textBoxLastName;
+        private System.Windows.Forms.TextBox textBoxFirstName;
+        private System.Windows.Forms.CheckBox checkBoxSatus;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxVisitDate;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.NumericUpDown numericUpDown2;
-        private System.Windows.Forms.NumericUpDown numericUpDown3;
-        private System.Windows.Forms.NumericUpDown numericUpDown4;
+        private System.Windows.Forms.ComboBox comboBoxRegion;
+        private System.Windows.Forms.ComboBox comboBoxPurpose;
+        private System.Windows.Forms.ComboBox comboBoxVisaType;
+        private System.Windows.Forms.ComboBox comboBoxTitle;
+        private System.Windows.Forms.ComboBox comboBoxNationality;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxDOB;
+        private System.Windows.Forms.TextBox textBoxPassport;
+        private System.Windows.Forms.MaskedTextBox maskedTextBoxPassportExpire;
+        private System.Windows.Forms.TextBox textBoxClientTicket;
+        private System.Windows.Forms.TextBox textBoxEmail;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.NumericUpDown numericUpDownTravelLength;
+        private System.Windows.Forms.NumericUpDown numericUpDownPayed;
+        private System.Windows.Forms.NumericUpDown numericUpDownPersons;
+        private System.Windows.Forms.NumericUpDown numericUpDownKids;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -525,5 +558,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.RadioButton radioButtonNearestDate1;
+        private System.Windows.Forms.RadioButton radioButtonNearestDate2;
     }
 }

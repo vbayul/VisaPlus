@@ -14,7 +14,8 @@ namespace VisaPlus
 {
     public partial class Form_visa : Form
     {
-        Form_select_number selectNumber;
+        private Form_visa_edit editVisa;
+        private Form_select_number selectNumber;
         private VisaDAO visaDAO = new VisaDAOImp();
         private VisaDataSet visaDS = new VisaDataSet();
         private ProxyDAO proxyDAO = new ProxyDAOImp();
@@ -52,7 +53,8 @@ namespace VisaPlus
         {
             // запрет кеширования страницы.
             Gecko.GeckoPreferences.User["browser.cache.disk.enable"] = false;
-            Gecko.GeckoPreferences.User["browser.cache.memory.enable"] = false; 
+            Gecko.GeckoPreferences.User["browser.cache.memory.enable"] = false;
+            Param.setConnectionString("database=" + Properties.Settings.Default.DBURL + ";server=localhost;uid=root;password=njgjkm");
             
             Form_login login = new Form_login();
             login.Owner = this;
@@ -67,7 +69,6 @@ namespace VisaPlus
                     пользователиToolStripMenuItem.Visible = false;
                     // дописать фильтр по менеджерам
                 }
-                Param.setConnectionString("database="+Properties.Settings.Default.DBURL+";server=localhost;uid=root;password=njgjkm");
                 //dataGridViewVisa.DataSource = visaDS.getDSVisa("0").Tables[0];
                 URL = setting.getValue("url");
             }
@@ -77,7 +78,7 @@ namespace VisaPlus
         {
             if (dataGridViewVisa.Rows.Count > 0)
             {
-                Form_visa_edit editVisa = new Form_visa_edit(dataGridViewVisa[0, dataGridViewVisa.CurrentCell.RowIndex].Value.ToString());
+                editVisa = new Form_visa_edit(dataGridViewVisa[0, dataGridViewVisa.CurrentCell.RowIndex].Value.ToString());
                 editVisa.Owner = this;
                 editVisa.ShowDialog();
             }
@@ -87,7 +88,7 @@ namespace VisaPlus
         {
             if (dataGridViewVisa.Rows.Count > 0)
             {
-                Form_browser editVisa = new Form_browser(dataGridViewVisa[0, dataGridViewVisa.CurrentCell.RowIndex].Value.ToString());
+                editVisa = new Form_visa_edit(dataGridViewVisa[0, dataGridViewVisa.CurrentCell.RowIndex].Value.ToString());
                 editVisa.Owner = this;
                 editVisa.ShowDialog();
             }
@@ -392,6 +393,11 @@ namespace VisaPlus
             {
                 MessageBox.Show("Возникла ошибка при заполнении полей.");
             }
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

@@ -110,7 +110,7 @@ namespace VisaPlus
             }
             catch (Exception)
             {
-                MessageBox.Show("Произошла ошибка осединения с БД.");
+                MessageBox.Show("Произошла ошибка соединения с БД.");
             }
             return proxy;
         }
