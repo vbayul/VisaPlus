@@ -30,11 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridViewVisa = new System.Windows.Forms.DataGridView();
-            this.idclient = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientstatus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.clientname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientticket = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.userid = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.buttonNew = new System.Windows.Forms.Button();
@@ -63,6 +58,8 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.geckoWebBrowser1 = new Gecko.GeckoWebBrowser();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.idclient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientstatus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVisa)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -82,10 +79,7 @@
             this.dataGridViewVisa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewVisa.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idclient,
-            this.clientstatus,
-            this.clientname,
-            this.clientticket,
-            this.userid});
+            this.clientstatus});
             this.dataGridViewVisa.Location = new System.Drawing.Point(3, 32);
             this.dataGridViewVisa.MultiSelect = false;
             this.dataGridViewVisa.Name = "dataGridViewVisa";
@@ -94,49 +88,6 @@
             this.dataGridViewVisa.Size = new System.Drawing.Size(822, 82);
             this.dataGridViewVisa.TabIndex = 0;
             this.dataGridViewVisa.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVisa_CellDoubleClick);
-            // 
-            // idclient
-            // 
-            this.idclient.DataPropertyName = "idclient";
-            this.idclient.HeaderText = "";
-            this.idclient.Name = "idclient";
-            this.idclient.ReadOnly = true;
-            this.idclient.Width = 50;
-            // 
-            // clientstatus
-            // 
-            this.clientstatus.DataPropertyName = "clientstatus";
-            this.clientstatus.FalseValue = "0";
-            this.clientstatus.HeaderText = "Статус";
-            this.clientstatus.Name = "clientstatus";
-            this.clientstatus.ReadOnly = true;
-            this.clientstatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clientstatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.clientstatus.TrueValue = "1";
-            this.clientstatus.Width = 50;
-            // 
-            // clientname
-            // 
-            this.clientname.DataPropertyName = "clientname";
-            this.clientname.HeaderText = "ФИО";
-            this.clientname.Name = "clientname";
-            this.clientname.ReadOnly = true;
-            this.clientname.Width = 250;
-            // 
-            // clientticket
-            // 
-            this.clientticket.DataPropertyName = "clientticket";
-            this.clientticket.HeaderText = "Квитанция";
-            this.clientticket.Name = "clientticket";
-            this.clientticket.ReadOnly = true;
-            // 
-            // userid
-            // 
-            this.userid.DataPropertyName = "username";
-            this.userid.HeaderText = "Менеджер";
-            this.userid.Name = "userid";
-            this.userid.ReadOnly = true;
-            this.userid.Width = 150;
             // 
             // buttonSearch
             // 
@@ -437,6 +388,26 @@
             this.timer1.Interval = 5000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // idclient
+            // 
+            this.idclient.DataPropertyName = "idclient";
+            this.idclient.HeaderText = "";
+            this.idclient.Name = "idclient";
+            this.idclient.ReadOnly = true;
+            this.idclient.Width = 50;
+            // 
+            // clientstatus
+            // 
+            this.clientstatus.DataPropertyName = "status";
+            this.clientstatus.FalseValue = "0";
+            this.clientstatus.HeaderText = "Статус";
+            this.clientstatus.Name = "clientstatus";
+            this.clientstatus.ReadOnly = true;
+            this.clientstatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clientstatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.clientstatus.TrueValue = "1";
+            this.clientstatus.Width = 50;
+            // 
             // Form_visa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -484,11 +455,6 @@
         private System.Windows.Forms.Button buttonWeb;
         private System.Windows.Forms.Button buttonSearchClean;
         private System.Windows.Forms.Button buttonReload;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idclient;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn clientstatus;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clientname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clientticket;
-        private System.Windows.Forms.DataGridViewTextBoxColumn userid;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button buttonEmail;
         private System.Windows.Forms.Button buttonTicket;
@@ -500,5 +466,7 @@
         private System.Windows.Forms.Button buttonManager;
         private System.Windows.Forms.Button buttonDepType;
         private System.Windows.Forms.Button buttonPeople;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idclient;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn clientstatus;
     }
 }

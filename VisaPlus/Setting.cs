@@ -36,11 +36,14 @@ namespace VisaPlus
                 {
                     url = dr.GetString(0);
                 }
-                myConnection.Close();
             }
             catch (Exception)
             {
                 MessageBox.Show("Произошла ошибка осединения с БД.");
+            }
+            finally
+            {
+                myConnection.Close();
             }
             return url;
         }
@@ -61,11 +64,14 @@ namespace VisaPlus
             {
                 myConnection.Open();
                 myCommand.ExecuteNonQuery();
-                myConnection.Close();
             }
             catch (Exception)
             {
                 MessageBox.Show("Произошла ошибка осединения с БД.");
+            }
+            finally
+            {
+                myConnection.Close();
             }
         }
     }

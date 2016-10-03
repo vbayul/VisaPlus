@@ -61,8 +61,6 @@ namespace VisaPlus
             login.ShowDialog(this);
             if (login.DialogResult == DialogResult.OK)
             {
-                Param.setUserID("1");
-                Param.setAccess("1");
                 if (Param.getAccess() == "0")
                 {
                     общиеToolStripMenuItem.Visible = false;
@@ -76,12 +74,15 @@ namespace VisaPlus
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            if (dataGridViewVisa.Rows.Count > 0)
+            /*if (dataGridViewVisa.Rows.Count > 0)
             {
                 editVisa = new Form_visa_edit(dataGridViewVisa[0, dataGridViewVisa.CurrentCell.RowIndex].Value.ToString());
                 editVisa.Owner = this;
                 editVisa.ShowDialog();
-            }
+            }*/
+            editVisa = new Form_visa_edit("2");
+            editVisa.Owner = this;
+            editVisa.ShowDialog();
         }
 
         private void dataGridViewVisa_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

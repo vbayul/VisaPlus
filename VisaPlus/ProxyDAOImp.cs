@@ -38,11 +38,14 @@ namespace VisaPlus
             {
                 myConnection.Open();
                 myCommand.ExecuteNonQuery();
-                myConnection.Close();
             }
             catch (Exception)
             {
                 MessageBox.Show("Произошла ошибка, не всё поля заполнены.");
+            }
+            finally
+            {
+                myConnection.Close();
             }
         }
         public void setProxy(string id)
@@ -70,11 +73,14 @@ namespace VisaPlus
             {
                 myConnection.Open();
                 myCommand.ExecuteNonQuery();
-                myConnection.Close();
             }
             catch (Exception)
             {
                 MessageBox.Show("Произошла ошибка осединения с БД.");
+            }
+            finally
+            {
+                myConnection.Close();
             }
         }
         public Proxy getProxy()
@@ -106,11 +112,14 @@ namespace VisaPlus
                     proxy.setProxyIP(dr.GetString(1));
                     proxy.setProxyPort(dr.GetString(2));
                 }
-                myConnection.Close();
             }
             catch (Exception)
             {
                 MessageBox.Show("Произошла ошибка соединения с БД.");
+            }
+            finally
+            {
+                myConnection.Close();
             }
             return proxy;
         }

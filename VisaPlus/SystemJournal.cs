@@ -134,17 +134,19 @@ namespace VisaPlus
             {
                 myConnection.Open();
                 da.Fill(ds);
-                myConnection.Close();
             }
             catch (Exception)
             {
                 MessageBox.Show("Ошибка подключения к БД.");
             }
+            finally
+            {
+                myConnection.Close();
+            }
+
             return ds;
         }
-
-
-                public DataSet getTitle()
+        public DataSet getTitle()
         {
             da = new MySqlDataAdapter();
             ds = new DataSet();
@@ -160,11 +162,14 @@ namespace VisaPlus
             {
                 myConnection.Open();
                 da.Fill(ds);
-                myConnection.Close();
             }
             catch (Exception)
             {
                 MessageBox.Show("Ошибка подключения к БД.");
+            }
+            finally
+            {
+                myConnection.Close();
             }
             return ds;
         }

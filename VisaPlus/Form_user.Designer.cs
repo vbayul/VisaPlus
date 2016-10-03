@@ -38,6 +38,7 @@
             // 
             this.dataGridViewUser.AllowUserToAddRows = false;
             this.dataGridViewUser.AllowUserToDeleteRows = false;
+            this.dataGridViewUser.AllowUserToResizeRows = false;
             this.dataGridViewUser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -45,6 +46,7 @@
             this.dataGridViewUser.Location = new System.Drawing.Point(12, 41);
             this.dataGridViewUser.Name = "dataGridViewUser";
             this.dataGridViewUser.ReadOnly = true;
+            this.dataGridViewUser.RowHeadersVisible = false;
             this.dataGridViewUser.Size = new System.Drawing.Size(531, 440);
             this.dataGridViewUser.TabIndex = 0;
             this.dataGridViewUser.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUser_CellContentClick);

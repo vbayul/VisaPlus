@@ -41,11 +41,14 @@ namespace VisaPlus
 
                     value = dr.GetString(1);
                 }
-                myConnection.Close();
             }
             catch (Exception)
             {
                 MessageBox.Show("Произошла ошибка осединения с БД.");
+            }
+            finally
+            {
+                myConnection.Close();
             }
 
             return value;

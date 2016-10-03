@@ -13,6 +13,7 @@ namespace VisaPlus
     {
         bool isLogin = false;
         SystemJournal systemJurnal = new SystemJournal();
+        UserDAO userDAO = new UserDAOImp();
 
         public Form_login()
         {
@@ -29,6 +30,8 @@ namespace VisaPlus
         {
             if (checkPass(textBoxPass.Text))// установить всякие параметры аля уровень доступа проверка пароля и т.д.
                 this.DialogResult = DialogResult.OK;
+            else
+                MessageBox.Show("Пароль введен не корректно.");
         }
 
         private void Form_login_Load(object sender, EventArgs e)
@@ -40,9 +43,14 @@ namespace VisaPlus
 
         private bool checkPass(string pass)
         {
-            // дописать момент проверки пароля
-            isLogin = true;
-            return true;
+            User user = userDAO.getUser(comboBoxLogin.SelectedValue.ToString());
+            if (user.getPass() == textBoxPass.Text)
+            {
+                isLogin = true;
+                Param.setAccess(user.getType());
+                Param.setUserID(user.getId());
+            }
+            return isLogin;
         }
     }
 }

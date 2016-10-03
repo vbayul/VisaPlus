@@ -35,13 +35,17 @@ namespace VisaPlus
             try{
                 myConnection.Open();
                 myCommand.ExecuteNonQuery();
-                myConnection.Close();
                 saccess = true;
             }
             catch (Exception)
             {
                 MessageBox.Show("Произошла ошибка, не всё поля заполнены.");
             }
+            finally
+            {
+                myConnection.Close();
+            }
+
             return saccess;
         }
 
@@ -71,13 +75,17 @@ namespace VisaPlus
             {
                 myConnection.Open();
                 myCommand.ExecuteNonQuery();
-                myConnection.Close();
                 saccess = true;
             }
             catch (Exception)
             {
                 MessageBox.Show("Произошла ошибка, не всё поля заполнены.");
             }
+            finally
+            {
+                myConnection.Close();
+            }
+
             return saccess;
         }
 
@@ -108,41 +116,17 @@ namespace VisaPlus
                     user.setStatus(dr.GetInt32(4).ToString());
                     user.setEmail(dr.GetString(5));
                 }
-                myConnection.Close();
             }
             catch (Exception)
             {
                 MessageBox.Show("Произошла ошибка осединения с БД.");
             }
-            return user;
-        }
-        /*
-        public void setPass(string id, string pass)
-        {
-            cmd = "UPDATE `pass`.`users` SET "
-                + " `password` = @passworde "
-                + " WHERE `idusers` = @iduser;";
-
-            myConnection.ConnectionString = Param.getConnectionString();
-            myCommand.Connection = myConnection;
-            myCommand.CommandType = CommandType.Text;
-            myCommand.CommandText = cmd;
-            myCommand.Parameters.Clear();
-
-            myCommand.Parameters.AddWithValue("@password", pass);
-            myCommand.Parameters.AddWithValue("@iduser", id);
-
-            try
+            finally
             {
-                myConnection.Open();
-                myCommand.ExecuteNonQuery();
                 myConnection.Close();
             }
-            catch (Exception)
-            {
-                MessageBox.Show("Произошла ошибка cоединения с БД.");
-            }
+
+            return user;
         }
-         * */
     }
 }

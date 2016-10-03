@@ -11,7 +11,7 @@ namespace VisaPlus
     class ProxyDataSet
     {
         private string cmd = "";
-        private MySqlConnection myConnect = new MySqlConnection();
+        private MySqlConnection myConnection = new MySqlConnection();
         private MySqlCommand myCommand = new MySqlCommand();
         private MySqlDataAdapter da;
         private DataSet ds;
@@ -23,8 +23,8 @@ namespace VisaPlus
 
             da = new MySqlDataAdapter();
             ds = new DataSet();
-            myConnect.ConnectionString = Param.getConnectionString();
-            myCommand.Connection = myConnect;
+            myConnection.ConnectionString = Param.getConnectionString();
+            myCommand.Connection = myConnection;
             myCommand.CommandType = CommandType.Text;
             myCommand.CommandText = cmd;
 
@@ -35,13 +35,17 @@ namespace VisaPlus
 
             try
             {
-                myConnect.Open();
+                myConnection.Open();
                 da.Fill(ds);
-                myConnect.Close();
+                myConnection.Close();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 MessageBox.Show("Произошла ошибка осединения с БД.");
+            }
+            finally
+            {
+                myConnection.Close();
             }
 
             return ds;

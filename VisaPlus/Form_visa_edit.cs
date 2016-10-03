@@ -23,11 +23,12 @@ namespace VisaPlus
         }
         private void Form_visa_edit_Load(object sender, EventArgs e)
         {
-            //дописать заполнение полей формы
             comboBoxFill();
             if (id != "0")
             {
+                //дописать заполнение полей формы
                 Visa visa = visaDAO.getVisa(id);
+                fillFildsByVisa(visa);
             }
             else
             {
@@ -40,7 +41,7 @@ namespace VisaPlus
             visa = fillVisaByFilds(visa);
             if (id == "0")
             {
-                if (textBoxLastName.Text != "" || textBoxFirstName.Text != "")
+                if (textBoxLastName.Text != "" || textBoxFirstName.Text != "" || textBoxEmail.Text != "")
                 {
                     if (visaDAO.addVisa(visa))
                     {
@@ -68,10 +69,39 @@ namespace VisaPlus
             }
         }
 
+        private void fillFildsByVisa(Visa visa)
+        {
+            maskedTextBoxVisitDate.Text = visa.getvisitdate();
+            checkBoxSatus.Checked = Convert.ToBoolean(Convert.ToInt32(visa.getstatus()));
+            comboBoxRegion.SelectedValue = visa.getregion();
+            comboBoxTitle.SelectedValue = visa.gettitle();
+            textBoxFirstName.Text = visa.getfirstname();
+            textBoxLastName.Text = visa.getlastname();
+            maskedTextBoxDOB.Text = visa.getdob();
+            textBoxEmail.Text = visa.getemail();
+            textBoxPassword.Text = visa.getpassword();
+            textBoxPassport.Text = visa.getpassport();
+            maskedTextBoxPassportExpire.Text = visa.getpassportexpire();
+            textBoxClientTicket.Text = visa.getclientticket();
+            comboBoxVisaType.SelectedValue = visa.getvisatype();
+            comboBoxNationality.SelectedValue = visa.getnationality();
+            comboBoxPurpose.SelectedValue = visa.getpurpose();
+            numericUpDownPersons.Value = Convert.ToDecimal(visa.getpersons());
+            numericUpDownKids.Value = Convert.ToDecimal(visa.getkids());
+            numericUpDownPayed.Value = Convert.ToDecimal(visa.getpayed());
+            numericUpDownTravelLength.Value = Convert.ToDecimal(visa.gettravellength());
+            if (visa.getnearestdate() == "1")
+                radioButtonNearestDate1.Checked = true;
+            else
+                radioButtonNearestDate2.Checked = true;
+
+        }
+
         private Visa fillVisaByFilds(Visa visa)
         {
             if (id != "0")
                 visa.setId(id);
+            visa.setvisitdate(maskedTextBoxVisitDate.Text);
             visa.setstatus(Convert.ToInt32(checkBoxSatus.Checked).ToString());
             visa.setregion(comboBoxRegion.SelectedValue.ToString());
             visa.settitle(comboBoxTitle.SelectedValue.ToString());
@@ -99,6 +129,7 @@ namespace VisaPlus
         private void setDeffSettings()
         {
             // дописать момент стандартных настроек
+            textBoxPassword.Text = systemSetting.getValue("emailpassword");
             comboBoxRegion.SelectedValue = systemSetting.getValue("region");
             comboBoxPurpose.SelectedValue = systemSetting.getValue("purpose");
             comboBoxVisaType.SelectedValue = systemSetting.getValue("visatype");
@@ -133,16 +164,5 @@ namespace VisaPlus
         {
             Close();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            /*
-            MessageBox.Show(maskedTextBox1.Text.Replace('.','/'));
-            string bc = maskedTextBox1.Text.Replace('.', '/');
-            maskedTextBox1.Text = bc;
-            */
-        }
-
-
     }
 }

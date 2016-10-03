@@ -38,11 +38,14 @@ namespace VisaPlus
             {
                 myConnection.Open();
                 da.Fill(ds);
-                myConnection.Close();
             }
             catch (Exception)
             {
                 MessageBox.Show("Произошла ошибка осединения с БД.");
+            }
+            finally
+            {
+                myConnection.Close();
             }
 
             return ds;
