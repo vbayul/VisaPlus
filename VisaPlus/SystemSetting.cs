@@ -53,5 +53,35 @@ namespace VisaPlus
 
             return value;
         }
+        public void setValue(string param, string value)
+        {
+            cmd = "UPDATE `pass`.`setting` SET `settingvalue` = @settingvalue"
+                + " WHERE settingparam = @settingparam";
+
+            //da = new MySqlDataAdapter();
+            myConnection.ConnectionString = Param.getConnectionString();
+            myCommand.Connection = myConnection;
+            myCommand.CommandType = CommandType.Text;
+            myCommand.CommandText = cmd;
+
+            myCommand.Parameters.Clear();
+            myCommand.Parameters.AddWithValue("@settingparam", param);
+            myCommand.Parameters.AddWithValue("@settingvalue", value);
+            //da.SelectCommand = myCommand;
+
+            try
+            {
+                myConnection.Open();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Произошла ошибка осединения с БД.");
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+        }
     }
 }

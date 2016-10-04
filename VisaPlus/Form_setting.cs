@@ -11,7 +11,8 @@ namespace VisaPlus
 {
     public partial class Form_setting : Form
     {
-        Setting setting = new Setting();
+        private SystemSetting systemSetting = new SystemSetting();
+        private SystemJournal systemJurnal = new SystemJournal();
 
         public Form_setting()
         {
@@ -20,13 +21,59 @@ namespace VisaPlus
 
         private void Form_setting_Load(object sender, EventArgs e)
         {
-            textBox1.Text = setting.getValue("url");
+            textBox1.Text = systemSetting.getValue("url");
+            comboBoxFill();
+            setDeffSettings();
         }
 
         private void buttonUrlSave_Click(object sender, EventArgs e)
         {
-            setting.setValue(textBox1.Text, "url");
+            systemSetting.setValue("url",textBox1.Text);
+            systemSetting.setValue("emailpassword", textBoxPassword.Text);
+            systemSetting.setValue("region", comboBoxRegion.SelectedValue.ToString());
+            systemSetting.setValue("purpose",comboBoxPurpose.SelectedValue.ToString());
+            systemSetting.setValue("visatype", comboBoxVisaType.SelectedValue.ToString());
+            systemSetting.setValue("nationality",comboBoxNationality.SelectedValue.ToString());
+            systemSetting.setValue("title", comboBoxTitle.SelectedValue.ToString());
+            Close();
         }
 
+        private void comboBoxFill()
+        {
+            comboBoxRegion.DataSource = systemJurnal.getRegion().Tables[0];
+            comboBoxRegion.DisplayMember = "nameregion";
+            comboBoxRegion.ValueMember = "idregion";
+
+            comboBoxVisaType.DataSource = systemJurnal.getVisaType().Tables[0];
+            comboBoxVisaType.DisplayMember = "namevisatype";
+            comboBoxVisaType.ValueMember = "idvisatype";
+
+            comboBoxPurpose.DataSource = systemJurnal.getPurpose().Tables[0];
+            comboBoxPurpose.DisplayMember = "namepurposes";
+            comboBoxPurpose.ValueMember = "idpurposes";
+
+            comboBoxNationality.DataSource = systemJurnal.getNationality().Tables[0];
+            comboBoxNationality.DisplayMember = "nationality";
+            comboBoxNationality.ValueMember = "idnationality";
+
+            comboBoxTitle.DataSource = systemJurnal.getTitle().Tables[0];
+            comboBoxTitle.DisplayMember = "nametitle";
+            comboBoxTitle.ValueMember = "idtitle";
+        }
+
+        private void setDeffSettings()
+        {
+            textBoxPassword.Text = systemSetting.getValue("emailpassword");
+            comboBoxRegion.SelectedValue = systemSetting.getValue("region");
+            comboBoxPurpose.SelectedValue = systemSetting.getValue("purpose");
+            comboBoxVisaType.SelectedValue = systemSetting.getValue("visatype");
+            comboBoxNationality.SelectedValue = systemSetting.getValue("nationality");
+            comboBoxTitle.SelectedValue = systemSetting.getValue("title");
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

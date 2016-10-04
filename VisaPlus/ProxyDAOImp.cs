@@ -123,5 +123,33 @@ namespace VisaPlus
             }
             return proxy;
         }
+
+        public void delProxy(string id)
+        {
+            myConnection.ConnectionString = Param.getConnectionString();
+            myCommand.Connection = myConnection;
+            myCommand.CommandType = CommandType.Text;
+            myCommand.Parameters.Clear();
+
+            cmd = "DELETE proxy WHERE proxystatus = 1 WHERE idproxy = @idproxy";
+
+            myCommand.CommandText = cmd;
+            myCommand.Parameters.AddWithValue("@idproxy", id);
+            myCommand.Parameters.AddWithValue("@proxyuser", Param.getUserID());
+
+            try
+            {
+                myConnection.Open();
+                myCommand.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Произошла ошибка осединения с БД.");
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+        }
     }
 }

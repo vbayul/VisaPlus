@@ -492,6 +492,8 @@
             this.Controls.Add(this.checkBoxSatus);
             this.Controls.Add(this.textBoxFirstName);
             this.Controls.Add(this.textBoxLastName);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form_visa_edit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Заявка";

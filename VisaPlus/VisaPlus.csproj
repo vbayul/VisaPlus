@@ -98,7 +98,6 @@
     <Compile Include="Form_user_edit.Designer.cs">
       <DependentUpon>Form_user_edit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Setting.cs" />
     <Compile Include="SystemJournal.cs" />
     <Compile Include="SystemSetting.cs" />
     <Compile Include="UserDAO.cs" />

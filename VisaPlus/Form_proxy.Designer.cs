@@ -31,16 +31,17 @@
             this.textBoxIP = new System.Windows.Forms.TextBox();
             this.textBoxPort = new System.Windows.Forms.TextBox();
             this.dataGridViewProxy = new System.Windows.Forms.DataGridView();
+            this.idproxy = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.proxystatus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.proxyip = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.proxyport = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonClean = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonSet = new System.Windows.Forms.Button();
             this.buttonCln = new System.Windows.Forms.Button();
-            this.idproxy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.proxystatus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.proxyip = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.proxyport = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProxy)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,6 +82,41 @@
             this.dataGridViewProxy.RowHeadersVisible = false;
             this.dataGridViewProxy.Size = new System.Drawing.Size(387, 180);
             this.dataGridViewProxy.TabIndex = 2;
+            // 
+            // idproxy
+            // 
+            this.idproxy.DataPropertyName = "idproxy";
+            this.idproxy.HeaderText = "";
+            this.idproxy.Name = "idproxy";
+            this.idproxy.ReadOnly = true;
+            this.idproxy.Width = 50;
+            // 
+            // proxystatus
+            // 
+            this.proxystatus.DataPropertyName = "proxystatus";
+            this.proxystatus.FalseValue = "0";
+            this.proxystatus.HeaderText = "Статус";
+            this.proxystatus.Name = "proxystatus";
+            this.proxystatus.ReadOnly = true;
+            this.proxystatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.proxystatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.proxystatus.TrueValue = "1";
+            this.proxystatus.Width = 50;
+            // 
+            // proxyip
+            // 
+            this.proxyip.DataPropertyName = "proxyip";
+            this.proxyip.HeaderText = "IP";
+            this.proxyip.Name = "proxyip";
+            this.proxyip.ReadOnly = true;
+            this.proxyip.Width = 150;
+            // 
+            // proxyport
+            // 
+            this.proxyport.DataPropertyName = "proxyport";
+            this.proxyport.HeaderText = "Port";
+            this.proxyport.Name = "proxyport";
+            this.proxyport.ReadOnly = true;
             // 
             // buttonSave
             // 
@@ -140,46 +176,22 @@
             this.buttonCln.UseVisualStyleBackColor = true;
             this.buttonCln.Click += new System.EventHandler(this.buttonCln_Click);
             // 
-            // idproxy
+            // buttonDelete
             // 
-            this.idproxy.DataPropertyName = "idproxy";
-            this.idproxy.HeaderText = "";
-            this.idproxy.Name = "idproxy";
-            this.idproxy.ReadOnly = true;
-            this.idproxy.Width = 50;
-            // 
-            // proxystatus
-            // 
-            this.proxystatus.DataPropertyName = "proxystatus";
-            this.proxystatus.FalseValue = "0";
-            this.proxystatus.HeaderText = "Статус";
-            this.proxystatus.Name = "proxystatus";
-            this.proxystatus.ReadOnly = true;
-            this.proxystatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.proxystatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.proxystatus.TrueValue = "1";
-            this.proxystatus.Width = 50;
-            // 
-            // proxyip
-            // 
-            this.proxyip.DataPropertyName = "proxyip";
-            this.proxyip.HeaderText = "IP";
-            this.proxyip.Name = "proxyip";
-            this.proxyip.ReadOnly = true;
-            this.proxyip.Width = 150;
-            // 
-            // proxyport
-            // 
-            this.proxyport.DataPropertyName = "proxyport";
-            this.proxyport.HeaderText = "Port";
-            this.proxyport.Name = "proxyport";
-            this.proxyport.ReadOnly = true;
+            this.buttonDelete.Location = new System.Drawing.Point(177, 51);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.TabIndex = 9;
+            this.buttonDelete.Text = "Удалить";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // Form_proxy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(411, 272);
+            this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonCln);
             this.Controls.Add(this.buttonSet);
             this.Controls.Add(this.label2);
@@ -190,6 +202,7 @@
             this.Controls.Add(this.textBoxPort);
             this.Controls.Add(this.textBoxIP);
             this.Name = "Form_proxy";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Proxy";
             this.Load += new System.EventHandler(this.Form_proxy_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProxy)).EndInit();
@@ -213,5 +226,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn proxystatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn proxyip;
         private System.Windows.Forms.DataGridViewTextBoxColumn proxyport;
+        private System.Windows.Forms.Button buttonDelete;
     }
 }

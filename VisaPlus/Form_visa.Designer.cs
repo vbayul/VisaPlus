@@ -30,6 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridViewVisa = new System.Windows.Forms.DataGridView();
+            this.idclient = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientstatus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.visitdate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dob = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passport = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.passportexpire = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clientticket = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.payed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.buttonNew = new System.Windows.Forms.Button();
@@ -58,8 +69,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.geckoWebBrowser1 = new Gecko.GeckoWebBrowser();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.idclient = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clientstatus = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.timerreCapcha = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVisa)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -79,7 +89,16 @@
             this.dataGridViewVisa.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewVisa.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idclient,
-            this.clientstatus});
+            this.clientstatus,
+            this.visitdate,
+            this.firstname,
+            this.lastname,
+            this.dob,
+            this.passport,
+            this.passportexpire,
+            this.clientticket,
+            this.payed,
+            this.username});
             this.dataGridViewVisa.Location = new System.Drawing.Point(3, 32);
             this.dataGridViewVisa.MultiSelect = false;
             this.dataGridViewVisa.Name = "dataGridViewVisa";
@@ -88,6 +107,89 @@
             this.dataGridViewVisa.Size = new System.Drawing.Size(822, 82);
             this.dataGridViewVisa.TabIndex = 0;
             this.dataGridViewVisa.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVisa_CellDoubleClick);
+            // 
+            // idclient
+            // 
+            this.idclient.DataPropertyName = "idclient";
+            this.idclient.HeaderText = "";
+            this.idclient.Name = "idclient";
+            this.idclient.ReadOnly = true;
+            this.idclient.Width = 50;
+            // 
+            // clientstatus
+            // 
+            this.clientstatus.DataPropertyName = "status";
+            this.clientstatus.FalseValue = "0";
+            this.clientstatus.HeaderText = "Статус";
+            this.clientstatus.Name = "clientstatus";
+            this.clientstatus.ReadOnly = true;
+            this.clientstatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.clientstatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.clientstatus.TrueValue = "1";
+            this.clientstatus.Width = 50;
+            // 
+            // visitdate
+            // 
+            this.visitdate.DataPropertyName = "visitdate";
+            this.visitdate.HeaderText = "Дата";
+            this.visitdate.Name = "visitdate";
+            this.visitdate.ReadOnly = true;
+            // 
+            // firstname
+            // 
+            this.firstname.DataPropertyName = "firstname";
+            this.firstname.HeaderText = "Имя";
+            this.firstname.Name = "firstname";
+            this.firstname.ReadOnly = true;
+            // 
+            // lastname
+            // 
+            this.lastname.DataPropertyName = "lastname";
+            this.lastname.HeaderText = "Фамилия";
+            this.lastname.Name = "lastname";
+            this.lastname.ReadOnly = true;
+            // 
+            // dob
+            // 
+            this.dob.DataPropertyName = "dob";
+            this.dob.HeaderText = "День рождения";
+            this.dob.Name = "dob";
+            this.dob.ReadOnly = true;
+            // 
+            // passport
+            // 
+            this.passport.DataPropertyName = "passport";
+            this.passport.HeaderText = "Паспорт";
+            this.passport.Name = "passport";
+            this.passport.ReadOnly = true;
+            // 
+            // passportexpire
+            // 
+            this.passportexpire.DataPropertyName = "passportexpire";
+            this.passportexpire.HeaderText = "Срок действия";
+            this.passportexpire.Name = "passportexpire";
+            this.passportexpire.ReadOnly = true;
+            // 
+            // clientticket
+            // 
+            this.clientticket.DataPropertyName = "clientticket";
+            this.clientticket.HeaderText = "Квитанция";
+            this.clientticket.Name = "clientticket";
+            this.clientticket.ReadOnly = true;
+            // 
+            // payed
+            // 
+            this.payed.DataPropertyName = "payed";
+            this.payed.HeaderText = "Оплачено";
+            this.payed.Name = "payed";
+            this.payed.ReadOnly = true;
+            // 
+            // username
+            // 
+            this.username.DataPropertyName = "username";
+            this.username.HeaderText = "Менеджер";
+            this.username.Name = "username";
+            this.username.ReadOnly = true;
             // 
             // buttonSearch
             // 
@@ -136,7 +238,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(854, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // настройкиToolStripMenuItem
             // 
@@ -380,33 +481,18 @@
             this.geckoWebBrowser1.TabIndex = 0;
             this.geckoWebBrowser1.UseHttpActivityObserver = false;
             this.geckoWebBrowser1.Navigating += new System.EventHandler<Gecko.Events.GeckoNavigatingEventArgs>(this.geckoWebBrowser1_Navigating_1);
+            this.geckoWebBrowser1.NavigationError += new System.EventHandler<Gecko.Events.GeckoNavigationErrorEventArgs>(this.geckoWebBrowser1_NavigationError);
             this.geckoWebBrowser1.DocumentCompleted += new System.EventHandler<Gecko.Events.GeckoDocumentCompletedEventArgs>(this.geckoWebBrowser1_DocumentCompleted);
             this.geckoWebBrowser1.ProgressChanged += new System.EventHandler<Gecko.GeckoProgressEventArgs>(this.geckoWebBrowser1_ProgressChanged);
             // 
             // timer1
             // 
-            this.timer1.Interval = 5000;
+            this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // idclient
+            // timerreCapcha
             // 
-            this.idclient.DataPropertyName = "idclient";
-            this.idclient.HeaderText = "";
-            this.idclient.Name = "idclient";
-            this.idclient.ReadOnly = true;
-            this.idclient.Width = 50;
-            // 
-            // clientstatus
-            // 
-            this.clientstatus.DataPropertyName = "status";
-            this.clientstatus.FalseValue = "0";
-            this.clientstatus.HeaderText = "Статус";
-            this.clientstatus.Name = "clientstatus";
-            this.clientstatus.ReadOnly = true;
-            this.clientstatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.clientstatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.clientstatus.TrueValue = "1";
-            this.clientstatus.Width = 50;
+            this.timerreCapcha.Tick += new System.EventHandler(this.timerreCapcha_Tick);
             // 
             // Form_visa
             // 
@@ -468,5 +554,15 @@
         private System.Windows.Forms.Button buttonPeople;
         private System.Windows.Forms.DataGridViewTextBoxColumn idclient;
         private System.Windows.Forms.DataGridViewCheckBoxColumn clientstatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn visitdate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dob;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passport;
+        private System.Windows.Forms.DataGridViewTextBoxColumn passportexpire;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clientticket;
+        private System.Windows.Forms.DataGridViewTextBoxColumn payed;
+        private System.Windows.Forms.DataGridViewTextBoxColumn username;
+        private System.Windows.Forms.Timer timerreCapcha;
     }
 }

@@ -43,7 +43,7 @@
             // checkBoxBlock
             // 
             this.checkBoxBlock.AutoSize = true;
-            this.checkBoxBlock.Location = new System.Drawing.Point(12, 202);
+            this.checkBoxBlock.Location = new System.Drawing.Point(126, 109);
             this.checkBoxBlock.Name = "checkBoxBlock";
             this.checkBoxBlock.Size = new System.Drawing.Size(130, 17);
             this.checkBoxBlock.TabIndex = 0;
@@ -53,7 +53,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(272, 198);
+            this.buttonSave.Location = new System.Drawing.Point(96, 142);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 1;
@@ -63,7 +63,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(353, 198);
+            this.buttonCancel.Location = new System.Drawing.Point(177, 142);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 2;
@@ -89,7 +89,7 @@
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(110, 112);
+            this.textBoxEmail.Location = new System.Drawing.Point(109, 73);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(142, 20);
             this.textBoxEmail.TabIndex = 5;
@@ -98,7 +98,7 @@
             // checkBoxAdmin
             // 
             this.checkBoxAdmin.AutoSize = true;
-            this.checkBoxAdmin.Location = new System.Drawing.Point(110, 73);
+            this.checkBoxAdmin.Location = new System.Drawing.Point(12, 109);
             this.checkBoxAdmin.Name = "checkBoxAdmin";
             this.checkBoxAdmin.Size = new System.Drawing.Size(105, 17);
             this.checkBoxAdmin.TabIndex = 7;
@@ -127,7 +127,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 115);
+            this.label3.Location = new System.Drawing.Point(12, 76);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(32, 13);
             this.label3.TabIndex = 11;
@@ -137,7 +137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 227);
+            this.ClientSize = new System.Drawing.Size(261, 176);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -148,7 +148,10 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.checkBoxBlock);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form_user_edit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Пользователь";
             this.Load += new System.EventHandler(this.Form_user_edit_Load);
             this.ResumeLayout(false);

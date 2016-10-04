@@ -94,7 +94,6 @@ namespace VisaPlus
                 radioButtonNearestDate1.Checked = true;
             else
                 radioButtonNearestDate2.Checked = true;
-
         }
 
         private Visa fillVisaByFilds(Visa visa)
@@ -128,7 +127,6 @@ namespace VisaPlus
         }
         private void setDeffSettings()
         {
-            // дописать момент стандартных настроек
             textBoxPassword.Text = systemSetting.getValue("emailpassword");
             comboBoxRegion.SelectedValue = systemSetting.getValue("region");
             comboBoxPurpose.SelectedValue = systemSetting.getValue("purpose");

@@ -36,10 +36,13 @@
             // 
             this.dataGridViewManager.AllowUserToAddRows = false;
             this.dataGridViewManager.AllowUserToDeleteRows = false;
+            this.dataGridViewManager.AllowUserToResizeRows = false;
             this.dataGridViewManager.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewManager.Location = new System.Drawing.Point(12, 12);
+            this.dataGridViewManager.MultiSelect = false;
             this.dataGridViewManager.Name = "dataGridViewManager";
             this.dataGridViewManager.ReadOnly = true;
+            this.dataGridViewManager.RowHeadersVisible = false;
             this.dataGridViewManager.Size = new System.Drawing.Size(380, 260);
             this.dataGridViewManager.TabIndex = 0;
             this.dataGridViewManager.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewManager_CellDoubleClick);
@@ -51,7 +54,7 @@
             this.ClientSize = new System.Drawing.Size(404, 284);
             this.Controls.Add(this.dataGridViewManager);
             this.Name = "Form_filtr";
-            this.Text = "Form_filtr";
+            this.Text = "Менеджеры";
             this.Load += new System.EventHandler(this.Form_filtr_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewManager)).EndInit();
             this.ResumeLayout(false);

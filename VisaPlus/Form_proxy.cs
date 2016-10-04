@@ -79,5 +79,18 @@ namespace VisaPlus
         {
             setProxy("");
         }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewProxy.RowCount > 0)
+            {
+                proxyDAO.delProxy(dataGridViewProxy[0, dataGridViewProxy.CurrentCell.RowIndex].Value.ToString());
+                dataGridViewProxy.DataSource = proxy.proxyDS().Tables[0];
+            }
+            else
+            {
+                MessageBox.Show("Настройки прокси ещё не внесены.");
+            }
+        }
     }
 }
