@@ -72,6 +72,7 @@ namespace VisaPlus
 
             return saccess;
         }
+
         public bool saveVisa(Visa visa)
         {
             cmd = "UPDATE `pass`.`client` SET `visitdate` = @visitdate,`status` = @status,"
@@ -174,6 +175,38 @@ namespace VisaPlus
             }
 
             return visa;
+        }
+        public bool saveDate(string date,string id)
+        {
+            cmd = "UPDATE `pass`.`client` SET `visitdate` = @visitdate , status = 1 "
+                + " WHERE `idclient` = @idclient;";
+
+            myConnection.ConnectionString = Param.getConnectionString();
+            myCommand.Connection = myConnection;
+            myCommand.CommandType = CommandType.Text;
+            myCommand.CommandText = cmd;
+            myCommand.Parameters.Clear();
+
+            myCommand.Parameters.AddWithValue("@visitdate", date);
+            myCommand.Parameters.AddWithValue("@idclient", id);
+
+            bool saccess = false;
+            try
+            {
+                myConnection.Open();
+                myCommand.ExecuteNonQuery();
+                saccess = true;
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show("Произошла ошибка соединения с БД.");
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+
+            return saccess;
         }
 
         private MySqlCommand commandParam(MySqlCommand myCommand, Visa visa, bool save)

@@ -24,7 +24,7 @@ namespace VisaPlus
         private string URL;
         private string idManager = "0";
         private Visa visaInput = new Visa();
-        private bool firstSearch = true;
+        private bool stop =false;
 
         public Form_visa()
         {
@@ -54,6 +54,10 @@ namespace VisaPlus
 
         private void Form_visa_Load(object sender, EventArgs e)
         {
+            TabPage tabPage = new TabPage();
+            tabPage.Tag = "http://stackoverflow.com";
+            tabPage.ToolTipText = "ToolTipText";
+            tabPage.Text = "Text";
             // запрет кеширования страницы.
             Gecko.GeckoPreferences.User["browser.cache.disk.enable"] = false;
             Gecko.GeckoPreferences.User["browser.cache.memory.enable"] = false;
@@ -75,6 +79,7 @@ namespace VisaPlus
                 }
                 dataGridViewVisa.DataSource = visaDS.getDSVisa(idManager).Tables[0];
                 URL = systemSetting.getValue("url");
+                RowsColor();
             }
         }
 
@@ -133,18 +138,10 @@ namespace VisaPlus
             }
         }
 
-
-
         private void timer1_Tick(object sender, EventArgs e)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                if (i == 4)
-                {
-                    geckoWebBrowser1.Navigate(URL);
-                    timer1.Enabled = false;
-                }
-            }
+            label2.Text = "Загрузка";
+            geckoWebBrowser1.Reload();
         }
 
         private void пользователиToolStripMenuItem_Click(object sender, EventArgs e)
@@ -212,7 +209,9 @@ namespace VisaPlus
         private void buttonStop_Click(object sender, EventArgs e)
         {
             label2.Text = "Стоп";
-            geckoWebBrowser1.Stop();
+            stop = true;
+            //geckoWebBrowser1.Stop();
+            timer1.Enabled = false;
         }
 
         private void buttonManagerClean_Click(object sender, EventArgs e)
@@ -288,8 +287,8 @@ namespace VisaPlus
 
         private void geckoWebBrowser1_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
-            timer1.Enabled = false;
             label2.Text = "Готово";
+            ReloadNav();
             startClick();
             setDepType();
             setTicket();
@@ -301,6 +300,16 @@ namespace VisaPlus
         {
             timer1.Enabled = true;
         }
+        private void ReloadNav()
+        {
+            if (stop != true)
+            {
+                if (geckoWebBrowser1.Document.GetElementById("aspnetForm") != null)
+                    timer1.Enabled = false;
+                else
+                    timer1.Enabled = true;
+            }
+        }
 
         private void startClick()
         {
@@ -308,17 +317,9 @@ namespace VisaPlus
             {
                 GeckoInputElement Loginbutton = new GeckoInputElement(geckoWebBrowser1.Document.GetElementById("ctl00_plhMain_lnkSchApp").DomObject);
                 Loginbutton.Click();
-                if (!firstSearch)
-                {
-                    firstSearch = true;
-                    timer1.Enabled = false;
-                }
             }
             catch (Exception)
             {
-                firstSearch = false;
-                if (firstSearch)
-                    timer1.Enabled = true;
                 //MessageBox.Show("Возникла ошибка при заполнении полей.");
             }
         }
@@ -338,6 +339,13 @@ namespace VisaPlus
                 //
                 GeckoInputElement Loginbutton = new GeckoInputElement(geckoWebBrowser1.Document.GetElementById("ctl00_plhMain_btnSubmit").DomObject);
                 Loginbutton.Click();
+                GeckoElement links = geckoWebBrowser1.Document.GetElementById("ctl00_plhMain_lblMsg");
+                if (links.TextContent.Contains("No date(s) available for appointment"))
+                {
+                    timer1.Enabled = false;
+                    stop = true;
+                    label2.Text = "Стоп";
+                }
             }
             catch (Exception)
             {
@@ -347,21 +355,30 @@ namespace VisaPlus
 
         private void setTicket()
         {
+            // <span id="ctl00_plhMain_lblMsg" class="Validation">квитанція, 6327/0194/7959 is використано</span> ошибка
             try
             {
-                string number = "1";
-                visaInput = getVisaInput(dataGridViewVisa[0, dataGridViewVisa.CurrentCell.RowIndex].Value.ToString());
                 var document = geckoWebBrowser1.Document;
-
+                int i = 1;
                 //ctl00_plhMain_repAppReceiptDetails_ctl01_txtReceiptNumber - input - номер квитации
 
-                var purpose = (GeckoInputElement)document.GetElementById(
-                    "ctl00_plhMain_repAppReceiptDetails_ctl0" + number + "_txtReceiptNumber");
-                purpose.Value = visaInput.getclientticket();
+                    visaInput = getVisaInput(dataGridViewVisa[0, dataGridViewVisa.CurrentCell.RowIndex].Value.ToString());
+                    var purpose = (GeckoInputElement)document.GetElementById("ctl00_plhMain_repAppReceiptDetails_ctl01_txtReceiptNumber");
+                    purpose.Value = visaInput.getclientticket();
+
+
 
                 //ctl00_plhMain_btnSubmit - кнопка сабмита
                 GeckoInputElement submitButton = new GeckoInputElement(geckoWebBrowser1.Document.GetElementById("ctl00_plhMain_btnSubmit").DomObject);
                 submitButton.Click();
+
+                GeckoElement links = geckoWebBrowser1.Document.GetElementById("ctl00_plhMain_lblMsg");
+                if (links.TextContent.Contains("is використано"))
+                {
+                    timer1.Enabled = false;
+                    stop = true;
+                    label2.Text = "Стоп";
+                }
             }
             catch (Exception)
             {
@@ -389,7 +406,7 @@ namespace VisaPlus
                 //geckoWebBrowser1.Navigate("javascript:setTimeout('__doPostBack(\'ctl00$plhMain$cboVisaCategory\',\'\')', 0)");
                 //geckoWebBrowser1.Document.GetElementById('ctl00_plhMain_lnkSchApp').InvokeMember("onchange");
                 //geckoWebBrowser1.Navigate("__doPostBack(\'ctl00$plhMain$cboVisaCategory\',\'\')', 0));
-                //javascript:setTimeout('__doPostBack(\'ctl00$plhMain$cboVisaCategory\',\'\')', 0)
+                //javascript:setTimeout('__doPostBack(\'ctl00$plhMain$cboVisaCategory\',\'\')',  0)
                 //type.SetAttribute("onchange","javascript:setTimeout('__doPostBack(\'ctl00$plhMain$cboVisaCategory\',\'\')', 0)");
             }
             catch (Exception)
@@ -484,25 +501,94 @@ namespace VisaPlus
             //class OpenDateAllocated
         }
 
-        private void timerreCapcha_Tick(object sender, EventArgs e)
+        private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
-            //recaptcha-checkbox goog-inline-block recaptcha-checkbox-unchecked rc-anchor-checkbox recaptcha-checkbox-expired
-            try
-            {
-                // дописать цикл для пробега по массиву значений и вставке нужного
-                var document = geckoWebBrowser1.Document;
 
-                //ctl00_plhMain_txtEmailID - input - email
-                var inputValue = document.GetElementById("recaptcha-anchor").GetAttribute("class");
-                if (inputValue=="recaptcha-checkbox goog-inline-block recaptcha-checkbox-unchecked rc-anchor-checkbox recaptcha-checkbox-checked")
-                //ctl00_plhMain_btnSubmitDetails
-                GeckoInputElement submitButton = new GeckoInputElement(geckoWebBrowser1.Document.GetElementById("ctl00_plhMain_btnSubmit").DomObject);
-                submitButton.Click();
-            }
-            catch (Exception)
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            startClick();
+            setDepType();
+            setTicket();
+            setPeopleCount();
+            setEmail();
+            setClient();
+        }
+
+        private void buttonSelectDate_Click(object sender, EventArgs e)
+        {
+            string forPars ="";
+            GeckoElementCollection links = geckoWebBrowser1.Document.GetElementsByTagName("a");
+            bool find = false;
+            GeckoHtmlElement clickBut = null;
+
+            foreach (GeckoElement link in links)
             {
-                //MessageBox.Show("Возникла ошибка при заполнении полей.");
+                if (!link.GetAttribute("href").Contains("javascript:__doPostBack('ctl00$plhMain$cldAppointment','V"))
+                    if (!find)
+                    {
+                        //textconntent
+                        forPars = link.GetAttribute("title");
+                        clickBut = (GeckoHtmlElement)link.DomObject;
+                        find = true;
+                    }
             }
+
+            string date ="", month ="";
+            if (forPars !="")
+            {
+                date = forPars.Substring(0, 2);
+                //month = forPars.Substring(2, forPars.Length);
+                if (Convert.ToInt32(date)<10)
+                    date = "0" + date;
+            }
+
+            if (Convert.ToInt32(date.Trim()) < (DateTime.Now.Day + 14))
+            {
+                MessageBox.Show(date);
+            }
+            else
+            {
+                clickBut.Click();
+            }
+
+            month = month.Trim();
+            string resultDate="";
+            string[] monthString = {"сiч", "лют","бер","кві","тра","чер",
+                                    "лип","сер","вер","жов","лис","гру"};
+            for (int i = 0; i < monthString.Length;i++)
+            {
+                if (month.Contains(monthString[i]))
+                {
+                    string monthplus="";
+                    if (i < 9)
+                        monthplus = "0";
+
+                    MessageBox.Show(date + "." + monthplus + (i + 1).ToString() + "." + DateTime.Now.Year);
+                    resultDate = date + "." + monthplus + (i + 1).ToString() + "." + DateTime.Now.Year;
+                }
+            }
+
+            //visaDAO.saveDate(resultDate, dataGridViewVisa[0, dataGridViewVisa.CurrentCell.RowIndex].Value.ToString());
+        }
+
+        public void RowsColor()
+        {
+            for(int i = 0; i <dataGridViewVisa.Rows.Count; i++)
+            {
+                int value = Int32.Parse(dataGridViewVisa.Rows[i].Cells[2].Value.ToString());
+                if (value ==0)
+                {
+                    dataGridViewVisa.Rows[i].DefaultCellStyle.BackColor = Color.Silver;
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Gecko.GeckoHtmlElement Btn = (Gecko.GeckoHtmlElement)geckoWebBrowser1.DomDocument.GetElementById("ctl00_plhMain_gvSlot_ctl02_lnkTimeSlot");
+            Btn.Click();
         }
     }
 }

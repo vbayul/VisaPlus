@@ -124,6 +124,7 @@
             this.maskedTextBoxVisitDate.Location = new System.Drawing.Point(221, 25);
             this.maskedTextBoxVisitDate.Mask = "00/00/0000";
             this.maskedTextBoxVisitDate.Name = "maskedTextBoxVisitDate";
+            this.maskedTextBoxVisitDate.ReadOnly = true;
             this.maskedTextBoxVisitDate.Size = new System.Drawing.Size(100, 20);
             this.maskedTextBoxVisitDate.TabIndex = 5;
             // 
@@ -208,7 +209,7 @@
             // 
             this.textBoxEmail.Location = new System.Drawing.Point(12, 257);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(100, 20);
+            this.textBoxEmail.Size = new System.Drawing.Size(171, 20);
             this.textBoxEmail.TabIndex = 16;
             // 
             // textBoxPassword

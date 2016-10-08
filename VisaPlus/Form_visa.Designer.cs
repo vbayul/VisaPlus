@@ -56,6 +56,7 @@
             this.textBoxManager = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonSearchClean = new System.Windows.Forms.Button();
+            this.buttonSelectDate = new System.Windows.Forms.Button();
             this.buttonPeople = new System.Windows.Forms.Button();
             this.buttonDepType = new System.Windows.Forms.Button();
             this.buttonStop = new System.Windows.Forms.Button();
@@ -69,7 +70,7 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.geckoWebBrowser1 = new Gecko.GeckoWebBrowser();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timerreCapcha = new System.Windows.Forms.Timer(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVisa)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -104,7 +105,8 @@
             this.dataGridViewVisa.Name = "dataGridViewVisa";
             this.dataGridViewVisa.ReadOnly = true;
             this.dataGridViewVisa.RowHeadersVisible = false;
-            this.dataGridViewVisa.Size = new System.Drawing.Size(822, 82);
+            this.dataGridViewVisa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewVisa.Size = new System.Drawing.Size(923, 82);
             this.dataGridViewVisa.TabIndex = 0;
             this.dataGridViewVisa.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVisa_CellDoubleClick);
             // 
@@ -235,7 +237,7 @@
             this.настройкиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(854, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(955, 24);
             this.menuStrip1.TabIndex = 5;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -295,6 +297,8 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.button1);
+            this.splitContainer1.Panel2.Controls.Add(this.buttonSelectDate);
             this.splitContainer1.Panel2.Controls.Add(this.buttonPeople);
             this.splitContainer1.Panel2.Controls.Add(this.buttonDepType);
             this.splitContainer1.Panel2.Controls.Add(this.buttonStop);
@@ -307,7 +311,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.progressBar1);
             this.splitContainer1.Panel2.Controls.Add(this.geckoWebBrowser1);
-            this.splitContainer1.Size = new System.Drawing.Size(830, 403);
+            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
+            this.splitContainer1.Size = new System.Drawing.Size(931, 403);
             this.splitContainer1.SplitterDistance = 119;
             this.splitContainer1.TabIndex = 6;
             // 
@@ -357,6 +362,16 @@
             this.buttonSearchClean.Text = "Очистить";
             this.buttonSearchClean.UseVisualStyleBackColor = true;
             this.buttonSearchClean.Click += new System.EventHandler(this.buttonSearchClean_Click);
+            // 
+            // buttonSelectDate
+            // 
+            this.buttonSelectDate.Location = new System.Drawing.Point(735, 6);
+            this.buttonSelectDate.Name = "buttonSelectDate";
+            this.buttonSelectDate.Size = new System.Drawing.Size(75, 23);
+            this.buttonSelectDate.TabIndex = 7;
+            this.buttonSelectDate.Text = "Дата";
+            this.buttonSelectDate.UseVisualStyleBackColor = true;
+            this.buttonSelectDate.Click += new System.EventHandler(this.buttonSelectDate_Click);
             // 
             // buttonPeople
             // 
@@ -444,7 +459,7 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(756, 255);
+            this.label2.Location = new System.Drawing.Point(857, 255);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 16);
             this.label2.TabIndex = 4;
@@ -467,7 +482,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar1.Location = new System.Drawing.Point(223, 252);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(527, 23);
+            this.progressBar1.Size = new System.Drawing.Size(628, 23);
             this.progressBar1.TabIndex = 1;
             // 
             // geckoWebBrowser1
@@ -477,7 +492,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.geckoWebBrowser1.Location = new System.Drawing.Point(8, 34);
             this.geckoWebBrowser1.Name = "geckoWebBrowser1";
-            this.geckoWebBrowser1.Size = new System.Drawing.Size(817, 212);
+            this.geckoWebBrowser1.Size = new System.Drawing.Size(918, 212);
             this.geckoWebBrowser1.TabIndex = 0;
             this.geckoWebBrowser1.UseHttpActivityObserver = false;
             this.geckoWebBrowser1.Navigating += new System.EventHandler<Gecko.Events.GeckoNavigatingEventArgs>(this.geckoWebBrowser1_Navigating_1);
@@ -487,18 +502,24 @@
             // 
             // timer1
             // 
-            this.timer1.Interval = 1000;
+            this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // timerreCapcha
+            // button1
             // 
-            this.timerreCapcha.Tick += new System.EventHandler(this.timerreCapcha_Tick);
+            this.button1.Location = new System.Drawing.Point(816, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "выбор время";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form_visa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(854, 442);
+            this.ClientSize = new System.Drawing.Size(955, 442);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -563,6 +584,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clientticket;
         private System.Windows.Forms.DataGridViewTextBoxColumn payed;
         private System.Windows.Forms.DataGridViewTextBoxColumn username;
-        private System.Windows.Forms.Timer timerreCapcha;
+        private System.Windows.Forms.Button buttonSelectDate;
+        private System.Windows.Forms.Button button1;
     }
 }

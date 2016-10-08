@@ -12,5 +12,6 @@ namespace VisaPlus
         bool  addVisa(Visa visa);
         bool saveVisa(Visa visa);
         Visa getVisa(string id);
+        bool saveDate(string date, string id);
     }
 }
