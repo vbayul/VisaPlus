@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Email.cs" />
     <Compile Include="Form_filtr.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +99,7 @@
     <Compile Include="Form_user_edit.Designer.cs">
       <DependentUpon>Form_user_edit.cs</DependentUpon>
     </Compile>
+    <Compile Include="PasswordMD5.cs" />
     <Compile Include="SystemJournal.cs" />
     <Compile Include="SystemSetting.cs" />
     <Compile Include="UserDAO.cs" />

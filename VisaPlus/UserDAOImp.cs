@@ -51,10 +51,12 @@ namespace VisaPlus
 
         public bool saveUser(User user)
         {
+
             cmd = "UPDATE `pass`.`users` "
-                 +" SET `username` = @username,`idtype` = @idtype, password = @password,"
-                 + " `status` = @status, `email` = @email "
+                 + " SET `username` = @username,`idtype` = @idtype, "
+                 + " `status` = @status"
                  + " WHERE `idusers` = @iduser;";
+
 
             myConnection.ConnectionString = Param.getConnectionString();
             myCommand.Connection = myConnection;
@@ -64,12 +66,12 @@ namespace VisaPlus
 
             //MessageBox.Show(user.ToString());
             myCommand.Parameters.AddWithValue("@username", user.getUser());
-            myCommand.Parameters.AddWithValue("@password", user.getPass());
+            //myCommand.Parameters.AddWithValue("@password", user.getPass());
             myCommand.Parameters.AddWithValue("@idtype", user.getType());
             myCommand.Parameters.AddWithValue("@status", user.getStatus());
-            myCommand.Parameters.AddWithValue("@email", user.getEmail());
+            //myCommand.Parameters.AddWithValue("@email", user.getEmail());
             myCommand.Parameters.AddWithValue("@iduser", user.getId());
-            
+
             bool saccess = false;
             try
             {

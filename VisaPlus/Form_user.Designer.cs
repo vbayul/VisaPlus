@@ -34,7 +34,6 @@
             this.idusers = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.status = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idtype = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUser)).BeginInit();
@@ -53,7 +52,6 @@
             this.idusers,
             this.status,
             this.username,
-            this.password,
             this.idtype,
             this.email});
             this.dataGridViewUser.Location = new System.Drawing.Point(12, 41);
@@ -112,13 +110,6 @@
             this.username.ReadOnly = true;
             this.username.Width = 150;
             // 
-            // password
-            // 
-            this.password.DataPropertyName = "password";
-            this.password.HeaderText = "Пароль";
-            this.password.Name = "password";
-            this.password.ReadOnly = true;
-            // 
             // idtype
             // 
             this.idtype.DataPropertyName = "idtype";
@@ -164,7 +155,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idusers;
         private System.Windows.Forms.DataGridViewCheckBoxColumn status;
         private System.Windows.Forms.DataGridViewTextBoxColumn username;
-        private System.Windows.Forms.DataGridViewTextBoxColumn password;
         private System.Windows.Forms.DataGridViewCheckBoxColumn idtype;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;
     }

@@ -57,7 +57,7 @@
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 1;
-            this.buttonSave.Text = "Созранить";
+            this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
@@ -85,7 +85,6 @@
             this.textBoxPass.Name = "textBoxPass";
             this.textBoxPass.Size = new System.Drawing.Size(142, 20);
             this.textBoxPass.TabIndex = 4;
-            this.textBoxPass.TextChanged += new System.EventHandler(this.textBoxEdit_TextChanged);
             // 
             // textBoxEmail
             // 

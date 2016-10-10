@@ -27,7 +27,7 @@ namespace VisaPlus
                 User user = userDAO.getUser(id);
 
                 textBoxUser.Text = user.getUser();
-                textBoxPass.Text = user.getPass();
+                //textBoxPass.Text = user.getPass();
                 textBoxEmail.Text = user.getEmail();
                 checkBoxAdmin.Checked = Convert.ToBoolean(Convert.ToInt32(user.getType()));
                 checkBoxBlock.Checked = Convert.ToBoolean(Convert.ToInt32(user.getStatus()));
@@ -36,19 +36,21 @@ namespace VisaPlus
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (textBoxUser.Text != "" || textBoxPass.Text != ""
+            if (textBoxUser.Text != "" 
                 || textBoxEmail.Text != "")
             {
-                if (id != "0")
+                if (id == "0" || textBoxPass.Text != "")
                 {
-                    if (userDAO.saveUser(userSave))
+                    if (userDAO.addUser(userSave))
                     {
+                        Email emailSend = new Email();
+                        emailSend.SendMail( textBoxEmail.Text, "Доступ к программе", "Пароль для программы - " + textBoxPass.Text);
                         Close();
                     }
                 }
                 else
                 {
-                    if (userDAO.addUser(userSave))
+                    if (userDAO.saveUser(userSave))
                     {
                         Close();
                     }
@@ -63,10 +65,11 @@ namespace VisaPlus
 
         private void textBoxEdit_TextChanged(object sender, EventArgs e)
         {
+            PasswordMD5 md5 = new PasswordMD5();
             userSave.setId(id);
             userSave.setUser(textBoxUser.Text);
-            userSave.setPass(textBoxPass.Text);
             userSave.setEmail(textBoxEmail.Text);
+            userSave.setPass(md5.MD5(textBoxPass.Text));
             userSave.setStatus(Convert.ToInt32(checkBoxBlock.Checked).ToString());
             userSave.setType(Convert.ToInt32(checkBoxAdmin.Checked).ToString());
         }

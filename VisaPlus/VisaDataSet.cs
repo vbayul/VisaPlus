@@ -79,7 +79,7 @@ namespace VisaPlus
                 // дописать иф для админа и простого манагера
                 cmd = "SELECT `idclient`,`visitdate`,`status`,`firstname`,`lastname`,`dob`,"
                     + "`passport`,`passportexpire`,`clientticket`,`payed`,`username`"
-                    + " FROM `pass`.`client_view` WHERE userid = @userid and firstname like @search or firstname like @search ;";
+                    + " FROM `pass`.`client_view` WHERE userid = @userid and firstname like @search or lastname like @search ;";
                 myCommand.Parameters.AddWithValue("@userid", Param.getUserID());
             }
             else
@@ -94,7 +94,7 @@ namespace VisaPlus
                 {
                     cmd = "SELECT `idclient`,`visitdate`,`status`,`firstname`,`lastname`,`dob`,"
                     + "`passport`,`passportexpire`,`clientticket`,`payed`,`username`"
-                    + " FROM `pass`.`client_view` WHERE userid = @userid and firstname like @search or firstname like @search ;";
+                    + " FROM `pass`.`client_view` WHERE userid = @userid and firstname like @search or lastnamed like @search ;";
                     myCommand.Parameters.AddWithValue("@userid", manager);
                 }
             }

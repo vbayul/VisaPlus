@@ -21,20 +21,28 @@ namespace VisaPlus
 
         private void Form_setting_Load(object sender, EventArgs e)
         {
-            textBox1.Text = systemSetting.getValue("url");
+            textBoxURL.Text = systemSetting.getValue("url");
             comboBoxFill();
             setDeffSettings();
+            EmailSetting();
         }
 
         private void buttonUrlSave_Click(object sender, EventArgs e)
         {
-            systemSetting.setValue("url",textBox1.Text);
+            systemSetting.setValue("url",textBoxURL.Text);
             systemSetting.setValue("emailpassword", textBoxPassword.Text);
             systemSetting.setValue("region", comboBoxRegion.SelectedValue.ToString());
             systemSetting.setValue("purpose",comboBoxPurpose.SelectedValue.ToString());
             systemSetting.setValue("visatype", comboBoxVisaType.SelectedValue.ToString());
             systemSetting.setValue("nationality",comboBoxNationality.SelectedValue.ToString());
             systemSetting.setValue("title", comboBoxTitle.SelectedValue.ToString());
+
+            //
+            systemSetting.setValue("smtp", textBoxSMTP.Text);
+            systemSetting.setValue("port", textBoxPort.Text);
+            systemSetting.setValue("email", textBoxEmail.Text);
+            systemSetting.setValue("password", textBoxPass.Text);
+            systemSetting.setValue("ssl", Convert.ToInt32(checkBoxSSL.Checked).ToString());
             Close();
         }
 
@@ -69,6 +77,15 @@ namespace VisaPlus
             comboBoxVisaType.SelectedValue = systemSetting.getValue("visatype");
             comboBoxNationality.SelectedValue = systemSetting.getValue("nationality");
             comboBoxTitle.SelectedValue = systemSetting.getValue("title");
+        }
+
+        private void EmailSetting()
+        {
+            textBoxSMTP.Text = systemSetting.getValue("smtp");
+            textBoxPort.Text = systemSetting.getValue("port");
+            textBoxEmail.Text = systemSetting.getValue("email");
+            textBoxPass.Text = systemSetting.getValue("password");
+            checkBoxSSL.Checked = Convert.ToBoolean(Int32.Parse(systemSetting.getValue("ssl")));
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)

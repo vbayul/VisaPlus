@@ -44,7 +44,9 @@ namespace VisaPlus
         private bool checkPass(string pass)
         {
             User user = userDAO.getUser(comboBoxLogin.SelectedValue.ToString());
-            if (user.getPass() == textBoxPass.Text)
+            PasswordMD5 passwordMD5 = new PasswordMD5();
+
+            if (user.getPass() == passwordMD5.MD5(textBoxPass.Text))
             {
                 isLogin = true;
                 Param.setAccess(user.getType());

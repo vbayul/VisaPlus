@@ -44,10 +44,12 @@ namespace VisaPlus
             if (textBoxSearch.Text == "")
             {
                 dataGridViewVisa.DataSource = visaDS.getDSVisa(idManager).Tables[0];
+                RowsColor();
             }
             else
             {
                 dataGridViewVisa.DataSource = visaDS.searchDSVisa(textBoxSearch.Text, idManager).Tables[0];
+                RowsColor();
             }
             //dataGridViewVisa.DataSource = visaDS.searchDSVisa(textBoxSearch.Text, "0").Tables[0];
         }
@@ -78,8 +80,9 @@ namespace VisaPlus
                     // дописать фильтр по менеджерам
                 }
                 dataGridViewVisa.DataSource = visaDS.getDSVisa(idManager).Tables[0];
-                URL = systemSetting.getValue("url");
                 RowsColor();
+                URL = systemSetting.getValue("url");
+                
             }
         }
 
@@ -181,10 +184,12 @@ namespace VisaPlus
             if (textBoxSearch.Text == "")
             {
                 dataGridViewVisa.DataSource = visaDS.getDSVisa(idManager).Tables[0];
+                RowsColor();
             }
             else
             {
                 dataGridViewVisa.DataSource = visaDS.searchDSVisa(textBoxSearch.Text, idManager).Tables[0];
+                RowsColor();
             }
             //dataGridViewVisa.DataSource = visaDS.getDSVisa("0").Tables[0];
         }
@@ -222,10 +227,12 @@ namespace VisaPlus
             if (textBoxSearch.Text == "")
             {
                 dataGridViewVisa.DataSource = visaDS.getDSVisa(idManager).Tables[0];
+                RowsColor();
             }
             else
             {
                 dataGridViewVisa.DataSource = visaDS.searchDSVisa(textBoxSearch.Text, idManager).Tables[0];
+                RowsColor();
             }
         }
 
@@ -240,10 +247,12 @@ namespace VisaPlus
             if (textBoxSearch.Text == "")
             {
                 dataGridViewVisa.DataSource = visaDS.getDSVisa(idManager).Tables[0];
+                RowsColor();
             }
             else
             {
                 dataGridViewVisa.DataSource = visaDS.searchDSVisa(textBoxSearch.Text,idManager).Tables[0];
+                RowsColor();
             }
         }
 
@@ -359,12 +368,11 @@ namespace VisaPlus
             try
             {
                 var document = geckoWebBrowser1.Document;
-                int i = 1;
                 //ctl00_plhMain_repAppReceiptDetails_ctl01_txtReceiptNumber - input - номер квитации
 
-                    visaInput = getVisaInput(dataGridViewVisa[0, dataGridViewVisa.CurrentCell.RowIndex].Value.ToString());
-                    var purpose = (GeckoInputElement)document.GetElementById("ctl00_plhMain_repAppReceiptDetails_ctl01_txtReceiptNumber");
-                    purpose.Value = visaInput.getclientticket();
+                visaInput = getVisaInput(dataGridViewVisa[0, dataGridViewVisa.CurrentCell.RowIndex].Value.ToString());
+                var purpose = (GeckoInputElement)document.GetElementById("ctl00_plhMain_repAppReceiptDetails_ctl01_txtReceiptNumber");
+                purpose.Value = visaInput.getclientticket();
 
 
 
@@ -378,6 +386,7 @@ namespace VisaPlus
                     timer1.Enabled = false;
                     stop = true;
                     label2.Text = "Стоп";
+                    geckoWebBrowser1.Stop();
                 }
             }
             catch (Exception)
@@ -534,17 +543,17 @@ namespace VisaPlus
                         find = true;
                     }
             }
-
+            
             string date ="", month ="";
             if (forPars !="")
             {
-                date = forPars.Substring(0, 2);
+                date = clickBut.TextContent;
                 //month = forPars.Substring(2, forPars.Length);
                 if (Convert.ToInt32(date)<10)
                     date = "0" + date;
             }
 
-            if (Convert.ToInt32(date.Trim()) < (DateTime.Now.Day + 14))
+            if (Int32.Parse(date) < (DateTime.Now.Day + 14))
             {
                 MessageBox.Show(date);
             }
@@ -587,8 +596,30 @@ namespace VisaPlus
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Gecko.GeckoHtmlElement Btn = (Gecko.GeckoHtmlElement)geckoWebBrowser1.DomDocument.GetElementById("ctl00_plhMain_gvSlot_ctl02_lnkTimeSlot");
-            Btn.Click();
+            bool pickTime = false;
+            int i = 1;
+            do
+            {
+                try
+                {
+                    Gecko.GeckoHtmlElement Btn = (Gecko.GeckoHtmlElement)geckoWebBrowser1.DomDocument.GetElementById("ctl00_plhMain_gvSlot_ctl0" + i + "_lnkTimeSlot");
+                    Btn.Click();
+                    pickTime = true;
+                }
+                catch(Exception)
+                {
+
+                }
+                i = i + 1;
+
+            } 
+            while (!pickTime);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            PasswordMD5 md5 = new PasswordMD5();
+            MessageBox.Show(md5.MD5("test1"));
         }
     }
 }

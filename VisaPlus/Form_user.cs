@@ -32,6 +32,7 @@ namespace VisaPlus
             Form_user_edit uEdit = new Form_user_edit("0");
             uEdit.Owner = this;
             uEdit.ShowDialog();
+            dataGridViewUser.DataSource = userDS.getDSUser().Tables[0];
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -41,6 +42,7 @@ namespace VisaPlus
                 Form_user_edit uEdit = new Form_user_edit(dataGridViewUser[0,dataGridViewUser.CurrentCell.RowIndex].Value.ToString());
                 uEdit.Owner = this;
                 uEdit.ShowDialog();
+                dataGridViewUser.DataSource = userDS.getDSUser().Tables[0];
             }
         }
     }
