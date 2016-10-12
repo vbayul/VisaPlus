@@ -86,7 +86,7 @@ namespace VisaPlus
         public Proxy getProxy()
         {
             cmd = "SELECT idproxy,proxyip,proxyport, proxyuser, proxystatus "
-                + " FROM pass.proxy "
+                + " FROM proxy "
                 + " WHERE proxystatus = 1 and proxyuser = @proxyuser";
 
             da = new MySqlDataAdapter();

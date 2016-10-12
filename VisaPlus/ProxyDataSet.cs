@@ -18,7 +18,7 @@ namespace VisaPlus
 
         public DataSet proxyDS()
         {
-            cmd = "SELECT idproxy, proxystatus, proxyip, proxyport FROM pass.proxy "
+            cmd = "SELECT idproxy, proxystatus, proxyip, proxyport FROM proxy "
                 + " WHERE proxyuser = @userid";
 
             da = new MySqlDataAdapter();

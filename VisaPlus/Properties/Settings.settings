@@ -3,7 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="DBURL" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">pass</Value>
+      <Value Profile="(Default)">poland.qb.dp.ua</Value>
+    </Setting>
+    <Setting Name="DB" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">qbdp_poland</Value>
     </Setting>
   </Settings>
 </SettingsFile>

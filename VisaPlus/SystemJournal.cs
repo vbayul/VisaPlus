@@ -20,7 +20,7 @@ namespace VisaPlus
         {
             da = new MySqlDataAdapter();
             ds = new DataSet();
-            cmd = "SELECT idusers, username FROM pass.users WHERE status = 0 ORDER BY username;";
+            cmd = "SELECT idusers, username FROM users WHERE status = 0 ORDER BY username;";
 
             myConnection.ConnectionString = Param.getConnectionString();
             myCommand.Connection = myConnection;
@@ -46,7 +46,7 @@ namespace VisaPlus
         {
             da = new MySqlDataAdapter();
             ds = new DataSet();
-            cmd = "SELECT `idregion`,`nameregion` FROM `pass`.`region` ORDER BY `idregion`;";
+            cmd = "SELECT `idregion`,`nameregion` FROM `region` ORDER BY `idregion`;";
 
             myConnection.ConnectionString = Param.getConnectionString();
             myCommand.Connection = myConnection;
@@ -71,7 +71,7 @@ namespace VisaPlus
         {
             da = new MySqlDataAdapter();
             ds = new DataSet();
-            cmd = "SELECT `idpurposes`,`namepurposes`FROM `pass`.`purposes` ORDER BY `idpurposes`;";
+            cmd = "SELECT `idpurposes`,`namepurposes`FROM `purposes` ORDER BY `idpurposes`;";
 
             myConnection.ConnectionString = Param.getConnectionString();
             myCommand.Connection = myConnection;
@@ -97,7 +97,7 @@ namespace VisaPlus
         {
             da = new MySqlDataAdapter();
             ds = new DataSet();
-            cmd = "SELECT `idvisatype`,`namevisatype` FROM `pass`.`visatype` ORDER BY `idvisatype`;";
+            cmd = "SELECT `idvisatype`,`namevisatype` FROM `visatype` ORDER BY `idvisatype`;";
 
             myConnection.ConnectionString = Param.getConnectionString();
             myCommand.Connection = myConnection;
@@ -122,7 +122,7 @@ namespace VisaPlus
         {
             da = new MySqlDataAdapter();
             ds = new DataSet();
-            cmd = "SELECT `idnationality`, `nationality` FROM `pass`.`nationality` ORDER BY `idnationality`;";
+            cmd = "SELECT `idnationality`, `nationality` FROM `nationality` ORDER BY `idnationality`;";
 
             myConnection.ConnectionString = Param.getConnectionString();
             myCommand.Connection = myConnection;
@@ -150,7 +150,7 @@ namespace VisaPlus
         {
             da = new MySqlDataAdapter();
             ds = new DataSet();
-            cmd = "SELECT `idtitle`,`nametitle` FROM `pass`.`title` ORDER BY `idtitle`;";
+            cmd = "SELECT `idtitle`,`nametitle` FROM `title` ORDER BY `idtitle`;";
 
             myConnection.ConnectionString = Param.getConnectionString();
             myCommand.Connection = myConnection;

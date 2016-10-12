@@ -25,10 +25,19 @@ namespace VisaPlus.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("pass")]
+        [global::System.Configuration.DefaultSettingValueAttribute("poland.qb.dp.ua")]
         public string DBURL {
             get {
                 return ((string)(this["DBURL"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("qbdp_poland")]
+        public string DB {
+            get {
+                return ((string)(this["DB"]));
             }
         }
     }

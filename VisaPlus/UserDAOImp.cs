@@ -17,7 +17,7 @@ namespace VisaPlus
 
         public bool addUser(User user)
         {
-            cmd = "INSERT INTO `pass`.`users` (`username`,`password`,`idtype`,`status`,`email`) " 
+            cmd = "INSERT INTO `users` (`username`,`password`,`idtype`,`status`,`email`) " 
                 + " VALUES(@username,@password,@idtype,@status,@email);";
 
             myCommand.Connection = myConnection;
@@ -52,7 +52,7 @@ namespace VisaPlus
         public bool saveUser(User user)
         {
 
-            cmd = "UPDATE `pass`.`users` "
+            cmd = "UPDATE `users` "
                  + " SET `username` = @username,`idtype` = @idtype, "
                  + " `status` = @status"
                  + " WHERE `idusers` = @iduser;";
@@ -94,7 +94,7 @@ namespace VisaPlus
         public User getUser(string id)
         {
             cmd = "SELECT idusers,username, password,idtype,status,email "
-                + " FROM pass.users WHERE idusers = @idusers;";
+                + " FROM users WHERE idusers = @idusers;";
 
             myConnection.ConnectionString = Param.getConnectionString();
             myCommand.Connection = myConnection;

@@ -124,7 +124,6 @@
             this.maskedTextBoxVisitDate.Location = new System.Drawing.Point(221, 25);
             this.maskedTextBoxVisitDate.Mask = "00/00/0000";
             this.maskedTextBoxVisitDate.Name = "maskedTextBoxVisitDate";
-            this.maskedTextBoxVisitDate.ReadOnly = true;
             this.maskedTextBoxVisitDate.Size = new System.Drawing.Size(100, 20);
             this.maskedTextBoxVisitDate.TabIndex = 5;
             // 
@@ -435,6 +434,7 @@
             this.radioButtonNearestDate1.TabStop = true;
             this.radioButtonNearestDate1.Text = "Ближайшая";
             this.radioButtonNearestDate1.UseVisualStyleBackColor = true;
+            this.radioButtonNearestDate1.Visible = false;
             // 
             // radioButtonNearestDate2
             // 
@@ -446,6 +446,7 @@
             this.radioButtonNearestDate2.TabStop = true;
             this.radioButtonNearestDate2.Text = "Последняя";
             this.radioButtonNearestDate2.UseVisualStyleBackColor = true;
+            this.radioButtonNearestDate2.Visible = false;
             // 
             // Form_visa_edit
             // 

@@ -56,6 +56,9 @@
             this.textBoxManager = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.buttonSearchClean = new System.Windows.Forms.Button();
+            this.buttonTabClose = new System.Windows.Forms.Button();
+            this.buttonNewTab = new System.Windows.Forms.Button();
+            this.tabControlGecko = new System.Windows.Forms.TabControl();
             this.button1 = new System.Windows.Forms.Button();
             this.buttonSelectDate = new System.Windows.Forms.Button();
             this.buttonPeople = new System.Windows.Forms.Button();
@@ -71,7 +74,6 @@
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.geckoWebBrowser1 = new Gecko.GeckoWebBrowser();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVisa)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -144,6 +146,7 @@
             this.firstname.HeaderText = "Имя";
             this.firstname.Name = "firstname";
             this.firstname.ReadOnly = true;
+            this.firstname.Width = 150;
             // 
             // lastname
             // 
@@ -151,6 +154,7 @@
             this.lastname.HeaderText = "Фамилия";
             this.lastname.Name = "lastname";
             this.lastname.ReadOnly = true;
+            this.lastname.Width = 150;
             // 
             // dob
             // 
@@ -189,6 +193,7 @@
             // 
             // username
             // 
+            this.username.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.username.DataPropertyName = "username";
             this.username.HeaderText = "Менеджер";
             this.username.Name = "username";
@@ -298,7 +303,9 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.button2);
+            this.splitContainer1.Panel2.Controls.Add(this.buttonTabClose);
+            this.splitContainer1.Panel2.Controls.Add(this.buttonNewTab);
+            this.splitContainer1.Panel2.Controls.Add(this.tabControlGecko);
             this.splitContainer1.Panel2.Controls.Add(this.button1);
             this.splitContainer1.Panel2.Controls.Add(this.buttonSelectDate);
             this.splitContainer1.Panel2.Controls.Add(this.buttonPeople);
@@ -311,9 +318,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.buttonWeb);
             this.splitContainer1.Panel2.Controls.Add(this.label2);
             this.splitContainer1.Panel2.Controls.Add(this.label1);
-            this.splitContainer1.Panel2.Controls.Add(this.progressBar1);
             this.splitContainer1.Panel2.Controls.Add(this.geckoWebBrowser1);
-            this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
+            this.splitContainer1.Panel2.Controls.Add(this.progressBar1);
             this.splitContainer1.Size = new System.Drawing.Size(931, 403);
             this.splitContainer1.SplitterDistance = 119;
             this.splitContainer1.TabIndex = 6;
@@ -365,6 +371,37 @@
             this.buttonSearchClean.UseVisualStyleBackColor = true;
             this.buttonSearchClean.Click += new System.EventHandler(this.buttonSearchClean_Click);
             // 
+            // buttonTabClose
+            // 
+            this.buttonTabClose.Location = new System.Drawing.Point(84, 3);
+            this.buttonTabClose.Name = "buttonTabClose";
+            this.buttonTabClose.Size = new System.Drawing.Size(75, 23);
+            this.buttonTabClose.TabIndex = 18;
+            this.buttonTabClose.Text = "Закрыть";
+            this.buttonTabClose.UseVisualStyleBackColor = true;
+            this.buttonTabClose.Click += new System.EventHandler(this.buttonTabClose_Click);
+            // 
+            // buttonNewTab
+            // 
+            this.buttonNewTab.Location = new System.Drawing.Point(3, 3);
+            this.buttonNewTab.Name = "buttonNewTab";
+            this.buttonNewTab.Size = new System.Drawing.Size(75, 23);
+            this.buttonNewTab.TabIndex = 7;
+            this.buttonNewTab.Text = "Поиск даты";
+            this.buttonNewTab.UseVisualStyleBackColor = true;
+            this.buttonNewTab.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // tabControlGecko
+            // 
+            this.tabControlGecko.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControlGecko.Location = new System.Drawing.Point(3, 32);
+            this.tabControlGecko.Name = "tabControlGecko";
+            this.tabControlGecko.SelectedIndex = 0;
+            this.tabControlGecko.Size = new System.Drawing.Size(923, 243);
+            this.tabControlGecko.TabIndex = 17;
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(816, 6);
@@ -373,6 +410,7 @@
             this.button1.TabIndex = 16;
             this.button1.Text = "Время";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // buttonSelectDate
@@ -383,6 +421,7 @@
             this.buttonSelectDate.TabIndex = 7;
             this.buttonSelectDate.Text = "Дата";
             this.buttonSelectDate.UseVisualStyleBackColor = true;
+            this.buttonSelectDate.Visible = false;
             this.buttonSelectDate.Click += new System.EventHandler(this.buttonSelectDate_Click);
             // 
             // buttonPeople
@@ -393,27 +432,30 @@
             this.buttonPeople.TabIndex = 15;
             this.buttonPeople.Text = "Люди Катег";
             this.buttonPeople.UseVisualStyleBackColor = true;
+            this.buttonPeople.Visible = false;
             this.buttonPeople.Click += new System.EventHandler(this.buttonPeople_Click);
             // 
             // buttonDepType
             // 
-            this.buttonDepType.Location = new System.Drawing.Point(330, 6);
+            this.buttonDepType.Location = new System.Drawing.Point(330, 5);
             this.buttonDepType.Name = "buttonDepType";
             this.buttonDepType.Size = new System.Drawing.Size(75, 23);
             this.buttonDepType.TabIndex = 14;
             this.buttonDepType.Text = "Пункт Цель";
             this.buttonDepType.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.buttonDepType.UseVisualStyleBackColor = true;
+            this.buttonDepType.Visible = false;
             this.buttonDepType.Click += new System.EventHandler(this.buttonDepType_Click);
             // 
             // buttonStop
             // 
-            this.buttonStop.Location = new System.Drawing.Point(170, 6);
+            this.buttonStop.Location = new System.Drawing.Point(441, 35);
             this.buttonStop.Name = "buttonStop";
             this.buttonStop.Size = new System.Drawing.Size(75, 23);
             this.buttonStop.TabIndex = 13;
             this.buttonStop.Text = "Стоп";
             this.buttonStop.UseVisualStyleBackColor = true;
+            this.buttonStop.Visible = false;
             this.buttonStop.Click += new System.EventHandler(this.buttonStop_Click);
             // 
             // buttonClient
@@ -424,6 +466,7 @@
             this.buttonClient.TabIndex = 12;
             this.buttonClient.Text = "Клиент";
             this.buttonClient.UseVisualStyleBackColor = true;
+            this.buttonClient.Visible = false;
             this.buttonClient.Click += new System.EventHandler(this.buttonClient_Click);
             // 
             // buttonEmail
@@ -434,6 +477,7 @@
             this.buttonEmail.TabIndex = 11;
             this.buttonEmail.Text = "Email";
             this.buttonEmail.UseVisualStyleBackColor = true;
+            this.buttonEmail.Visible = false;
             this.buttonEmail.Click += new System.EventHandler(this.buttonEmail_Click);
             // 
             // buttonTicket
@@ -444,26 +488,29 @@
             this.buttonTicket.TabIndex = 10;
             this.buttonTicket.Text = "Квитанции";
             this.buttonTicket.UseVisualStyleBackColor = true;
+            this.buttonTicket.Visible = false;
             this.buttonTicket.Click += new System.EventHandler(this.buttonTicket_Click);
             // 
             // buttonReload
             // 
-            this.buttonReload.Location = new System.Drawing.Point(89, 6);
+            this.buttonReload.Location = new System.Drawing.Point(360, 35);
             this.buttonReload.Name = "buttonReload";
             this.buttonReload.Size = new System.Drawing.Size(75, 23);
             this.buttonReload.TabIndex = 9;
             this.buttonReload.Text = "Обновить";
             this.buttonReload.UseVisualStyleBackColor = true;
+            this.buttonReload.Visible = false;
             this.buttonReload.Click += new System.EventHandler(this.buttonReload_Click);
             // 
             // buttonWeb
             // 
-            this.buttonWeb.Location = new System.Drawing.Point(8, 6);
+            this.buttonWeb.Location = new System.Drawing.Point(279, 35);
             this.buttonWeb.Name = "buttonWeb";
             this.buttonWeb.Size = new System.Drawing.Size(75, 23);
             this.buttonWeb.TabIndex = 7;
             this.buttonWeb.Text = "Веб";
             this.buttonWeb.UseVisualStyleBackColor = true;
+            this.buttonWeb.Visible = false;
             this.buttonWeb.Click += new System.EventHandler(this.buttonWeb_Click);
             // 
             // label2
@@ -471,30 +518,31 @@
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(857, 255);
+            this.label2.Location = new System.Drawing.Point(622, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "Статус";
+            this.label2.Visible = false;
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(5, 255);
+            this.label1.Location = new System.Drawing.Point(165, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Прокси - ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // progressBar1
             // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(223, 252);
+            this.progressBar1.Location = new System.Drawing.Point(375, 6);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(628, 23);
+            this.progressBar1.Size = new System.Drawing.Size(444, 23);
             this.progressBar1.TabIndex = 1;
             // 
             // geckoWebBrowser1
@@ -502,11 +550,12 @@
             this.geckoWebBrowser1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.geckoWebBrowser1.Location = new System.Drawing.Point(8, 34);
+            this.geckoWebBrowser1.Location = new System.Drawing.Point(825, 6);
             this.geckoWebBrowser1.Name = "geckoWebBrowser1";
-            this.geckoWebBrowser1.Size = new System.Drawing.Size(918, 212);
+            this.geckoWebBrowser1.Size = new System.Drawing.Size(89, 23);
             this.geckoWebBrowser1.TabIndex = 0;
             this.geckoWebBrowser1.UseHttpActivityObserver = false;
+            this.geckoWebBrowser1.Visible = false;
             this.geckoWebBrowser1.Navigating += new System.EventHandler<Gecko.Events.GeckoNavigatingEventArgs>(this.geckoWebBrowser1_Navigating_1);
             this.geckoWebBrowser1.NavigationError += new System.EventHandler<Gecko.Events.GeckoNavigationErrorEventArgs>(this.geckoWebBrowser1_NavigationError);
             this.geckoWebBrowser1.DocumentCompleted += new System.EventHandler<Gecko.Events.GeckoDocumentCompletedEventArgs>(this.geckoWebBrowser1_DocumentCompleted);
@@ -516,16 +565,6 @@
             // 
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(249, 7);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form_visa
             // 
@@ -585,6 +624,8 @@
         private System.Windows.Forms.Button buttonManager;
         private System.Windows.Forms.Button buttonDepType;
         private System.Windows.Forms.Button buttonPeople;
+        private System.Windows.Forms.Button buttonSelectDate;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn idclient;
         private System.Windows.Forms.DataGridViewCheckBoxColumn clientstatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn visitdate;
@@ -596,8 +637,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clientticket;
         private System.Windows.Forms.DataGridViewTextBoxColumn payed;
         private System.Windows.Forms.DataGridViewTextBoxColumn username;
-        private System.Windows.Forms.Button buttonSelectDate;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TabControl tabControlGecko;
+        private System.Windows.Forms.Button buttonNewTab;
+        private System.Windows.Forms.Button buttonTabClose;
     }
 }

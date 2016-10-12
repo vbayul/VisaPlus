@@ -23,7 +23,7 @@ namespace VisaPlus
 
             // дописать иф для админа и простого манагера
             cmd = "SELECT idusers, username,idtype,status,email "
-                + " FROM pass.users;";
+                + " FROM users;";
 
             myConnection.ConnectionString = Param.getConnectionString();
             myCommand.Connection = myConnection;

@@ -18,7 +18,7 @@ namespace VisaPlus
         public string getValue(string param)
         {
             cmd = "SELECT `settingparam`,`settingvalue` "
-                + " FROM `pass`.`setting` WHERE settingparam = @settingparam";
+                + " FROM `setting` WHERE settingparam = @settingparam";
 
             //da = new MySqlDataAdapter();
             myConnection.ConnectionString = Param.getConnectionString();
@@ -55,7 +55,7 @@ namespace VisaPlus
         }
         public void setValue(string param, string value)
         {
-            cmd = "UPDATE `pass`.`setting` SET `settingvalue` = @settingvalue"
+            cmd = "UPDATE `setting` SET `settingvalue` = @settingvalue"
                 + " WHERE settingparam = @settingparam";
 
             //da = new MySqlDataAdapter();

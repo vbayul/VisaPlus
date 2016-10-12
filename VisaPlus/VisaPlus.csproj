@@ -100,8 +100,10 @@
       <DependentUpon>Form_user_edit.cs</DependentUpon>
     </Compile>
     <Compile Include="PasswordMD5.cs" />
+    <Compile Include="Steps.cs" />
     <Compile Include="SystemJournal.cs" />
     <Compile Include="SystemSetting.cs" />
+    <Compile Include="tabPage.cs" />
     <Compile Include="UserDAO.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Proxy.cs" />

@@ -18,7 +18,7 @@ namespace VisaPlus
 
         public bool addVisa(Visa visa)
         {
-            cmd = "INSERT INTO `pass`.`client` "
+            cmd = "INSERT INTO `client` "
                 + "(`visitdate`,`status`,`region`,`title`,`firstname`,`lastname`,"
                 + "`dob`,`email`,`password`,`passport`,`passportexpire`,`clientticket`,`visatype`,"
                 + "`nationality`,`purpose`,`persons`,`kids`,`payed`,`travellength`,`nearestdate`,`userid`)"
@@ -75,7 +75,7 @@ namespace VisaPlus
 
         public bool saveVisa(Visa visa)
         {
-            cmd = "UPDATE `pass`.`client` SET `visitdate` = @visitdate,`status` = @status,"
+            cmd = "UPDATE `client` SET `visitdate` = @visitdate,`status` = @status,"
                 +"`region` = @region,`title` = @title,`firstname` = @firstname,`lastname` = @lastname,"
                 +"`dob` = @dob,`email` = @email,`password` = @password,`passport` = @passport,"
                 +"`passportexpire` = @passportexpire,`clientticket` = @clientticket,`visatype` = @visatype,"
@@ -178,7 +178,7 @@ namespace VisaPlus
         }
         public bool saveDate(string date,string id)
         {
-            cmd = "UPDATE `pass`.`client` SET `visitdate` = @visitdate , status = 1 "
+            cmd = "UPDATE `client` SET `visitdate` = @visitdate , status = 1 "
                 + " WHERE `idclient` = @idclient;";
 
             myConnection.ConnectionString = Param.getConnectionString();
