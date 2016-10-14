@@ -425,6 +425,7 @@ namespace VisaPlus
             steps.setClient(sender, visa);
             steps.selectDate(sender, visa);
             steps.selectTime(sender);
+            steps.setStatus(sender, visa);
             //MessageBox.Show(tabControlGecko.TabCount.ToString());
         }
 
@@ -468,6 +469,11 @@ namespace VisaPlus
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            visaDAO.saveDate("21.08.2012", "1");
         }
     }
 }

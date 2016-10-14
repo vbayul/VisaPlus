@@ -13,5 +13,6 @@ namespace VisaPlus
         bool saveVisa(Visa visa);
         Visa getVisa(string id);
         bool saveDate(string date, string id);
+        bool saveStatus(string id);
     }
 }

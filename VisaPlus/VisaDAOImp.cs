@@ -114,8 +114,8 @@ namespace VisaPlus
             cmd = "SELECT idclient, `status`,`region`,`title`,`firstname`,`lastname`,"
                 + "`dob`,`email`,`password`,`passport`,`passportexpire`,`clientticket`,"
                 +"`visatype`,`nationality`,`purpose`,`persons`,`kids`,`payed`,"
-                + "`travellength`,`nearestdate`,visitdate"
-            + " FROM pass.client WHERE idclient = @idclient";
+                + "`travellength`,`nearestdate`, `visitdate` "
+            + " FROM client WHERE idclient = @idclient";
 
             da = new MySqlDataAdapter();
 
@@ -165,6 +165,37 @@ namespace VisaPlus
                     // дописать момент заполение полей в объекте
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Произошла ошибка соединения с БД."+ex);
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+
+            return visa;
+        }
+        public bool saveStatus( string id)
+        {
+            cmd = "UPDATE `client` SET status = 1 "
+                + " WHERE `idclient` = @idclient;";
+
+            myConnection.ConnectionString = Param.getConnectionString();
+            myCommand.Connection = myConnection;
+            myCommand.CommandType = CommandType.Text;
+            myCommand.CommandText = cmd;
+            myCommand.Parameters.Clear();
+
+            myCommand.Parameters.AddWithValue("@idclient", id);
+
+            bool saccess = false;
+            try
+            {
+                myConnection.Open();
+                myCommand.ExecuteNonQuery();
+                saccess = true;
+            }
             catch (Exception)
             {
                 //MessageBox.Show("Произошла ошибка соединения с БД.");
@@ -174,11 +205,11 @@ namespace VisaPlus
                 myConnection.Close();
             }
 
-            return visa;
+            return saccess;
         }
         public bool saveDate(string date,string id)
         {
-            cmd = "UPDATE `client` SET `visitdate` = @visitdate , status = 1 "
+            cmd = "UPDATE `client` SET `visitdate` = @visitdate "
                 + " WHERE `idclient` = @idclient;";
 
             myConnection.ConnectionString = Param.getConnectionString();

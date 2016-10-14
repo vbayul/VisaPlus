@@ -228,22 +228,10 @@ namespace VisaPlus
             try
             {
                 var webGecko = sender as GeckoWebBrowser;
-                int i = 1;
-                do
-                {
-                    try
-                    {
-                        Gecko.GeckoHtmlElement Btn = (Gecko.GeckoHtmlElement)webGecko.DomDocument.GetElementById("ctl00_plhMain_gvSlot_ctl0" + i + "_lnkTimeSlot");
-                        Btn.Click();
-                    }
-                    catch (Exception)
-                    {
 
-                    }
-                    i = i + 1;
+                Gecko.GeckoHtmlElement Btn = (Gecko.GeckoHtmlElement)webGecko.DomDocument.GetElementById("ctl00_plhMain_gvSlot_ctl02_lnkTimeSlot");
+                Btn.Click();
 
-                }
-                while ( i < 5);
             }
             catch (Exception)
             {
@@ -303,6 +291,23 @@ namespace VisaPlus
                         }
                     }
                 }
+            }
+            catch (Exception)
+            {
+                //MessageBox.Show("Возникла ошибка при заполнении полей.");
+            }
+        }
+
+        public void setStatus(object sender, Visa visaInput)
+        {
+            try
+            {
+                var webGecko = sender as GeckoWebBrowser;
+                if (webGecko.Document.GetElementById("ApplicantDetalils") != null)
+                {
+                    visaDAO.saveStatus(visaInput.getId());
+                }
+
             }
             catch (Exception)
             {

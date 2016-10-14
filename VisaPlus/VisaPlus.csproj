@@ -103,7 +103,6 @@
     <Compile Include="Steps.cs" />
     <Compile Include="SystemJournal.cs" />
     <Compile Include="SystemSetting.cs" />
-    <Compile Include="tabPage.cs" />
     <Compile Include="UserDAO.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Proxy.cs" />
