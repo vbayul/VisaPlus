@@ -21,7 +21,7 @@ namespace VisaPlus
         public void ReloadNav(object sender)
         {
             var webGecko = sender as GeckoWebBrowser;
-            if (webGecko.Document.GetElementById("aspnetForm") == null)
+            if (webGecko.Document.GetElementById("aspnetForm") == null || webGecko.Document.GetElementById("__VIEWSTATE") == null)
                 webGecko.Reload();
         }
 

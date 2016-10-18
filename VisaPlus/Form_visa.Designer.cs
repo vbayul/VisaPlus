@@ -74,6 +74,7 @@
             this.geckoWebBrowser1 = new Gecko.GeckoWebBrowser();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timerUpdate = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVisa)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -566,6 +567,10 @@
             this.timer1.Interval = 10000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // timerUpdate
+            // 
+            this.timerUpdate.Interval = 90000;
+            // 
             // Form_visa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -640,5 +645,6 @@
         private System.Windows.Forms.TabControl tabControlGecko;
         private System.Windows.Forms.Button buttonNewTab;
         private System.Windows.Forms.Button buttonTabClose;
+        private System.Windows.Forms.Timer timerUpdate;
     }
 }

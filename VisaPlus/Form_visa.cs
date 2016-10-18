@@ -81,7 +81,7 @@ namespace VisaPlus
                 dataGridViewVisa.DataSource = visaDS.getDSVisa(idManager).Tables[0];
                 RowsColor();
                 URL = systemSetting.getValue("url");
-                
+                timerUpdate.Enabled = true;                
             }
         }
 
@@ -469,11 +469,6 @@ namespace VisaPlus
         private void label1_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            visaDAO.saveDate("21.08.2012", "1");
         }
     }
 }
