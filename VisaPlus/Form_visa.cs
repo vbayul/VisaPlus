@@ -66,8 +66,6 @@ namespace VisaPlus
             Gecko.GeckoPreferences.User["browser.cache.memory.enable"] = false;
             Param.setConnectionString("database=" + Properties.Settings.Default.DB + ";server=" + Properties.Settings.Default.DBURL + ";uid=u_yanamikh;password=0Z1oVo71");
 
-            userDAO.cleanUser();
-
             Form_login login = new Form_login();
             login.Owner = this;
             login.ShowDialog(this);

@@ -28,6 +28,9 @@ namespace VisaPlus
 
         private void buttonEnter_Click(object sender, EventArgs e)
         {
+
+            userDAO.cleanUser();
+
             if (checkConnect())
             {
                 if (checkPass(textBoxPass.Text))// установить всякие параметры аля уровень доступа проверка пароля и т.д.
@@ -37,7 +40,7 @@ namespace VisaPlus
             }
             else
             {
-                MessageBox.Show("Пользователь уже подключен.");
+                MessageBox.Show("Пользователь уже подключен. Повторите попытку позже.");
             }
         }
 
