@@ -569,7 +569,8 @@
             // 
             // timerUpdate
             // 
-            this.timerUpdate.Interval = 90000;
+            this.timerUpdate.Interval = 30000;
+            this.timerUpdate.Tick += new System.EventHandler(this.timerUpdate_Tick);
             // 
             // Form_visa
             // 

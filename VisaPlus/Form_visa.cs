@@ -27,6 +27,8 @@ namespace VisaPlus
         private Visa visaInput = new Visa();
         private List<Visa> visaStore= new List<Visa>();
         private Steps steps = new Steps();
+        private UserDAO userDAO = new UserDAOImp();
+
         public Form_visa()
         {
             InitializeComponent();
@@ -62,8 +64,10 @@ namespace VisaPlus
             // запрет кеширования страницы.
             Gecko.GeckoPreferences.User["browser.cache.disk.enable"] = false;
             Gecko.GeckoPreferences.User["browser.cache.memory.enable"] = false;
-            Param.setConnectionString("database=" + Properties.Settings.Default.DB + ";server=" + Properties.Settings.Default.DBURL + ";uid=qbdp_u_pol;password=%eV4gzTdtL*6");
-            
+            Param.setConnectionString("database=" + Properties.Settings.Default.DB + ";server=" + Properties.Settings.Default.DBURL + ";uid=u_yanamikh;password=0Z1oVo71");
+
+            userDAO.cleanUser();
+
             Form_login login = new Form_login();
             login.Owner = this;
             login.ShowDialog(this);
@@ -80,7 +84,10 @@ namespace VisaPlus
                 }
                 dataGridViewVisa.DataSource = visaDS.getDSVisa(idManager).Tables[0];
                 RowsColor();
+
                 URL = systemSetting.getValue("url");
+                userDAO.updateTime(Param.getUserID());
+
                 timerUpdate.Enabled = true;                
             }
         }
@@ -469,6 +476,11 @@ namespace VisaPlus
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void timerUpdate_Tick(object sender, EventArgs e)
+        {
+            userDAO.updateTime(Param.getUserID());
         }
     }
 }

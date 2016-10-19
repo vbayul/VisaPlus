@@ -130,5 +130,111 @@ namespace VisaPlus
 
             return user;
         }
+
+        public void cleanUser()
+        {
+            cmd = "UPDATE users SET timeconnect = null "
+                +" WHERE idusers IN "
+                +" ( SELECT idusers FROM (SELECT idusers FROM users WHERE timeconnect < @time ) as temptbl);";
+
+
+            myConnection.ConnectionString = Param.getConnectionString();
+            myCommand.Connection = myConnection;
+            myCommand.CommandType = CommandType.Text;
+            myCommand.CommandText = cmd;
+            myCommand.Parameters.Clear();
+
+            //MessageBox.Show(user.ToString());
+            myCommand.Parameters.AddWithValue("@time", 
+                DateTime.Now.TimeOfDay.Add(TimeSpan.FromMinutes(-2)).ToString().Substring(0, 8));
+
+            try
+            {
+                myConnection.Open();
+                myCommand.ExecuteNonQuery();
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Произошла ошибка, не всё поля заполнены.");
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+        }
+
+        public void updateTime(string id)
+        {
+            cmd = "UPDATE users SET timeconnect = @time "
+                + " WHERE idusers = @idusers;";
+
+
+            myConnection.ConnectionString = Param.getConnectionString();
+            myCommand.Connection = myConnection;
+            myCommand.CommandType = CommandType.Text;
+            myCommand.CommandText = cmd;
+            myCommand.Parameters.Clear();
+
+            //MessageBox.Show(user.ToString());
+            myCommand.Parameters.AddWithValue("@time",
+                DateTime.Now.TimeOfDay.ToString().Substring(0, 8));
+            myCommand.Parameters.AddWithValue("@idusers", id);
+
+            try
+            {
+                myConnection.Open();
+                myCommand.ExecuteNonQuery();
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Произошла ошибка, не всё поля заполнены.");
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+        }
+
+        public bool isConnect(string id)
+        {
+            cmd = "SELECT COUNT(idusers) FROM users "
+                + " WHERE (timeconnect < @time or timeconnect is null) and idusers  = @idusers;";
+
+
+            myConnection.ConnectionString = Param.getConnectionString();
+            myCommand.Connection = myConnection;
+            myCommand.CommandType = CommandType.Text;
+            myCommand.CommandText = cmd;
+            myCommand.Parameters.Clear();
+
+            //MessageBox.Show(user.ToString());
+            myCommand.Parameters.AddWithValue("@time",
+                DateTime.Now.TimeOfDay.Add(TimeSpan.FromMinutes(-3)).ToString().Substring(0, 8));
+            myCommand.Parameters.AddWithValue("@idusers", id);
+            int conn = 0;
+            try
+            {
+                myConnection.Open();
+                dr = myCommand.ExecuteReader();
+                while (dr.Read())
+                {
+                    conn = dr.GetInt32(0);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Произошла ошибка осединения с БД.");
+            }
+            finally
+            {
+                myConnection.Close();
+            }
+            if (conn == 0)
+                return false;
+            else
+                return true;
+        }
     }
 }

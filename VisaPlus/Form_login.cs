@@ -28,10 +28,17 @@ namespace VisaPlus
 
         private void buttonEnter_Click(object sender, EventArgs e)
         {
-            if (checkPass(textBoxPass.Text))// установить всякие параметры аля уровень доступа проверка пароля и т.д.
-                this.DialogResult = DialogResult.OK;
+            if (checkConnect())
+            {
+                if (checkPass(textBoxPass.Text))// установить всякие параметры аля уровень доступа проверка пароля и т.д.
+                    this.DialogResult = DialogResult.OK;
+                else
+                    MessageBox.Show("Пароль введен не корректно.");
+            }
             else
-                MessageBox.Show("Пароль введен не корректно.");
+            {
+                MessageBox.Show("Пользователь уже подключен.");
+            }
         }
 
         private void Form_login_Load(object sender, EventArgs e)
@@ -53,6 +60,12 @@ namespace VisaPlus
                 Param.setUserID(user.getId());
             }
             return isLogin;
+        }
+
+        private bool checkConnect()
+        {
+            bool checkIsConnect = userDAO.isConnect(comboBoxLogin.SelectedValue.ToString());
+            return checkIsConnect;
         }
     }
 }

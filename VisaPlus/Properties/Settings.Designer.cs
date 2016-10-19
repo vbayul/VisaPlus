@@ -25,7 +25,7 @@ namespace VisaPlus.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("poland.qb.dp.ua")]
+        [global::System.Configuration.DefaultSettingValueAttribute("89.184.88.164")]
         public string DBURL {
             get {
                 return ((string)(this["DBURL"]));
@@ -34,7 +34,7 @@ namespace VisaPlus.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("qbdp_poland")]
+        [global::System.Configuration.DefaultSettingValueAttribute("yanamikh")]
         public string DB {
             get {
                 return ((string)(this["DB"]));

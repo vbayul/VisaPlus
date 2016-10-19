@@ -13,6 +13,10 @@ namespace VisaPlus
 
         User getUser(string id);
 
-        //void setPass(string id, string pass);
+        void cleanUser();
+
+        void updateTime(string id);
+
+        bool isConnect(string id);
     }
 }
