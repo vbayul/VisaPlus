@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using Gecko;
 using Gecko.DOM;
+using System.Threading;
 
 namespace VisaPlus
 {
@@ -25,9 +26,10 @@ namespace VisaPlus
         private string URL;
         private string idManager = "0";
         private Visa visaInput = new Visa();
-        private List<Visa> visaStore= new List<Visa>();
+        private List<List<Visa>> visaStore= new List<List<Visa>>();
         private Steps steps = new Steps();
         private UserDAO userDAO = new UserDAOImp();
+        private Thread myThread;
 
         public Form_visa()
         {
@@ -62,6 +64,16 @@ namespace VisaPlus
         {
 
             // запрет кеширования страницы.
+
+            GeckoPreferences.User["browser.sessionstore.postdata"] = 1;
+            /*GeckoPreferences.User["security.warn_viewing_mixed"] = false;
+            GeckoPreferences.User["plugin.state.flash"] = 0;
+            GeckoPreferences.User["browser.cache.disk.enable"] = false;
+            GeckoPreferences.User["browser.cache.memory.enable"] = false;
+            GeckoPreferences.User["browser.xul.error_pages.enabled"] = false;
+            GeckoPreferences.User["dom.max_script_run_time"] = 0; //let js run as long as it needs to; prevents timeout errors
+            GeckoPreferences.User["browser.download.manager.showAlertOnComplete"] = false;
+            GeckoPreferences.User["privacy.popups.showBrowserMessage"] = false;*/
             Gecko.GeckoPreferences.User["browser.cache.disk.enable"] = false;
             Gecko.GeckoPreferences.User["browser.cache.memory.enable"] = false;
             Param.setConnectionString("database=" + Properties.Settings.Default.DB + ";server=" + Properties.Settings.Default.DBURL + ";uid=u_yanamikh;password=0Z1oVo71");
@@ -69,6 +81,7 @@ namespace VisaPlus
             Form_login login = new Form_login();
             login.Owner = this;
             login.ShowDialog(this);
+
             if (login.DialogResult == DialogResult.OK)
             {
                 if (Param.getAccess() == "0")
@@ -201,10 +214,25 @@ namespace VisaPlus
             }
             //dataGridViewVisa.DataSource = visaDS.getDSVisa("0").Tables[0];
         }
-
+       
         private void buttonReload_Click(object sender, EventArgs e)
         {
-            geckoWebBrowser1.Reload();
+            //geckoWebBrowser1.Reload();
+            GeckoWebBrowser webBrowser = this.GetWebBrowserByActiveTab();
+            if (webBrowser == null)
+            {
+                return;
+            }
+            myThread = new Thread(func);
+            myThread.Start();
+            webBrowser.Reload();
+        }
+        
+
+        static void func()//Функция потока, передаем параметр
+        {
+            Thread.Sleep(100);
+            SendKeys.SendWait("{ENTER}");
         }
 
         private void geckoWebBrowser1_Navigating_1(object sender, Gecko.Events.GeckoNavigatingEventArgs e)
@@ -377,8 +405,15 @@ namespace VisaPlus
 
         private void AddTab()
         {
-            Visa visacur = getVisaInput(dataGridViewVisa[0, dataGridViewVisa.CurrentCell.RowIndex].Value.ToString());
-            visaStore.Add(visacur); 
+            List<Visa> visas = new List<Visa>();
+            for (int i = 0; i < dataGridViewVisa.SelectedRows.Count; i++)
+            {
+                //MessageBox.Show(dataGridView1.SelectedRows[0].Cells[0].Value.ToString());
+                Visa visacur = getVisaInput(dataGridViewVisa.SelectedRows[i].Cells[0].Value.ToString());
+                visas.Add(visacur);
+            }
+
+            visaStore.Add(visas); 
             TabPage tabPage = new TabPage("Поиск даты");
 
             var webBrowser = new GeckoWebBrowser { Dock = DockStyle.Fill };
@@ -417,20 +452,21 @@ namespace VisaPlus
         private void webBrowser_DocumentCompleted(object sender, Gecko.Events.GeckoDocumentCompletedEventArgs e)
         {
             var webGecko = sender as GeckoWebBrowser;
-            Visa visa = visaStore[Convert.ToInt32(webGecko.Text)];
+            List<Visa> visas = visaStore[Convert.ToInt32(webGecko.Text)];
+            //Visa visa = visaStore[Convert.ToInt32(webGecko.Text)];
             //var tab = Parent.Text as TabPage;
             //MessageBox.Show(this.Parent.Text);
             //tabControlGecko.TabPages.Name.ToString();
             //steps.ReloadNav(sender);
             steps.startClick(sender);
-            steps.setDepType(sender, visa);
-            steps.setTicket(sender, visa);
-            steps.setPeopleCount(sender, visa);
-            steps.setEmail(sender, visa);
-            steps.setClient(sender, visa);
-            steps.selectDate(sender, visa);
+            steps.setDepType(sender, visas);
+            steps.setTicket(sender, visas);
+            steps.setPeopleCount(sender, visas);
+            steps.setEmail(sender, visas);
+            steps.setClient(sender, visas);
+            steps.selectDate(sender, visas);
             steps.selectTime(sender);
-            steps.setStatus(sender, visa);
+            steps.setStatus(sender, visas);
             //MessageBox.Show(tabControlGecko.TabCount.ToString());
         }
 
@@ -469,11 +505,6 @@ namespace VisaPlus
             this.tabControlGecko.TabPages.Remove(this.tabControlGecko.SelectedTab);
             // принудительно запускаем сборщик мусора
             GC.Collect();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void timerUpdate_Tick(object sender, EventArgs e)

@@ -28,7 +28,12 @@ namespace VisaPlus
 
         private void buttonEnter_Click(object sender, EventArgs e)
         {
-
+            /*
+            Param.setUserID("1");
+            Param.setAccess("1");
+            isLogin = true;
+            this.DialogResult = DialogResult.OK;
+            */
             userDAO.cleanUser();
 
             if (checkConnect())

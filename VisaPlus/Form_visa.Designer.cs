@@ -105,7 +105,6 @@
             this.payed,
             this.username});
             this.dataGridViewVisa.Location = new System.Drawing.Point(3, 32);
-            this.dataGridViewVisa.MultiSelect = false;
             this.dataGridViewVisa.Name = "dataGridViewVisa";
             this.dataGridViewVisa.ReadOnly = true;
             this.dataGridViewVisa.RowHeadersVisible = false;
@@ -374,7 +373,7 @@
             // 
             // buttonTabClose
             // 
-            this.buttonTabClose.Location = new System.Drawing.Point(84, 3);
+            this.buttonTabClose.Location = new System.Drawing.Point(165, 3);
             this.buttonTabClose.Name = "buttonTabClose";
             this.buttonTabClose.Size = new System.Drawing.Size(75, 23);
             this.buttonTabClose.TabIndex = 18;
@@ -494,13 +493,12 @@
             // 
             // buttonReload
             // 
-            this.buttonReload.Location = new System.Drawing.Point(360, 35);
+            this.buttonReload.Location = new System.Drawing.Point(84, 3);
             this.buttonReload.Name = "buttonReload";
             this.buttonReload.Size = new System.Drawing.Size(75, 23);
             this.buttonReload.TabIndex = 9;
             this.buttonReload.Text = "Обновить";
             this.buttonReload.UseVisualStyleBackColor = true;
-            this.buttonReload.Visible = false;
             this.buttonReload.Click += new System.EventHandler(this.buttonReload_Click);
             // 
             // buttonWeb
@@ -530,12 +528,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(165, 6);
+            this.label1.Location = new System.Drawing.Point(258, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(66, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Прокси - ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // geckoWebBrowser1
             // 
@@ -557,9 +554,9 @@
             // 
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(375, 6);
+            this.progressBar1.Location = new System.Drawing.Point(478, 6);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(444, 23);
+            this.progressBar1.Size = new System.Drawing.Size(341, 23);
             this.progressBar1.TabIndex = 1;
             // 
             // timer1
