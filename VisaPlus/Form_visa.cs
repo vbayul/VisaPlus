@@ -76,7 +76,7 @@ namespace VisaPlus
             GeckoPreferences.User["privacy.popups.showBrowserMessage"] = false;*/
             Gecko.GeckoPreferences.User["browser.cache.disk.enable"] = false;
             Gecko.GeckoPreferences.User["browser.cache.memory.enable"] = false;
-            Param.setConnectionString("database=" + Properties.Settings.Default.DB + ";server=" + Properties.Settings.Default.DBURL + ";uid=u_yanamikh;password=0Z1oVo71");
+            Param.setConnectionString("database=" + Properties.Settings.Default.DB + ";server=" + Properties.Settings.Default.DBURL + ";uid=;password=");
 
             Form_login login = new Form_login();
             login.Owner = this;
